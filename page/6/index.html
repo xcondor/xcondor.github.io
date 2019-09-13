@@ -47,7 +47,7 @@
     <title>page - Western honeybee</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
 
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -151,13 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-ae-9e-e7-8e-b0-e5-a4-9a-e8-a1-8c-e6-96-87-e6-9c-ac-e6-ba-a2-e5-87-ba-e6-98-be-e7-a4-ba/">
-                实现多行文本溢出显示...
+            <a href="/2018/07/26/gitignore-e6-96-87-e4-bb-b6-e6-97-a0-e6-b3-95-e5-bf-bd-e7-95-a5-e7-9a-84-e9-97-ae-e9-a2-98-1/">
+                gitignore 文件无法忽略的问题
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-07-26</span>
             
             
             
@@ -170,33 +170,224 @@
 
     
         <div class="content">
-            <pre><code>display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;</code></pre><p><strong>适用范围：</strong>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
-<p><strong>注：</strong><code>1、-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性： 2、display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。 3、-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</code></p>
-<pre><code>div {
-    position: relative;
-    line-height: 20px;
-    max-height: 40px;
-    overflow: hidden;
+            <pre><code>git rm -r --cached .
+git add .
+git commit -m &apos;update .gitignore&apos;</code></pre><p>提示： 第一句命令会将所有的追踪缓存全部清除，重新add，不要因为一片的绿色害怕，go on</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/07/26/gitignore-e6-96-87-e4-bb-b6-e6-97-a0-e6-b3-95-e5-bf-bd-e7-95-a5-e7-9a-84-e9-97-ae-e9-a2-98/">
+                gitignore 文件无法忽略的问题
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-07-26</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>git rm -r --cached .
+git add .
+git commit -m &apos;update .gitignore&apos;</code></pre><p>提示： 第一句命令会将所有的追踪缓存全部清除，重新add，不要因为一片的绿色害怕，go on</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/07/26/gitignore-e6-96-87-e4-bb-b6-e6-97-a0-e6-b3-95-e5-bf-bd-e7-95-a5-e7-9a-84-e9-97-ae-e9-a2-98-2/">
+                gitignore 文件无法忽略的问题
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-07-26</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>git rm -r --cached .
+git add .
+git commit -m &apos;update .gitignore&apos;</code></pre><p>提示： 第一句命令会将所有的追踪缓存全部清除，重新add，不要因为一片的绿色害怕，go on</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/07/24/object-assign-e6-96-b9-e6-b3-95-1/">
+                Object.assign() 方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-07-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/转载/">转载</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p><code>**Object.assign()**</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+<pre><code>const object1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+const object2 = Object.assign({c: 4, d: 5}, object1);
+
+console.log(object2.c, object2.d);
+// expected output: 3 5
+
+
+Object.assign(target, ...sources)</code></pre><p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。 <code>Object.assign</code> 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的<code>[[Get]]</code>和目标对象的<code>[[Set]]</code>，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）" target="_blank" rel="noopener"><code>Object.getOwnPropertyDescriptor()</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" title="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。" target="_blank" rel="noopener"><code>Object.defineProperty()</code></a> 。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String" title="此页面仍未被本地化, 期待您的翻译!" target="_blank" rel="noopener"><code>String</code></a>类型和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="undefined是全局对象的一个属性。也就是说，它是全局作用域的一个变量。undefined的最初值就是原始数据类型undefined。" target="_blank" rel="noopener"><code>Symbol</code>](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol “Symbol()函数会返回symbol类型的值，该类型具有静态属性和静态方法。它的静态属性会暴露几个内建的成员对象；它的静态方法会暴露全局的symbol注册，且类似于内建对象类，但作为构造函数来说它并不完整，因为它不支持语法：”new Symbol()”。”) 类型的属性都会被拷贝。 在出现错误的情况下，例如，如果属性不可写，会引发<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError" title="TypeError（类型错误） 对象用来表示值的类型非预期类型时发生的错误。" target="_blank" rel="noopener"><code>TypeError</code></a>，如果在引发错误之前添加了任何属性，则可以更改<code>target</code>对象。 注意，<code>Object.assign</code> 不会跳过那些值为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" title="值 null 特指对象的值未设置。它是 JavaScript 基本类型 之一。" target="_blank" rel="noopener"><code>null</code></a> 或 [<code>undefined</code></a> 的源对象。</p>
+<pre><code>var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }</code></pre><p><strong>针对深拷贝，需要使用其他方法，因为 <code>Object.assign()</code>拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</strong></p>
+<pre><code>function test() {
+  &apos;use strict&apos;;
+
+  let obj1 = { a: 0 , b: { c: 0}};
+  let obj2 = Object.assign({}, obj1);
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj1.a = 1;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj2.a = 2;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 0}}
+
+  obj2.b.c = 3;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 3}}
+
+  // Deep Clone
+  obj1 = { a: 0 , b: { c: 0}};
+  let obj3 = JSON.parse(JSON.stringify(obj1));
+  obj1.a = 4;
+  obj1.b.c = 4;
+  console.log(JSON.stringify(obj3)); // { a: 0, b: { c: 0}}
 }
 
-div:after {
-    content: &quot;...&quot;; position: absolute; bottom: 0; right: 0; padding-left: 40px;
-    background: -webkit-linear-gradient(left, transparent, #fff 55%);
-    background: -o-linear-gradient(right, transparent, #fff 55%);
-    background: -moz-linear-gradient(right, transparent, #fff 55%);
-    background: linear-gradient(to right, transparent, #fff 55%);
+test();</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/07/24/object-assign-e6-96-b9-e6-b3-95-3/">
+                Object.assign() 方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-07-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/转载/">转载</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p><code>**Object.assign()**</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+<pre><code>const object1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+const object2 = Object.assign({c: 4, d: 5}, object1);
+
+console.log(object2.c, object2.d);
+// expected output: 3 5
+
+
+Object.assign(target, ...sources)</code></pre><p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。 <code>Object.assign</code> 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的<code>[[Get]]</code>和目标对象的<code>[[Set]]</code>，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）" target="_blank" rel="noopener"><code>Object.getOwnPropertyDescriptor()</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" title="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。" target="_blank" rel="noopener"><code>Object.defineProperty()</code></a> 。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String" title="此页面仍未被本地化, 期待您的翻译!" target="_blank" rel="noopener"><code>String</code></a>类型和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="undefined是全局对象的一个属性。也就是说，它是全局作用域的一个变量。undefined的最初值就是原始数据类型undefined。" target="_blank" rel="noopener"><code>Symbol</code>](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol “Symbol()函数会返回symbol类型的值，该类型具有静态属性和静态方法。它的静态属性会暴露几个内建的成员对象；它的静态方法会暴露全局的symbol注册，且类似于内建对象类，但作为构造函数来说它并不完整，因为它不支持语法：”new Symbol()”。”) 类型的属性都会被拷贝。 在出现错误的情况下，例如，如果属性不可写，会引发<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError" title="TypeError（类型错误） 对象用来表示值的类型非预期类型时发生的错误。" target="_blank" rel="noopener"><code>TypeError</code></a>，如果在引发错误之前添加了任何属性，则可以更改<code>target</code>对象。 注意，<code>Object.assign</code> 不会跳过那些值为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" title="值 null 特指对象的值未设置。它是 JavaScript 基本类型 之一。" target="_blank" rel="noopener"><code>null</code></a> 或 [<code>undefined</code></a> 的源对象。</p>
+<pre><code>var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }</code></pre><p><strong>针对深拷贝，需要使用其他方法，因为 <code>Object.assign()</code>拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</strong></p>
+<pre><code>function test() {
+  &apos;use strict&apos;;
+
+  let obj1 = { a: 0 , b: { c: 0}};
+  let obj2 = Object.assign({}, obj1);
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj1.a = 1;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj2.a = 2;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 0}}
+
+  obj2.b.c = 3;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 3}}
+
+  // Deep Clone
+  obj1 = { a: 0 , b: { c: 0}};
+  let obj3 = JSON.parse(JSON.stringify(obj1));
+  obj1.a = 4;
+  obj1.b.c = 4;
+  console.log(JSON.stringify(obj3)); // { a: 0, b: { c: 0}}
 }
 
-不要只顾着吃，要注意胃口，此方法有个弊端 那就是 【未超出行的情况下也会出现省略号】 ，这样会不会很挫！！！ 没办法，只能结合JS 进行优化该方法了。
-
-
-
-1、将height设置为line-height的整数倍，防止超出的文字露出。
-2、给p::after添加渐变背景可避免文字只显示一半。
-3、由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：&lt;span&gt;…&lt;span/&gt;）；兼容ie8需要将::after替换成:after。</code></pre>
+test();</code></pre>
         </div>
     
 
@@ -207,13 +398,161 @@ div:after {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/audio-e5-85-83-e7-b4-a0-e5-92-8cvideo-e5-85-83-e7-b4-a0-e5-9c-a8ios-e5-92-8candriod-e4-b8-ad-e6-97-a0-e6-b3-95-e8-87-aa-e5-8a-a8-e6-92-ad-e6-94-be-1/">
-                audio元素和video元素在ios和andriod中无法自动播放
+            <a href="/2018/07/24/object-assign-e6-96-b9-e6-b3-95/">
+                Object.assign() 方法
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-07-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/转载/">转载</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p><code>**Object.assign()**</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+<pre><code>const object1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+const object2 = Object.assign({c: 4, d: 5}, object1);
+
+console.log(object2.c, object2.d);
+// expected output: 3 5
+
+
+Object.assign(target, ...sources)</code></pre><p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。 <code>Object.assign</code> 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的<code>[[Get]]</code>和目标对象的<code>[[Set]]</code>，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）" target="_blank" rel="noopener"><code>Object.getOwnPropertyDescriptor()</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" title="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。" target="_blank" rel="noopener"><code>Object.defineProperty()</code></a> 。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String" title="此页面仍未被本地化, 期待您的翻译!" target="_blank" rel="noopener"><code>String</code></a>类型和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="undefined是全局对象的一个属性。也就是说，它是全局作用域的一个变量。undefined的最初值就是原始数据类型undefined。" target="_blank" rel="noopener"><code>Symbol</code>](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol “Symbol()函数会返回symbol类型的值，该类型具有静态属性和静态方法。它的静态属性会暴露几个内建的成员对象；它的静态方法会暴露全局的symbol注册，且类似于内建对象类，但作为构造函数来说它并不完整，因为它不支持语法：”new Symbol()”。”) 类型的属性都会被拷贝。 在出现错误的情况下，例如，如果属性不可写，会引发<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError" title="TypeError（类型错误） 对象用来表示值的类型非预期类型时发生的错误。" target="_blank" rel="noopener"><code>TypeError</code></a>，如果在引发错误之前添加了任何属性，则可以更改<code>target</code>对象。 注意，<code>Object.assign</code> 不会跳过那些值为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" title="值 null 特指对象的值未设置。它是 JavaScript 基本类型 之一。" target="_blank" rel="noopener"><code>null</code></a> 或 [<code>undefined</code></a> 的源对象。</p>
+<pre><code>var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }</code></pre><p><strong>针对深拷贝，需要使用其他方法，因为 <code>Object.assign()</code>拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</strong></p>
+<pre><code>function test() {
+  &apos;use strict&apos;;
+
+  let obj1 = { a: 0 , b: { c: 0}};
+  let obj2 = Object.assign({}, obj1);
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj1.a = 1;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj2.a = 2;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 0}}
+
+  obj2.b.c = 3;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 3}}
+
+  // Deep Clone
+  obj1 = { a: 0 , b: { c: 0}};
+  let obj3 = JSON.parse(JSON.stringify(obj1));
+  obj1.a = 4;
+  obj1.b.c = 4;
+  console.log(JSON.stringify(obj3)); // { a: 0, b: { c: 0}}
+}
+
+test();</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/07/24/object-assign-e6-96-b9-e6-b3-95-2/">
+                Object.assign() 方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-07-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/转载/">转载</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p><code>**Object.assign()**</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+<pre><code>const object1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+const object2 = Object.assign({c: 4, d: 5}, object1);
+
+console.log(object2.c, object2.d);
+// expected output: 3 5
+
+
+Object.assign(target, ...sources)</code></pre><p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。 <code>Object.assign</code> 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的<code>[[Get]]</code>和目标对象的<code>[[Set]]</code>，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）" target="_blank" rel="noopener"><code>Object.getOwnPropertyDescriptor()</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" title="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。" target="_blank" rel="noopener"><code>Object.defineProperty()</code></a> 。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String" title="此页面仍未被本地化, 期待您的翻译!" target="_blank" rel="noopener"><code>String</code></a>类型和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="undefined是全局对象的一个属性。也就是说，它是全局作用域的一个变量。undefined的最初值就是原始数据类型undefined。" target="_blank" rel="noopener"><code>Symbol</code>](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol “Symbol()函数会返回symbol类型的值，该类型具有静态属性和静态方法。它的静态属性会暴露几个内建的成员对象；它的静态方法会暴露全局的symbol注册，且类似于内建对象类，但作为构造函数来说它并不完整，因为它不支持语法：”new Symbol()”。”) 类型的属性都会被拷贝。 在出现错误的情况下，例如，如果属性不可写，会引发<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError" title="TypeError（类型错误） 对象用来表示值的类型非预期类型时发生的错误。" target="_blank" rel="noopener"><code>TypeError</code></a>，如果在引发错误之前添加了任何属性，则可以更改<code>target</code>对象。 注意，<code>Object.assign</code> 不会跳过那些值为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" title="值 null 特指对象的值未设置。它是 JavaScript 基本类型 之一。" target="_blank" rel="noopener"><code>null</code></a> 或 [<code>undefined</code></a> 的源对象。</p>
+<pre><code>var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }</code></pre><p><strong>针对深拷贝，需要使用其他方法，因为 <code>Object.assign()</code>拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</strong></p>
+<pre><code>function test() {
+  &apos;use strict&apos;;
+
+  let obj1 = { a: 0 , b: { c: 0}};
+  let obj2 = Object.assign({}, obj1);
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj1.a = 1;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+
+  obj2.a = 2;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 0}}
+
+  obj2.b.c = 3;
+  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}
+  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 3}}
+
+  // Deep Clone
+  obj1 = { a: 0 , b: { c: 0}};
+  let obj3 = JSON.parse(JSON.stringify(obj1));
+  obj1.a = 4;
+  obj1.b.c = 4;
+  console.log(JSON.stringify(obj3)); // { a: 0, b: { c: 0}}
+}
+
+test();</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/06/23/nodejs-request-e6-a8-a1-e5-9d-97/">
+                nodejs request模块
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-06-23</span>
             
             
             
@@ -226,193 +565,39 @@ div:after {
 
     
         <div class="content">
-            <pre><code>原因： 因为各大浏览器都为了节省流量，做出了优化，在用户没有行为动作时（交互）不予许自动播放；
+            <pre><code>npm install --save request
+get方法：
+var request = require(&apos;request&apos;);
+request(&apos;您的请求url&apos;, function (error, response, body) {
+  if (!error &amp;&amp; response.statusCode == 200) {
+    console.log(body) // 请求成功的处理逻辑
+  }
+});
+post方法：
 
-/音频，写法一
-&lt;audio src=&quot;music/bg.mp3&quot; autoplay loop controls&gt;你的浏览器还不支持哦&lt;/audio&gt;
-
-//音频，写法二
-&lt;audio controls=&quot;controls&quot;&gt; 
-    &lt;source src=&quot;music/bg.ogg&quot; type=&quot;audio/ogg&quot;&gt;&lt;/source&gt;
-    &lt;source src=&quot;music/bg.mp3&quot; type=&quot;audio/mpeg&quot;&gt;&lt;/source&gt;
-    优先播放音乐bg.ogg，不支持在播放bg.mp3
-&lt;/audio&gt;
-
-//JS绑定自动播放（操作window时，播放音乐）
-$(window).one(&apos;touchstart&apos;, function(){
-    music.play();
-})
-
-//微信下兼容处理
-document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
-    music.play();
-}, false);
-
-//小结
-//1.audio元素的autoplay属性在IOS及Android上无法使用，在PC端正常；
-//2.audio元素没有设置controls时，在IOS及Android会占据空间大小，而在PC端Chrome是不会占据任何空间；
-//3.注意不要遗漏微信的兼容处理需要引用微信JS；</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/audio-e5-85-83-e7-b4-a0-e5-92-8cvideo-e5-85-83-e7-b4-a0-e5-9c-a8ios-e5-92-8candriod-e4-b8-ad-e6-97-a0-e6-b3-95-e8-87-aa-e5-8a-a8-e6-92-ad-e6-94-be/">
-                audio元素和video元素在ios和andriod中无法自动播放
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>原因： 因为各大浏览器都为了节省流量，做出了优化，在用户没有行为动作时（交互）不予许自动播放；
-
-/音频，写法一
-&lt;audio src=&quot;music/bg.mp3&quot; autoplay loop controls&gt;你的浏览器还不支持哦&lt;/audio&gt;
-
-//音频，写法二
-&lt;audio controls=&quot;controls&quot;&gt; 
-    &lt;source src=&quot;music/bg.ogg&quot; type=&quot;audio/ogg&quot;&gt;&lt;/source&gt;
-    &lt;source src=&quot;music/bg.mp3&quot; type=&quot;audio/mpeg&quot;&gt;&lt;/source&gt;
-    优先播放音乐bg.ogg，不支持在播放bg.mp3
-&lt;/audio&gt;
-
-//JS绑定自动播放（操作window时，播放音乐）
-$(window).one(&apos;touchstart&apos;, function(){
-    music.play();
-})
-
-//微信下兼容处理
-document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
-    music.play();
-}, false);
-
-//小结
-//1.audio元素的autoplay属性在IOS及Android上无法使用，在PC端正常；
-//2.audio元素没有设置controls时，在IOS及Android会占据空间大小，而在PC端Chrome是不会占据任何空间；
-//3.注意不要遗漏微信的兼容处理需要引用微信JS；</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/js-e5-88-a4-e6-96-ad-e8-ae-be-e5-a4-87-e6-9d-a5-e6-ba-90/">
-                JS 判断设备来源
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>function deviceType(){
-        var ua = navigator.userAgent;
-        var agent = [&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];    
-        for(var i=0; i&lt;len,len = agent.length; i++){
-            if(ua.indexOf(agent[i])&gt;0){         
-                break;
-            }
-        }
+var request = require(&apos;request&apos;);
+var url=&quot;请求url&quot;;
+var requestData=&quot;上送的数据&quot;;
+request({
+    url: url,
+    method: &quot;POST&quot;,
+    json: true,
+    headers: {
+        &quot;content-type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(requestData)
+}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+        console.log(body) // 请求成功的处理逻辑
     }
-    deviceType();
-    window.addEventListener(&apos;resize&apos;, function(){
-        deviceType();
-    })
+}); 
+post form：
 
-
-    微信的 有些不太一样
-    function isWeixin(){
-        var ua = navigator.userAgent.toLowerCase();
-        if(ua.match(/MicroMessenger/i)==&apos;micromessenger&apos;){
-            return true;
-        }else{
-            return false;
-        }
-    }</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/js-e5-88-a4-e6-96-ad-e8-ae-be-e5-a4-87-e6-9d-a5-e6-ba-90-1/">
-                JS 判断设备来源
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>function deviceType(){
-        var ua = navigator.userAgent;
-        var agent = [&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];    
-        for(var i=0; i&lt;len,len = agent.length; i++){
-            if(ua.indexOf(agent[i])&gt;0){         
-                break;
-            }
-        }
+request.post({url:&apos;&apos;, form:{key:&apos;value&apos;}}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+       console.log(body) // 请求成功的处理逻辑  
     }
-    deviceType();
-    window.addEventListener(&apos;resize&apos;, function(){
-        deviceType();
-    })
-
-
-    微信的 有些不太一样
-    function isWeixin(){
-        var ua = navigator.userAgent.toLowerCase();
-        if(ua.match(/MicroMessenger/i)==&apos;micromessenger&apos;){
-            return true;
-        }else{
-            return false;
-        }
-    }</code></pre>
+})</code></pre>
         </div>
     
 
@@ -423,13 +608,13 @@ document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/android-4-x-bug/">
-                android 4.x bug
+            <a href="/2018/06/23/nodejs-request-e6-a8-a1-e5-9d-97-2/">
+                nodejs request模块
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-06-23</span>
             
             
             
@@ -442,149 +627,39 @@ document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
 
     
         <div class="content">
-            <pre><code>1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
-   2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
-   3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色
-   4.android无法同时播放多音频audio
-   5.oppo 的border-radius 会失效</code></pre>
-        </div>
-    
+            <pre><code>npm install --save request
+get方法：
+var request = require(&apos;request&apos;);
+request(&apos;您的请求url&apos;, function (error, response, body) {
+  if (!error &amp;&amp; response.statusCode == 200) {
+    console.log(body) // 请求成功的处理逻辑
+  }
+});
+post方法：
 
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/android-4-x-bug-1/">
-                android 4.x bug
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
-   2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
-   3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色
-   4.android无法同时播放多音频audio
-   5.oppo 的border-radius 会失效</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f/">
-                消除transition闪屏
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>.css {
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
+var request = require(&apos;request&apos;);
+var url=&quot;请求url&quot;;
+var requestData=&quot;上送的数据&quot;;
+request({
+    url: url,
+    method: &quot;POST&quot;,
+    json: true,
+    headers: {
+        &quot;content-type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(requestData)
+}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+        console.log(body) // 请求成功的处理逻辑
     }
-    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
-    启动硬件加速的 另外一种方式： 
-        .css {
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-        }
+}); 
+post form：
 
-    启动硬件加速
-    最常用的方式：translate3d、translateZ、transform
-
-    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
-
-    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
-    其它属性并不会变成复合层），
-
-    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f-1/">
-                消除transition闪屏
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>.css {
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
+request.post({url:&apos;&apos;, form:{key:&apos;value&apos;}}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+       console.log(body) // 请求成功的处理逻辑  
     }
-    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
-    启动硬件加速的 另外一种方式： 
-        .css {
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-        }
-
-    启动硬件加速
-    最常用的方式：translate3d、translateZ、transform
-
-    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
-
-    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
-    其它属性并不会变成复合层），
-
-    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
+})</code></pre>
         </div>
     
 
@@ -595,13 +670,13 @@ document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-8f-af-e8-83-bd-e7-94-a8-e5-88-b0-e7-9a-84meta-e6-a0-87-e7-ad-be-1/">
-                可能用到的meta标签
+            <a href="/2018/06/23/nodejs-request-e6-a8-a1-e5-9d-97-1/">
+                nodejs request模块
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-06-23</span>
             
             
             
@@ -614,38 +689,39 @@ document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
 
     
         <div class="content">
-            <pre><code>&lt;!-- 设置缩放 --&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no, minimal-ui&quot; /&gt;
-    &lt;!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7.0版本以后，safari上已看不到效果） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;
-    &lt;!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 --&gt;
-    &lt;meta name=&quot;format-detection&quot;content=&quot;telephone=no, email=no&quot; /&gt;
+            <pre><code>npm install --save request
+get方法：
+var request = require(&apos;request&apos;);
+request(&apos;您的请求url&apos;, function (error, response, body) {
+  if (!error &amp;&amp; response.statusCode == 200) {
+    console.log(body) // 请求成功的处理逻辑
+  }
+});
+post方法：
 
-    其他meta标签
-    &lt;!-- 启用360浏览器的极速模式(webkit) --&gt;
-    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;
-    &lt;!-- 避免IE使用兼容模式 --&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;
-    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;
-    &lt;!-- 微软的老式浏览器 --&gt;
-    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
-    &lt;!-- windows phone 点击无高光 --&gt;
-    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</code></pre>
+var request = require(&apos;request&apos;);
+var url=&quot;请求url&quot;;
+var requestData=&quot;上送的数据&quot;;
+request({
+    url: url,
+    method: &quot;POST&quot;,
+    json: true,
+    headers: {
+        &quot;content-type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(requestData)
+}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+        console.log(body) // 请求成功的处理逻辑
+    }
+}); 
+post form：
+
+request.post({url:&apos;&apos;, form:{key:&apos;value&apos;}}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+       console.log(body) // 请求成功的处理逻辑  
+    }
+})</code></pre>
         </div>
     
 
@@ -697,15 +773,15 @@ document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/">数组对象排序按照JSONarray排序</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-1/">前端算法</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-3/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-2/">数组对象排序按照JSONarray排序</a>
             </li>
             
         </ul>

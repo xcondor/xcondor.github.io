@@ -47,7 +47,7 @@
     <title>page - Western honeybee</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
 
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -151,44 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/22/e6-9c-80-e5-90-8e-e7-9a-84-e8-8e-ab-e8-a5-bf-e5-b9-b2-e4-ba-ba-1/">
-                最后的莫西干人
+            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84-2/">
+                如何将数组分为多个数组
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-22</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/tutu/">tutu</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>[player autoplay=”1” randplay=”1”] 仰头吹得神仙曲，跪地只为口中食。 他日若能得安生，谁愿颠沛流浪人。</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/18/localstorage-e5-b0-8f-e7-bb-93-1/">
-                localStorage 小结
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-18</span>
+                <span class="date">2018-03-13</span>
             
             
             
@@ -201,39 +170,16 @@
 
     
         <div class="content">
-            <h3 id="清空localStorage"><a href="#清空localStorage" class="headerlink" title="清空localStorage"></a>清空localStorage</h3><pre><code>localStorage.clear()    // undefined    
-localStorage            // Storage {length: 0}</code></pre><h3 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h3><pre><code>localStorage.setItem(&quot;name&quot;,&quot;caibin&quot;) //存储名字为name值为caibin的变量
-localStorage.name = &quot;caibin&quot;; // 等价于上面的命令
-localStorage // Storage {name: &quot;caibin&quot;, length: 1}</code></pre><h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><pre><code>localStorage.getItem(&quot;name&quot;) //caibin,读取保存在localStorage对象里名为name的变量的值
-localStorage.name // &quot;caibin&quot;
-localStorage.valueOf() //读取存储在localStorage上的所有数据
-localStorage.key(0) // 读取第一条数据的变量名(键值)
-//遍历并输出localStorage里存储的名字和值
-for(var i=0; i&lt;localStorage.length;i++){
-    console.log(&apos;localStorage里存储的第&apos;+i+&apos;条数据的名字为：&apos;+localStorage.key(i)+&apos;,值为：&apos;+localStorage.getItem(localStorage.key(i)));
-}</code></pre><h3 id="删除某个变量"><a href="#删除某个变量" class="headerlink" title="删除某个变量"></a>删除某个变量</h3><pre><code>localStorage.removeItem(&quot;name&quot;); //undefined
-localStorage // Storage {length: 0} 可以看到之前保存的name变量已经从localStorage里删除了</code></pre><h3 id="检查localStorage里是否保存某个变量"><a href="#检查localStorage里是否保存某个变量" class="headerlink" title="检查localStorage里是否保存某个变量"></a>检查localStorage里是否保存某个变量</h3><pre><code>// 这些数据都是测试的，是在我当下环境里的，只是demo哦～
-localStorage.hasOwnProperty(&apos;name&apos;) // true
-localStorage.hasOwnProperty(&apos;sex&apos;)  // false</code></pre><h3 id="将数组转为本地字符串"><a href="#将数组转为本地字符串" class="headerlink" title="将数组转为本地字符串"></a>将数组转为本地字符串</h3><pre><code>var arr = [&apos;aa&apos;,&apos;bb&apos;,&apos;cc&apos;]; // [&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;]
-localStorage.arr = arr //[&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;]
-localStorage.arr.toLocaleString(); // &quot;aa,bb,cc&quot;</code></pre><h3 id="将JSON存储到localStorage里"><a href="#将JSON存储到localStorage里" class="headerlink" title="将JSON存储到localStorage里"></a>将JSON存储到localStorage里</h3><pre><code>var students = {
-    xiaomin: {
-        name: &quot;xiaoming&quot;,
-        grade: 1
-    },
-    teemo: {
-        name: &quot;teemo&quot;,
-        grade: 3
-    }
+            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
+var result = [];
+for(var i=0,len=data.length;i&lt;len;i+=6){
+   result.push(data.slice(i,i+6));
 }
 
-students = JSON.stringify(students);  //将JSON转为字符串存到变量里
-console.log(students);
-localStorage.setItem(&quot;students&quot;,students);//将变量存到localStorage里
+console.log(result[0]);
+console.log(result[1]);
+console.log(result[2]);</code></pre><p>如题</p>
 
-var newStudents = localStorage.getItem(&quot;students&quot;);
-newStudents = JSON.parse(students); //转为JSON
-console.log(newStudents); // 打印出原先对象</code></pre>
         </div>
     
 
@@ -244,13 +190,13 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/18/localstorage-e5-b0-8f-e7-bb-93/">
-                localStorage 小结
+            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95/">
+                更短的数组去重写法
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-18</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -263,39 +209,9 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     
         <div class="content">
-            <h3 id="清空localStorage"><a href="#清空localStorage" class="headerlink" title="清空localStorage"></a>清空localStorage</h3><pre><code>localStorage.clear()    // undefined    
-localStorage            // Storage {length: 0}</code></pre><h3 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h3><pre><code>localStorage.setItem(&quot;name&quot;,&quot;caibin&quot;) //存储名字为name值为caibin的变量
-localStorage.name = &quot;caibin&quot;; // 等价于上面的命令
-localStorage // Storage {name: &quot;caibin&quot;, length: 1}</code></pre><h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><pre><code>localStorage.getItem(&quot;name&quot;) //caibin,读取保存在localStorage对象里名为name的变量的值
-localStorage.name // &quot;caibin&quot;
-localStorage.valueOf() //读取存储在localStorage上的所有数据
-localStorage.key(0) // 读取第一条数据的变量名(键值)
-//遍历并输出localStorage里存储的名字和值
-for(var i=0; i&lt;localStorage.length;i++){
-    console.log(&apos;localStorage里存储的第&apos;+i+&apos;条数据的名字为：&apos;+localStorage.key(i)+&apos;,值为：&apos;+localStorage.getItem(localStorage.key(i)));
-}</code></pre><h3 id="删除某个变量"><a href="#删除某个变量" class="headerlink" title="删除某个变量"></a>删除某个变量</h3><pre><code>localStorage.removeItem(&quot;name&quot;); //undefined
-localStorage // Storage {length: 0} 可以看到之前保存的name变量已经从localStorage里删除了</code></pre><h3 id="检查localStorage里是否保存某个变量"><a href="#检查localStorage里是否保存某个变量" class="headerlink" title="检查localStorage里是否保存某个变量"></a>检查localStorage里是否保存某个变量</h3><pre><code>// 这些数据都是测试的，是在我当下环境里的，只是demo哦～
-localStorage.hasOwnProperty(&apos;name&apos;) // true
-localStorage.hasOwnProperty(&apos;sex&apos;)  // false</code></pre><h3 id="将数组转为本地字符串"><a href="#将数组转为本地字符串" class="headerlink" title="将数组转为本地字符串"></a>将数组转为本地字符串</h3><pre><code>var arr = [&apos;aa&apos;,&apos;bb&apos;,&apos;cc&apos;]; // [&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;]
-localStorage.arr = arr //[&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;]
-localStorage.arr.toLocaleString(); // &quot;aa,bb,cc&quot;</code></pre><h3 id="将JSON存储到localStorage里"><a href="#将JSON存储到localStorage里" class="headerlink" title="将JSON存储到localStorage里"></a>将JSON存储到localStorage里</h3><pre><code>var students = {
-    xiaomin: {
-        name: &quot;xiaoming&quot;,
-        grade: 1
-    },
-    teemo: {
-        name: &quot;teemo&quot;,
-        grade: 3
-    }
-}
+            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
 
-students = JSON.stringify(students);  //将JSON转为字符串存到变量里
-console.log(students);
-localStorage.setItem(&quot;students&quot;,students);//将变量存到localStorage里
-
-var newStudents = localStorage.getItem(&quot;students&quot;);
-newStudents = JSON.parse(students); //转为JSON
-console.log(newStudents); // 打印出原先对象</code></pre>
+   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -306,13 +222,13 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/08/velocity-e8-af-ad-e6-b3-95-e8-af-a6-e8-a7-a3-1/">
-                Velocity语法详解
+            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95-3/">
+                更短的数组去重写法
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-08</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -325,7 +241,9 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     
         <div class="content">
-            <h4 id="velocity语法详解"><a href="#velocity语法详解" class="headerlink" title="velocity语法详解"></a><a href="http://velocity.apache.org/engine/devel/user-guide.html" target="_blank" rel="noopener">velocity语法详解</a></h4>
+            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+
+   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -336,13 +254,13 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/08/velocity-e8-af-ad-e6-b3-95-e8-af-a6-e8-a7-a3/">
-                Velocity语法详解
+            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95-1/">
+                更短的数组去重写法
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-08</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -355,7 +273,9 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     
         <div class="content">
-            <h4 id="velocity语法详解"><a href="#velocity语法详解" class="headerlink" title="velocity语法详解"></a><a href="http://velocity.apache.org/engine/devel/user-guide.html" target="_blank" rel="noopener">velocity语法详解</a></h4>
+            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+
+   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -366,13 +286,13 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/object-defineproperty/">
-                Object.defineProperty()
+            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95-2/">
+                更短的数组去重写法
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -385,70 +305,9 @@ console.log(newStudents); // 打印出原先对象</code></pre>
 
     
         <div class="content">
-            <pre><code>Object.defineProperty(obj, prop, descriptor)</code></pre><p>创建属性：</p>
-<pre><code>var o = {}; // 创建一个新对象
+            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
 
-// 在对象中添加一个属性与数据描述符的示例
-Object.defineProperty(o, &quot;a&quot;, {
-  value : 37,
-  writable : true,
-  enumerable : true,
-  configurable : true
-});
-
-// 对象o拥有了属性a，值为37
-
-// 在对象中添加一个属性与存取描述符的示例
-var bValue;
-Object.defineProperty(o, &quot;b&quot;, {
-  get : function(){
-    return bValue;
-  },
-  set : function(newValue){
-    bValue = newValue;
-  },
-  enumerable : true,
-  configurable : true
-});
-
-o.b = 38;
-// 对象o拥有了属性b，值为38
-
-// o.b的值现在总是与bValue相同，除非重新定义o.b
-
-// 数据描述符和存取描述符不能混合使用
-Object.defineProperty(o, &quot;conflict&quot;, {
-  value: 0x9f91102, 
-  get: function() { 
-    return 0xdeadbeef; 
-  } 
-});
-// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</code></pre><p>修改属性： 当<code>writable</code>属性设置为<code>false</code>时，该属性被称为“不可写”。它不能被重新分配。</p>
-<pre><code>var o = {}; // Creates a new object
-
-Object.defineProperty(o, &apos;a&apos;, {
-  value: 37,
-  writable: false
-});
-
-console.log(o.a); // logs 37
-o.a = 25; // No error thrown
-// (it would throw in strict mode,
-// even if the value had been the same)
-console.log(o.a); // logs 37. The assignment didn&apos;t work.
-
-// strict mode
-(function() {
-  &apos;use strict&apos;;
-  var o = {};
-  Object.defineProperty(o, &apos;b&apos;, {
-    value: 2,
-    writable: false
-  });
-  o.b = 3; // throws TypeError: &quot;b&quot; is read-only
-  return o.b; // returns 2 without the line above
-}());</code></pre><p>如示例所示，试图写入非可写属性不会改变它，也不会引发错误。</p>
-
+   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -459,13 +318,13 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/object-defineproperty-1/">
-                Object.defineProperty()
+            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f/">
+                改变placeholder的字体颜色大小
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -478,70 +337,22 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     
         <div class="content">
-            <pre><code>Object.defineProperty(obj, prop, descriptor)</code></pre><p>创建属性：</p>
-<pre><code>var o = {}; // 创建一个新对象
-
-// 在对象中添加一个属性与数据描述符的示例
-Object.defineProperty(o, &quot;a&quot;, {
-  value : 37,
-  writable : true,
-  enumerable : true,
-  configurable : true
-});
-
-// 对象o拥有了属性a，值为37
-
-// 在对象中添加一个属性与存取描述符的示例
-var bValue;
-Object.defineProperty(o, &quot;b&quot;, {
-  get : function(){
-    return bValue;
-  },
-  set : function(newValue){
-    bValue = newValue;
-  },
-  enumerable : true,
-  configurable : true
-});
-
-o.b = 38;
-// 对象o拥有了属性b，值为38
-
-// o.b的值现在总是与bValue相同，除非重新定义o.b
-
-// 数据描述符和存取描述符不能混合使用
-Object.defineProperty(o, &quot;conflict&quot;, {
-  value: 0x9f91102, 
-  get: function() { 
-    return 0xdeadbeef; 
-  } 
-});
-// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</code></pre><p>修改属性： 当<code>writable</code>属性设置为<code>false</code>时，该属性被称为“不可写”。它不能被重新分配。</p>
-<pre><code>var o = {}; // Creates a new object
-
-Object.defineProperty(o, &apos;a&apos;, {
-  value: 37,
-  writable: false
-});
-
-console.log(o.a); // logs 37
-o.a = 25; // No error thrown
-// (it would throw in strict mode,
-// even if the value had been the same)
-console.log(o.a); // logs 37. The assignment didn&apos;t work.
-
-// strict mode
-(function() {
-  &apos;use strict&apos;;
-  var o = {};
-  Object.defineProperty(o, &apos;b&apos;, {
-    value: 2,
-    writable: false
-  });
-  o.b = 3; // throws TypeError: &quot;b&quot; is read-only
-  return o.b; // returns 2 without the line above
-}());</code></pre><p>如示例所示，试图写入非可写属性不会改变它，也不会引发错误。</p>
-
+            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
+<pre><code>input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:14px;
+    color: #333;
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:14px;
+    color: #333;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:14px;
+    color: #333;
+}</code></pre>
         </div>
     
 
@@ -552,179 +363,13 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/javascript-e8-ae-be-e8-ae-a1-e6-a8-a1-e5-bc-8f-ef-bc-9a-e5-9c-a8-e7-ba-bf-e7-89-88-1/">
-                JAVASCRIPT设计模式：在线版
+            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f-3/">
+                改变placeholder的字体颜色大小
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#introduction" target="_blank" rel="noopener">简介</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#whatisapattern" target="_blank" rel="noopener">什么是设计模式？</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#patternity" target="_blank" rel="noopener">“Pattern”-ity Testing, Proto-Patterns &amp; The Rule Of Three</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternstructure" target="_blank" rel="noopener">设计模式的结构</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#writingdesignpatterns" target="_blank" rel="noopener">编写设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#antipatterns" target="_blank" rel="noopener">反模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#categoriesofdesignpatterns" target="_blank" rel="noopener">设计模式的分类</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#summarytabledesignpatterns" target="_blank" rel="noopener">设计模式分类概览表</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjavascript" target="_blank" rel="noopener">JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#constructorpatternjavascript" target="_blank" rel="noopener">构造器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modulepatternjavascript" target="_blank" rel="noopener">模块化模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#revealingmodulepatternjavascript" target="_blank" rel="noopener">暴露模块模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#singletonpatternjavascript" target="_blank" rel="noopener">单例模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjavascript" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mediatorpatternjavascript" target="_blank" rel="noopener">中介者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#prototypepatternjavascript" target="_blank" rel="noopener">原型模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#commandpatternjavascript" target="_blank" rel="noopener">命令模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjavascript" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#factorypatternjavascript" target="_blank" rel="noopener">工厂模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mixinpatternjavascript" target="_blank" rel="noopener">Mixin 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#decoratorpatternjavascript" target="_blank" rel="noopener">装饰模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailflyweight" target="_blank" rel="noopener">亨元（Flyweight）模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvcmvp" target="_blank" rel="noopener">JavaScript MV* 模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvc" target="_blank" rel="noopener">MVC 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvp" target="_blank" rel="noopener">MVP 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvvm" target="_blank" rel="noopener">MVVM 模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modularjavascript" target="_blank" rel="noopener">最新的模块化 JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailamd" target="_blank" rel="noopener">AMD</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailcommonjs" target="_blank" rel="noopener">CommonJS</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailharmony" target="_blank" rel="noopener">ES Harmony</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjquery" target="_blank" rel="noopener">JQuery 中的设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#compositepatternjquery" target="_blank" rel="noopener">Composite Pattern</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#wrapperpatternjquery" target="_blank" rel="noopener">适配器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjquery" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjquery" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#iteratorpatternjquery" target="_blank" rel="noopener">迭代器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#lazyinitialisationjquery" target="_blank" rel="noopener">惰性初始模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#proxypatternjquery" target="_blank" rel="noopener">代理模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#builderpatternjquery" target="_blank" rel="noopener">建造者模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#jquerypluginpatterns" target="_blank" rel="noopener">jQuery 插件的设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailnamespacing" target="_blank" rel="noopener">JavaScript 命名空间模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#conclusions" target="_blank" rel="noopener">总结</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#references" target="_blank" rel="noopener">参考</a></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/05/javascript-e8-ae-be-e8-ae-a1-e6-a8-a1-e5-bc-8f-ef-bc-9a-e5-9c-a8-e7-ba-bf-e7-89-88/">
-                JAVASCRIPT设计模式：在线版
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#introduction" target="_blank" rel="noopener">简介</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#whatisapattern" target="_blank" rel="noopener">什么是设计模式？</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#patternity" target="_blank" rel="noopener">“Pattern”-ity Testing, Proto-Patterns &amp; The Rule Of Three</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternstructure" target="_blank" rel="noopener">设计模式的结构</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#writingdesignpatterns" target="_blank" rel="noopener">编写设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#antipatterns" target="_blank" rel="noopener">反模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#categoriesofdesignpatterns" target="_blank" rel="noopener">设计模式的分类</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#summarytabledesignpatterns" target="_blank" rel="noopener">设计模式分类概览表</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjavascript" target="_blank" rel="noopener">JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#constructorpatternjavascript" target="_blank" rel="noopener">构造器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modulepatternjavascript" target="_blank" rel="noopener">模块化模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#revealingmodulepatternjavascript" target="_blank" rel="noopener">暴露模块模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#singletonpatternjavascript" target="_blank" rel="noopener">单例模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjavascript" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mediatorpatternjavascript" target="_blank" rel="noopener">中介者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#prototypepatternjavascript" target="_blank" rel="noopener">原型模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#commandpatternjavascript" target="_blank" rel="noopener">命令模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjavascript" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#factorypatternjavascript" target="_blank" rel="noopener">工厂模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mixinpatternjavascript" target="_blank" rel="noopener">Mixin 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#decoratorpatternjavascript" target="_blank" rel="noopener">装饰模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailflyweight" target="_blank" rel="noopener">亨元（Flyweight）模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvcmvp" target="_blank" rel="noopener">JavaScript MV* 模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvc" target="_blank" rel="noopener">MVC 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvp" target="_blank" rel="noopener">MVP 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvvm" target="_blank" rel="noopener">MVVM 模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modularjavascript" target="_blank" rel="noopener">最新的模块化 JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailamd" target="_blank" rel="noopener">AMD</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailcommonjs" target="_blank" rel="noopener">CommonJS</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailharmony" target="_blank" rel="noopener">ES Harmony</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjquery" target="_blank" rel="noopener">JQuery 中的设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#compositepatternjquery" target="_blank" rel="noopener">Composite Pattern</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#wrapperpatternjquery" target="_blank" rel="noopener">适配器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjquery" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjquery" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#iteratorpatternjquery" target="_blank" rel="noopener">迭代器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#lazyinitialisationjquery" target="_blank" rel="noopener">惰性初始模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#proxypatternjquery" target="_blank" rel="noopener">代理模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#builderpatternjquery" target="_blank" rel="noopener">建造者模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#jquerypluginpatterns" target="_blank" rel="noopener">jQuery 插件的设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailnamespacing" target="_blank" rel="noopener">JavaScript 命名空间模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#conclusions" target="_blank" rel="noopener">总结</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#references" target="_blank" rel="noopener">参考</a></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/05/e7-bb-9f-e8-ae-a1github-e4-b8-8a-e4-b8-80-e4-ba-9b-e7-89-9b-e9-80-bc-e7-9a-84-e5-bc-80-e6-ba-90-e9-a1-b9-e7-9b-ae/">
-                统计github上一些牛逼的开源项目
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -737,60 +382,164 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     
         <div class="content">
-            <pre><code>anyupload: https://github.com/dianbaer/anyupload
-该项目是一款上传插件，使用方便、简单。支持多文件上传、上传速率动态控制、真实进度监控 kb/s、分块生成 MD5、分块上传、MD5 校验、暂停、取消等功能。</code></pre><p><a href="https://www.threecss.com/AnyUploadClient/" target="_blank" rel="noopener"> 在线体验 </a></p>
-<pre><code>webster: https://github.com/zhuyingda/webster
-一款可以抓取网页中 AJAX 异步内容的分布式爬虫框架 
+            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
+<pre><code>input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:14px;
+    color: #333;
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:14px;
+    color: #333;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:14px;
+    color: #333;
+}</code></pre>
+        </div>
+    
 
+</div>
+            
+                
+<div class="post">
 
-https://github.com/wearehive/project-guidelines/blob/master/README-zh.md
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f-2/">
+                改变placeholder的字体颜色大小
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
 
-JavaScript 项目规范
+    
+        <div class="content">
+            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
+<pre><code>input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:14px;
+    color: #333;
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:14px;
+    color: #333;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:14px;
+    color: #333;
+}</code></pre>
+        </div>
+    
 
-H5  https://github.com/answershuto/H5
-这是作者的个人项目，功能是可视化编辑、生成手机 H5 页面的单页应用 WebApp。该项目是一个全栈项目，具有前后端完整服务。并且项目结构清晰。后端服务具有控制器，模型，路由，前端服务具有组件，并且使用 Vuex 做状态管理，麻雀虽小五脏俱全
+</div>
+            
+                
+<div class="post">
 
-React 全家桶学习
-React-Cnode
-https://github.com/Juliiii/React-Cnode
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f-1/">
+                改变placeholder的字体颜色大小
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
 
-学习angluar4
-https://github.com/linguowei/micro-note
+    
+        <div class="content">
+            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
+<pre><code>input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:14px;
+    color: #333;
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:14px;
+    color: #333;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:14px;
+    color: #333;
+}</code></pre>
+        </div>
+    
 
-手机数字键盘：
+</div>
+            
+                
+<div class="post">
 
-numeric-keyboard ： https://github.com/viclm/numeric-keyboard
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/">
+                盒子垂直水平居中
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
 
-parrot-mocker-web： https://github.com/chinesedfan/parrot-mocker-web
-小巧的 mock 服务器，配合 Chrome 插件可以轻松地拦截或 mock 页面上的 xhr/jsonp/fetch 请求。不需要侵入页面本身代码，让前端同学在后端接口没有 ready 或者难以模拟数据的时候，继续开心地开发玩耍 
+    
+        <div class="content">
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
 
-小程序营销组件：
-https://github.com/o2team/wxapp-market
-小程序营销组件，使用简单、方式齐全。包含示例代码，玩法多样
-大转盘
-刮刮乐
-老虎机
-水果机
-...
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
 
-xdomain: https://github.com/jpillora/xdomain
-纯js实现的xcross的库
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
 
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
 
-手动实现MVVM ： https://github.com/DMQ/mvvm
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
 
-基于docker控制台的工具：https://github.com/pipiliang/docker-dashboard
-docker-dashboard：
-
-中文网页重设和排版：
-https://typo.sofi.sh/
-
-
-VUE2.0 lol练手项目：https://github.com/arronf2e/Vue2.0LOL
-
-http://js8.in/nodeppt/#50 网页ppt
-
-https://github.com/ksky521/nodeppt</code></pre>
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -842,15 +591,15 @@ https://github.com/ksky521/nodeppt</code></pre>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/">数组对象排序按照JSONarray排序</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-1/">前端算法</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-3/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-2/">数组对象排序按照JSONarray排序</a>
             </li>
             
         </ul>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一个追求极致编码的中青年">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xcondor">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="如何减少网页的内存与CPU占用">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一个追求极致编码的中青年">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Western honeybee">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>如何减少网页的内存与CPU占用 - Western honeybee</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/02/e5-a6-82-e4-bd-95-e5-87-8f-e5-b0-91-e7-bd-91-e9-a1-b5-e7-9a-84-e5-86-85-e5-ad-98-e4-b8-8ecpu-e5-8d-a0-e7-94-a8-2/">
+                如何减少网页的内存与CPU占用
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/迁移/">迁移</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>有的网页看起来并不大但打开会很卡，有的网页虽然很长但使用流畅，占用用户电脑的内存与CPU就影响这些。 浏览器问题，有各自的浏览器处理内存问题会影响到，但几乎没办法控制得了，Windows上的：</p>
+<ul>
+<li>IE系列，刷新回收的量不大，但最小化会释放内存，。</li>
+<li>Firefox2据说也会在最小化回收，可我从没见过最垃圾，用多少是多少，基本不回收。据说prototype的ajax还会引起内存一直增加。</li>
+<li>Opera最好。一直控制得很好。不存在什么问题。。</li>
+</ul>
+<p>Linux的内存分配机制与Win的不一样，有多少用多少，如果浏览器占光时说不定会干掉系统。 页面问题，浏览器渲染页面会消耗内存和CPU，能减少一点就减少点。 结构上</p>
+<ul>
+<li>使用DocType，告诉浏览器你在用什么，html4也有DTD。也许Transitional更适合你</li>
+<li>如果使用的是XHTML并能保持良好结构的话，记得输出相应的MIME跟XML头，可以减少浏览器的代码检查，</li>
+<li>保持结构的完整，不要让浏览器帮你补全代码。</li>
+<li>控制页面的文件大小，可以通过程序把为了看代码比较舒服的缩进去掉。2~3K也是大小。</li>
+<li>iframe会产生新的页面，其实有很多方式可以代替iframe</li>
+<li>引入的JS与CSS可以适当合并，同样背景图片也可以合并，甚至有人连Flash都合并</li>
+<li>给已知宽高的内容图片/Object加上宽度的属性可以减少页面的局部重渲染</li>
+</ul>
+<p>表现上</p>
+<ul>
+<li>质量99跟70的jpg在大多数情况下只有文件有大小不一样。gif的也一样，特别是小图标，256色跟128色的差别是文件大小．</li>
+<li>flash动得太快吃CPU很大，控制每秒的帧数及动画的效果可以减少一些，如果把品质用中低显示会省很多资源，但这样却牺牲了效果。。quality属性 有时选择Autolow 或者Autohigh会更适合，没必要一直low 或者best，</li>
+<li>flash使用矢量图会节省文件大小，但计算复杂的图形跟动画时花的是CPU。复杂的太多滤镜，则会占用大量内存，模糊滤镜有减少些。</li>
+<li>IE的滤镜也是比较占用内存，同时也有兼容性问题。全屏的半透明很吃资源的。</li>
+<li>2*2的图片跟8*8的图片大小差不多，但是平铺背景2*2却占用大很多。</li>
+<li>gif动画同样有帧的概念，别把gif当成flash来玩就行。</li>
+</ul>
+<p>行为上</p>
+<ul>
+<li>别为了使用一个$()引入整个prototype或jQuery，它们有更多的作用。</li>
+<li>AJAX很帅。但是用xml会用上XML解析器，有人推荐用JSON，可是这样要eval数据，其实可以直接import已经是对象的script来用。只是要多传个对象名，或者把对象名写死，或者像flickr那样<code>jsonFlickrApi({&quot;xxx&quot;:&quot;xxx&quot;})</code>，直接当函数用，挖哈哈。</li>
+<li>实现某些效果时能用<code>visibility:hidden</code>解决时就别用<code>display:none</code>来玩。</li>
+<li>在这里强调js变量要注全局跟局部等等的意义并不大，JS复杂的地方也不是一两句能说得清的，关注大家关注月影的正在出版的新书吧。^^</li>
+</ul>
+<p>其实这里有的内容有不少跟<a href="http://www.aoao.org.cn/blog/2007/06/how-to-show-our-pages-quickly/" target="_blank" rel="noopener">如何快速的呈现我们的网页</a>相近，不过那篇是以处理服务端为主，但在很多时候，节省服务端资源消耗的同时也会节省客户端的资源消耗。 再其实，这篇已经蹲在草稿箱里好久了，一直没有时间去整理。现在给的也不是完整的，因为没有完整，慢慢补充吧。</p>
+<ol>
+<li>产生问题：虽然会引起<a href="http://www.aoao.org.cn/blog/2007/01/browser-mode/" title="浏览器的模式问题 Quirks Mode vs Standards Mode" target="_blank" rel="noopener">浏览器的模式问题</a>，但问题是可以解决滴。参考<a href="http://keystonewebsites.com/articles/mime_type.php" target="_blank" rel="noopener">Serving up XHTML with the correct MIME type</a>，派送XML头浏览器不会容错显示，出现错误结构会导致整个页面无法显法。</li>
+<li>Autolow: 优先考虑速度，但是也会尽可能改善外观。 回放开始时，消除锯齿功能处于关闭状态。 如果 Flash Player 检测到处理器可以处理消除锯齿功能，就会打开该功能。 Autohigh:开始时回放速度和外观两者并重，必要时会牺牲外观来保证回放速度。 回放开始时，消除锯齿功能处于打开状态。如果实际帧频降到指定帧频之下，就会关闭消除锯齿功能以提高回放速度。使用此设置可模拟“消除锯齿”命令（“视图”&gt;“预览模式”&gt;“消除锯齿”）。</li>
+<li>模糊滤镜:使用模糊滤镜时，如果用于 blurX 和 blurY 的值是 2 的整数次幂（例如 2、4、8、16 和 32），则可以加快计算速度，并且可以使性能提高 20% 到 30%（flash的帮助是介样说滴）。</li>
+</ol>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/09/02/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-3/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-2/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/记录/转载/">转载</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/tutu/">tutu</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/迁移/">迁移</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/广告/">广告</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

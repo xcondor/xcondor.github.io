@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一个追求极致编码的中青年">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xcondor">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="jQuery源码分析-jQuery中的循环技巧">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一个追求极致编码的中青年">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Western honeybee">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>jQuery源码分析-jQuery中的循环技巧 - Western honeybee</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/02/jquery-e6-ba-90-e7-a0-81-e5-88-86-e6-9e-90-jquery-e4-b8-ad-e7-9a-84-e5-be-aa-e7-8e-af-e6-8a-80-e5-b7-a7-3/">
+                jQuery源码分析-jQuery中的循环技巧
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/转载/">转载</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <pre><code>// 简单的for-in（事件）  
+for ( type in events ) {  
+
+}  
+
+// 缓存length属性，避免每次都去查找length属性，稍微提升遍历速度  
+// 但是如果遍历HTMLCollection时，性能提升非常明显，因为每次访问HTMLCollection的属性，HTMLCollection都会内部匹配一次所有的节点  
+for ( var j = 0, l = handlers.length; j &lt; l; j++ ) {  
+
+}  
+
+// 不比较下标，直接判断元素是否为true（强制类型转换）  
+var elem;  
+for ( var i = 0; elems[i]; i++ ) {  
+    elem = elems[i];  
+    // ...  
+}  
+
+// 遍历动态数组（事件），不能缓存length属性，j++之前先执行j--，保证不会因为数组下标的错误导致某些数组元素遍历不到  
+for ( j = 0; j &lt; eventType.length; j++ ) {  
+eventType.splice( j--, 1 );  
+}  
+for ( var i = 1; i &lt; results.length; i++ ) {  
+    if ( results[i] === results[ i - 1 ] ) {  
+        results.splice( i--, 1 );  
+    }  
+}  
+
+// 迭代过程中尽可能减少遍历次数（事件），如果你能知道从哪里开始遍历的话，这里是pos  
+for ( j = pos || 0; j &lt; eventType.length; j++ ) {  
+
+}  
+
+//倒序遍历（事件），减少了几个字符：循环条件判断，合并i自减和i取值，倒序遍历会有浏览器优化，稍微提升遍历速度  
+for ( var i = this.props.length, prop; i; ) {  
+    prop = this.props[ --i ];  
+    event[ prop ] = originalEvent[ prop ];  
+}  
+
+// 倒序遍历，中规中矩，倒序会有浏览器优化，稍微提升遍历速度  
+for ( j = tbody.length - 1; j &gt;= 0 ; --j ) {  
+    if ( jQuery.nodeName( tbody[ j ], &quot;tbody&quot; ) &amp;&amp; !tbody[ j ].childNodes.length ) {  
+        tbody[ j ].parentNode.removeChild( tbody[ j ] );  
+    }  
+}  
+
+//不判断下标，直接判断元素（选择器）  
+for ( i = 0; checkSet[i] != null; i++ ) {  
+    if ( checkSet[i] &amp;&amp; (checkSet[i] === true || checkSet[i].nodeType === 1 &amp;&amp; Sizzle.contains(context, checkSet[i])) ) {  
+        results.push( set[i] );  
+    }  
+}  
+for ( ; array[i]; i++ ) {  
+    ret.push( array[i] );  
+}  
+
+// 不判断下标，取出元素然后判断元素（选择器）  
+for ( var i = 0; (item = curLoop[i]) != null; i++ ) {  
+
+}  
+
+// 遍历DOM子元素  
+for ( node = parent.firstChild; node; node = node.nextSibling ) {  
+    if ( node.nodeType === 1 ) {  
+        node.nodeIndex = ++count;  
+    }  
+}  
+
+// 动态遍历DOM子元素（DOM遍历），dir参数表示元素的方向属性，如parentNode、nextSibling、previousSibling、lastChild和firstChild  
+for ( ; cur; cur = cur[dir] ) {  
+    if ( cur.nodeType === 1 &amp;&amp; ++num === result ) {  
+        break;  
+    }  
+}  
+
+// while检查下标i  
+var i = promiseMethods.length;  
+while( i-- ) {  
+    obj[ promiseMethods[i] ] = deferred[ promiseMethods[i] ];  
+}  
+
+// while检查元素  
+while( (type = types[ i++ ]) ) {  
+
+}  
+
+// while遍历动态数组（AJAX），总是获取第一个元素，检查是否与特殊值相等，如果相等就从数组头部移除，直到遇到不相等的元素或数组为空  
+while( dataTypes[ 0 ] === &quot;*&quot; ) {  
+    dataTypes.shift();  
+    if ( ct === undefined ) {  
+        ct = s.mimeType || jqXHR.getResponseHeader( &quot;content-type&quot; );  
+    }  
+}  
+
+// while遍历动态数组（异步队列），总是获取第一个元素，直到数组为空，或遇到值为undefined的元素  
+while( callbacks[ 0 ] ) {  
+    callbacks.shift().apply( context, args );  
+}  
+
+// while反复调用RegExp.exec（AJAX），能够否反复调是exec比re.test、String.match更加强大的原因，每次调用都将lastIndex属性设置到紧接着匹配字符串的字符位置  
+while( ( match = rheaders.exec( responseHeadersString ) ) ) {  
+    responseHeaders[ match[1].toLowerCase() ] = match[ 2 ]; // 将响应头以key-value的方式存在responseHeaders中  
+}  </code></pre><p>  <a href="http://转载自：http://nuysoft.iteye.com/blog/1217884" target="_blank" rel="noopener">http://转载自：http://nuysoft.iteye.com/blog/1217884</a></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/09/02/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-3/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-2/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/记录/转载/">转载</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/tutu/">tutu</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/迁移/">迁移</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/广告/">广告</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

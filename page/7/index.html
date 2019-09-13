@@ -47,7 +47,7 @@
     <title>page - Western honeybee</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
 
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -151,13 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-8f-af-e8-83-bd-e7-94-a8-e5-88-b0-e7-9a-84meta-e6-a0-87-e7-ad-be/">
-                可能用到的meta标签
+            <a href="/2018/06/23/nodejs-request-e6-a8-a1-e5-9d-97-3/">
+                nodejs request模块
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-06-23</span>
             
             
             
@@ -170,38 +170,39 @@
 
     
         <div class="content">
-            <pre><code>&lt;!-- 设置缩放 --&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no, minimal-ui&quot; /&gt;
-    &lt;!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7.0版本以后，safari上已看不到效果） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;
-    &lt;!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 --&gt;
-    &lt;meta name=&quot;format-detection&quot;content=&quot;telephone=no, email=no&quot; /&gt;
+            <pre><code>npm install --save request
+get方法：
+var request = require(&apos;request&apos;);
+request(&apos;您的请求url&apos;, function (error, response, body) {
+  if (!error &amp;&amp; response.statusCode == 200) {
+    console.log(body) // 请求成功的处理逻辑
+  }
+});
+post方法：
 
-    其他meta标签
-    &lt;!-- 启用360浏览器的极速模式(webkit) --&gt;
-    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;
-    &lt;!-- 避免IE使用兼容模式 --&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;
-    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;
-    &lt;!-- 微软的老式浏览器 --&gt;
-    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
-    &lt;!-- windows phone 点击无高光 --&gt;
-    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</code></pre>
+var request = require(&apos;request&apos;);
+var url=&quot;请求url&quot;;
+var requestData=&quot;上送的数据&quot;;
+request({
+    url: url,
+    method: &quot;POST&quot;,
+    json: true,
+    headers: {
+        &quot;content-type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(requestData)
+}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+        console.log(body) // 请求成功的处理逻辑
+    }
+}); 
+post form：
+
+request.post({url:&apos;&apos;, form:{key:&apos;value&apos;}}, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+       console.log(body) // 请求成功的处理逻辑  
+    }
+})</code></pre>
         </div>
     
 
@@ -212,13 +213,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-b8-b8-e7-94-a8-e7-9a-84-e5-ad-97-e4-bd-93/">
-                常用的字体
+            <a href="/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba-1/">
+                VUE开发指导提示
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-04-12</span>
             
             
             
@@ -231,22 +232,8 @@
 
     
         <div class="content">
-            <pre><code>@ 宋体      SimSun
-    @ 黑体      SimHei
-    @ 微信雅黑   Microsoft Yahei
-    @ 微软正黑体 Microsoft JhengHei
-    @ 新宋体    NSimSun
-    @ 新细明体  MingLiU
-    @ 细明体    MingLiU
-    @ 标楷体    DFKai-SB
-    @ 仿宋     FangSong
-    @ 楷体     KaiTi
-    @ 仿宋_GB2312  FangSong_GB2312
-    @ 楷体_GB2312  KaiTi_GB2312  
-    @
-    @ 说明：中文字体多数使用宋体、雅黑，英文用Helvetica
+            <p>1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下) 也可以用包管理工具yarn 用法基本一样。速度快。 4. 如果需要起小型服务器 npm install http-server -g 在对应的目录下 http-server -cors （支持跨域参数）就可以启动服务进行静态服务开发 对vue总结： 简单来说vue是把前端资源 （ dom 结构 + js 交互操作、数据请求 + css 样式 ）打成一个包module（js） 相对应的需要一些loader器去解释它，所以在装vue后，使用less、sass、或者各种模板引擎语法，就必须安装相关的loader才能解释。安装方法一样是npm install style-loader 类似的命令 5. vuejs //vuejs.org/zh-cn/ 使用可以直接引入来练习，但是完全vue开发还是要用相关生态 以上几个是基本的平台—包安装—前端资源构建打包工具。 因打包工具种类过多，选择还是最多的webpack 附一些经常用到的官网地址： <a href="http://xcondor.cn/nav.html">http://xcondor.cn/nav.html</a> 首先构建一个项目目录如下: project -src //开发目录 -mock // 模拟数据 <a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> 动态模拟后台数据，使前端模拟真实数据。相关文章推荐： <a href="https://www.cnblogs.com/zhenfei-jiang/p/7235339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhenfei-jiang/p/7235339.html</a> -assets //静态资源 -libs //公共库 -locale //国际化文件夹 -router // 路由 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a> -store //vuex状态机 参阅 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a> -common //公共文件-库 -views –home //首页 –error-page //错误页面 … …按照类目名称、项目结构定义显示层模块 login.vue app.vue // 主模板 <strong>* main.js // 入口文件 所有的依赖使用vue注入公共路由注入公共文件注入都在此文件 *</strong> ——————————————————— package.json 目录建好后利用npm init 创建初始化文件 <strong>* 安装了一些常用依赖的东西，会在这个文件中生成相应安装的版本和组件列表 拿到现成项目启动npm install的时候，就是根据这个配置文件去安装相应的依赖。 ——————————————————— .babelrc // babel解释器 把ES6解析成ES2015或者兼容版本的JAVASCRIPT .editorconfig //IDE设置规范，包括tab缩进字节等 .eslintignore //放弃eslint代码检查校验文件 .gitignore // git 忽略文件 把不需要的文件忽略掉 —————————————————— .jsjint // js语法检测配置 安装它为了检测js语法 前期可忽略 .eslint // 代码检查配置 安装它是为了规范代码风格 前期可忽略 /////////////////////////////////////////////////////////////////// 储备知识顺序 ES6 (JAVASCRIPT新规范、很多浏览器不支持，但是是趋势。不过babel可以将es2015解析，最好是学习) ** VUE *</strong> 必须 WEBPACK <strong>* 所有应用必须 VUEROUTER ** 大型应用必须 VUEX ** 大型应用必须 IVIEW * UI框架 次要 /</strong>备注<strong>/ *</strong> 很重要 ** 一般重要 * 重要 /** 项目参考 **/ <a href="https://github.com/xcondor/vue-admin" target="_blank" rel="noopener">https://github.com/xcondor/vue-admin</a> <a href="https://github.com/xcondor/vue2-elm" target="_blank" rel="noopener">https://github.com/xcondor/vue2-elm</a> 大型应用 <a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a> iview 后台应用 <a href="https://github.com/devjin0617/vue2-admin-lte" target="_blank" rel="noopener">https://github.com/devjin0617/vue2-admin-lte</a> <a href="https://github.com/lanux/Vue-Admin" target="_blank" rel="noopener">https://github.com/lanux/Vue-Admin</a> <a href="https://github.com/lss5270/vue-admin-spa" target="_blank" rel="noopener">https://github.com/lss5270/vue-admin-spa</a> 单页面应用   按照这个思路走，少走很多弯路。</p>
 
-    body { font-family: Microsoft Yahei,SimSun,Helvetica; }</code></pre>
         </div>
     
 
@@ -257,13 +244,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-b8-b8-e7-94-a8-e7-9a-84-e5-ad-97-e4-bd-93-1/">
-                常用的字体
+            <a href="/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba-2/">
+                VUE开发指导提示
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-04-12</span>
             
             
             
@@ -276,22 +263,8 @@
 
     
         <div class="content">
-            <pre><code>@ 宋体      SimSun
-    @ 黑体      SimHei
-    @ 微信雅黑   Microsoft Yahei
-    @ 微软正黑体 Microsoft JhengHei
-    @ 新宋体    NSimSun
-    @ 新细明体  MingLiU
-    @ 细明体    MingLiU
-    @ 标楷体    DFKai-SB
-    @ 仿宋     FangSong
-    @ 楷体     KaiTi
-    @ 仿宋_GB2312  FangSong_GB2312
-    @ 楷体_GB2312  KaiTi_GB2312  
-    @
-    @ 说明：中文字体多数使用宋体、雅黑，英文用Helvetica
+            <p>1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下) 也可以用包管理工具yarn 用法基本一样。速度快。 4. 如果需要起小型服务器 npm install http-server -g 在对应的目录下 http-server -cors （支持跨域参数）就可以启动服务进行静态服务开发 对vue总结： 简单来说vue是把前端资源 （ dom 结构 + js 交互操作、数据请求 + css 样式 ）打成一个包module（js） 相对应的需要一些loader器去解释它，所以在装vue后，使用less、sass、或者各种模板引擎语法，就必须安装相关的loader才能解释。安装方法一样是npm install style-loader 类似的命令 5. vuejs //vuejs.org/zh-cn/ 使用可以直接引入来练习，但是完全vue开发还是要用相关生态 以上几个是基本的平台—包安装—前端资源构建打包工具。 因打包工具种类过多，选择还是最多的webpack 附一些经常用到的官网地址： <a href="http://xcondor.cn/nav.html">http://xcondor.cn/nav.html</a> 首先构建一个项目目录如下: project -src //开发目录 -mock // 模拟数据 <a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> 动态模拟后台数据，使前端模拟真实数据。相关文章推荐： <a href="https://www.cnblogs.com/zhenfei-jiang/p/7235339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhenfei-jiang/p/7235339.html</a> -assets //静态资源 -libs //公共库 -locale //国际化文件夹 -router // 路由 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a> -store //vuex状态机 参阅 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a> -common //公共文件-库 -views –home //首页 –error-page //错误页面 … …按照类目名称、项目结构定义显示层模块 login.vue app.vue // 主模板 <strong>* main.js // 入口文件 所有的依赖使用vue注入公共路由注入公共文件注入都在此文件 *</strong> ——————————————————— package.json 目录建好后利用npm init 创建初始化文件 <strong>* 安装了一些常用依赖的东西，会在这个文件中生成相应安装的版本和组件列表 拿到现成项目启动npm install的时候，就是根据这个配置文件去安装相应的依赖。 ——————————————————— .babelrc // babel解释器 把ES6解析成ES2015或者兼容版本的JAVASCRIPT .editorconfig //IDE设置规范，包括tab缩进字节等 .eslintignore //放弃eslint代码检查校验文件 .gitignore // git 忽略文件 把不需要的文件忽略掉 —————————————————— .jsjint // js语法检测配置 安装它为了检测js语法 前期可忽略 .eslint // 代码检查配置 安装它是为了规范代码风格 前期可忽略 /////////////////////////////////////////////////////////////////// 储备知识顺序 ES6 (JAVASCRIPT新规范、很多浏览器不支持，但是是趋势。不过babel可以将es2015解析，最好是学习) ** VUE *</strong> 必须 WEBPACK <strong>* 所有应用必须 VUEROUTER ** 大型应用必须 VUEX ** 大型应用必须 IVIEW * UI框架 次要 /</strong>备注<strong>/ *</strong> 很重要 ** 一般重要 * 重要 /** 项目参考 **/ <a href="https://github.com/xcondor/vue-admin" target="_blank" rel="noopener">https://github.com/xcondor/vue-admin</a> <a href="https://github.com/xcondor/vue2-elm" target="_blank" rel="noopener">https://github.com/xcondor/vue2-elm</a> 大型应用 <a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a> iview 后台应用 <a href="https://github.com/devjin0617/vue2-admin-lte" target="_blank" rel="noopener">https://github.com/devjin0617/vue2-admin-lte</a> <a href="https://github.com/lanux/Vue-Admin" target="_blank" rel="noopener">https://github.com/lanux/Vue-Admin</a> <a href="https://github.com/lss5270/vue-admin-spa" target="_blank" rel="noopener">https://github.com/lss5270/vue-admin-spa</a> 单页面应用   按照这个思路走，少走很多弯路。</p>
 
-    body { font-family: Microsoft Yahei,SimSun,Helvetica; }</code></pre>
         </div>
     
 
@@ -302,13 +275,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/let-var-const-1/">
-                let var const
+            <a href="/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba/">
+                VUE开发指导提示
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-04-12</span>
             
             
             
@@ -321,22 +294,8 @@
 
     
         <div class="content">
-            <pre><code>let 允许你声明一个作用域被限制在块级中的变量、语句或者表达式
-    let绑定不受变量提升的约束，这意味着let声明不会被提升到当前
-    该变量处于从块开始到初始化处理的“暂存死区”。
+            <p>1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下) 也可以用包管理工具yarn 用法基本一样。速度快。 4. 如果需要起小型服务器 npm install http-server -g 在对应的目录下 http-server -cors （支持跨域参数）就可以启动服务进行静态服务开发 对vue总结： 简单来说vue是把前端资源 （ dom 结构 + js 交互操作、数据请求 + css 样式 ）打成一个包module（js） 相对应的需要一些loader器去解释它，所以在装vue后，使用less、sass、或者各种模板引擎语法，就必须安装相关的loader才能解释。安装方法一样是npm install style-loader 类似的命令 5. vuejs //vuejs.org/zh-cn/ 使用可以直接引入来练习，但是完全vue开发还是要用相关生态 以上几个是基本的平台—包安装—前端资源构建打包工具。 因打包工具种类过多，选择还是最多的webpack 附一些经常用到的官网地址： <a href="http://xcondor.cn/nav.html">http://xcondor.cn/nav.html</a> 首先构建一个项目目录如下: project -src //开发目录 -mock // 模拟数据 <a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> 动态模拟后台数据，使前端模拟真实数据。相关文章推荐： <a href="https://www.cnblogs.com/zhenfei-jiang/p/7235339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhenfei-jiang/p/7235339.html</a> -assets //静态资源 -libs //公共库 -locale //国际化文件夹 -router // 路由 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a> -store //vuex状态机 参阅 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a> -common //公共文件-库 -views –home //首页 –error-page //错误页面 … …按照类目名称、项目结构定义显示层模块 login.vue app.vue // 主模板 <strong>* main.js // 入口文件 所有的依赖使用vue注入公共路由注入公共文件注入都在此文件 *</strong> ——————————————————— package.json 目录建好后利用npm init 创建初始化文件 <strong>* 安装了一些常用依赖的东西，会在这个文件中生成相应安装的版本和组件列表 拿到现成项目启动npm install的时候，就是根据这个配置文件去安装相应的依赖。 ——————————————————— .babelrc // babel解释器 把ES6解析成ES2015或者兼容版本的JAVASCRIPT .editorconfig //IDE设置规范，包括tab缩进字节等 .eslintignore //放弃eslint代码检查校验文件 .gitignore // git 忽略文件 把不需要的文件忽略掉 —————————————————— .jsjint // js语法检测配置 安装它为了检测js语法 前期可忽略 .eslint // 代码检查配置 安装它是为了规范代码风格 前期可忽略 /////////////////////////////////////////////////////////////////// 储备知识顺序 ES6 (JAVASCRIPT新规范、很多浏览器不支持，但是是趋势。不过babel可以将es2015解析，最好是学习) ** VUE *</strong> 必须 WEBPACK <strong>* 所有应用必须 VUEROUTER ** 大型应用必须 VUEX ** 大型应用必须 IVIEW * UI框架 次要 /</strong>备注<strong>/ *</strong> 很重要 ** 一般重要 * 重要 /** 项目参考 **/ <a href="https://github.com/xcondor/vue-admin" target="_blank" rel="noopener">https://github.com/xcondor/vue-admin</a> <a href="https://github.com/xcondor/vue2-elm" target="_blank" rel="noopener">https://github.com/xcondor/vue2-elm</a> 大型应用 <a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a> iview 后台应用 <a href="https://github.com/devjin0617/vue2-admin-lte" target="_blank" rel="noopener">https://github.com/devjin0617/vue2-admin-lte</a> <a href="https://github.com/lanux/Vue-Admin" target="_blank" rel="noopener">https://github.com/lanux/Vue-Admin</a> <a href="https://github.com/lss5270/vue-admin-spa" target="_blank" rel="noopener">https://github.com/lss5270/vue-admin-spa</a> 单页面应用   按照这个思路走，少走很多弯路。</p>
 
-var 声明变量的作用域限制在其声明位置的上下文中，而非声明变量总是全局的
-    由于变量声明（以及其他声明）总是在任意代码执行之前处理的，所以在代码中的任意位置声明变量总是等效于在代码开头声明
-
-const 声明创建一个值的只读引用 (即指针)
-    这里就要介绍下 JS 常用类型 
-    String、Number、Boolean、Array、Object、Null、Undefined
-    其中基本类型 有 Undefined、Null、Boolean、Number、String，保存在栈中；
-    复合类型 有 Array、Object ，保存在堆中；
-
-    基本数据当值发生改变时，那么其对应的指针也将发生改变，故造成 const申明基本数据类型时，
-    再将其值改变时，将会造成报错， 例如 const a = 3 ; a = 5 时 将会报错；
-    但是如果是复合类型时，如果只改变复合类型的其中某个Value项时， 将还是正常使用；</code></pre>
         </div>
     
 
@@ -347,13 +306,13 @@ const 声明创建一个值的只读引用 (即指针)
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/let-var-const/">
-                let var const
+            <a href="/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba-3/">
+                VUE开发指导提示
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-04-12</span>
             
             
             
@@ -366,22 +325,8 @@ const 声明创建一个值的只读引用 (即指针)
 
     
         <div class="content">
-            <pre><code>let 允许你声明一个作用域被限制在块级中的变量、语句或者表达式
-    let绑定不受变量提升的约束，这意味着let声明不会被提升到当前
-    该变量处于从块开始到初始化处理的“暂存死区”。
+            <p>1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下) 也可以用包管理工具yarn 用法基本一样。速度快。 4. 如果需要起小型服务器 npm install http-server -g 在对应的目录下 http-server -cors （支持跨域参数）就可以启动服务进行静态服务开发 对vue总结： 简单来说vue是把前端资源 （ dom 结构 + js 交互操作、数据请求 + css 样式 ）打成一个包module（js） 相对应的需要一些loader器去解释它，所以在装vue后，使用less、sass、或者各种模板引擎语法，就必须安装相关的loader才能解释。安装方法一样是npm install style-loader 类似的命令 5. vuejs //vuejs.org/zh-cn/ 使用可以直接引入来练习，但是完全vue开发还是要用相关生态 以上几个是基本的平台—包安装—前端资源构建打包工具。 因打包工具种类过多，选择还是最多的webpack 附一些经常用到的官网地址： <a href="http://xcondor.cn/nav.html">http://xcondor.cn/nav.html</a> 首先构建一个项目目录如下: project -src //开发目录 -mock // 模拟数据 <a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> 动态模拟后台数据，使前端模拟真实数据。相关文章推荐： <a href="https://www.cnblogs.com/zhenfei-jiang/p/7235339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhenfei-jiang/p/7235339.html</a> -assets //静态资源 -libs //公共库 -locale //国际化文件夹 -router // 路由 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a> -store //vuex状态机 参阅 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a> -common //公共文件-库 -views –home //首页 –error-page //错误页面 … …按照类目名称、项目结构定义显示层模块 login.vue app.vue // 主模板 <strong>* main.js // 入口文件 所有的依赖使用vue注入公共路由注入公共文件注入都在此文件 *</strong> ——————————————————— package.json 目录建好后利用npm init 创建初始化文件 <strong>* 安装了一些常用依赖的东西，会在这个文件中生成相应安装的版本和组件列表 拿到现成项目启动npm install的时候，就是根据这个配置文件去安装相应的依赖。 ——————————————————— .babelrc // babel解释器 把ES6解析成ES2015或者兼容版本的JAVASCRIPT .editorconfig //IDE设置规范，包括tab缩进字节等 .eslintignore //放弃eslint代码检查校验文件 .gitignore // git 忽略文件 把不需要的文件忽略掉 —————————————————— .jsjint // js语法检测配置 安装它为了检测js语法 前期可忽略 .eslint // 代码检查配置 安装它是为了规范代码风格 前期可忽略 /////////////////////////////////////////////////////////////////// 储备知识顺序 ES6 (JAVASCRIPT新规范、很多浏览器不支持，但是是趋势。不过babel可以将es2015解析，最好是学习) ** VUE *</strong> 必须 WEBPACK <strong>* 所有应用必须 VUEROUTER ** 大型应用必须 VUEX ** 大型应用必须 IVIEW * UI框架 次要 /</strong>备注<strong>/ *</strong> 很重要 ** 一般重要 * 重要 /** 项目参考 **/ <a href="https://github.com/xcondor/vue-admin" target="_blank" rel="noopener">https://github.com/xcondor/vue-admin</a> <a href="https://github.com/xcondor/vue2-elm" target="_blank" rel="noopener">https://github.com/xcondor/vue2-elm</a> 大型应用 <a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a> iview 后台应用 <a href="https://github.com/devjin0617/vue2-admin-lte" target="_blank" rel="noopener">https://github.com/devjin0617/vue2-admin-lte</a> <a href="https://github.com/lanux/Vue-Admin" target="_blank" rel="noopener">https://github.com/lanux/Vue-Admin</a> <a href="https://github.com/lss5270/vue-admin-spa" target="_blank" rel="noopener">https://github.com/lss5270/vue-admin-spa</a> 单页面应用   按照这个思路走，少走很多弯路。</p>
 
-var 声明变量的作用域限制在其声明位置的上下文中，而非声明变量总是全局的
-    由于变量声明（以及其他声明）总是在任意代码执行之前处理的，所以在代码中的任意位置声明变量总是等效于在代码开头声明
-
-const 声明创建一个值的只读引用 (即指针)
-    这里就要介绍下 JS 常用类型 
-    String、Number、Boolean、Array、Object、Null、Undefined
-    其中基本类型 有 Undefined、Null、Boolean、Number、String，保存在栈中；
-    复合类型 有 Array、Object ，保存在堆中；
-
-    基本数据当值发生改变时，那么其对应的指针也将发生改变，故造成 const申明基本数据类型时，
-    再将其值改变时，将会造成报错， 例如 const a = 3 ; a = 5 时 将会报错；
-    但是如果是复合类型时，如果只改变复合类型的其中某个Value项时， 将还是正常使用；</code></pre>
         </div>
     
 
@@ -392,18 +337,18 @@ const 声明创建一个值的只读引用 (即指针)
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e4-ba-8b-e4-bb-b6-e7-9a-84-e5-90-84-e4-b8-aa-e9-98-b6-e6-ae-b5-1/">
-                事件的各个阶段
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-2/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -411,14 +356,8 @@ const 声明创建一个值的只读引用 (即指针)
 
     
         <div class="content">
-            <pre><code>1：捕获阶段 ---&gt; 2：目标阶段 ---&gt; 3：冒泡阶段
-document   ---&gt; target目标 ----&gt; document
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-由此，addEventListener的第三个参数设置为true和false的区别已经非常清晰了：
-
-true表示该元素在事件的“捕获阶段”（由外往内传递时）响应事件；
-
-false表示该元素在事件的“冒泡阶段”（由内向外传递时）响应事件。</code></pre>
         </div>
     
 
@@ -429,18 +368,18 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e4-ba-8b-e4-bb-b6-e7-9a-84-e5-90-84-e4-b8-aa-e9-98-b6-e6-ae-b5/">
-                事件的各个阶段
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-3/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -448,14 +387,8 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     
         <div class="content">
-            <pre><code>1：捕获阶段 ---&gt; 2：目标阶段 ---&gt; 3：冒泡阶段
-document   ---&gt; target目标 ----&gt; document
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-由此，addEventListener的第三个参数设置为true和false的区别已经非常清晰了：
-
-true表示该元素在事件的“捕获阶段”（由外往内传递时）响应事件；
-
-false表示该元素在事件的“冒泡阶段”（由内向外传递时）响应事件。</code></pre>
         </div>
     
 
@@ -466,18 +399,18 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-b8-b2-e6-9f-93-e4-bc-98-e5-8c-96-1/">
-                渲染优化
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -485,41 +418,8 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     
         <div class="content">
-            <pre><code>1.禁止使用iframe（阻塞父文档onload事件）；
-        *iframe会阻塞主页面的Onload事件；
-        *搜索引擎的检索程序无法解读这种页面，不利于SEO;
-        *iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-        使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript
-        动态给iframe添加src属性值，这样可以绕开以上两个问题。
-
-    2.禁止使用gif图片实现loading效果（降低CPU消耗，提升渲染性能）；
-    3、使用CSS3代码代替JS动画（尽可能避免重绘重排以及回流）；
-    4、对于一些小图标，可以使用base64位编码，以减少网络请求。但不建议大图使用，比较耗费CPU；
-            小图标优势在于：
-                1.减少HTTP请求；
-                2.避免文件跨域；
-                3.修改及时生效；
-
-    5、页面头部的&lt;style&gt;&lt;/style&gt; 会阻塞页面；（因为 Renderer进程中 JS线程和渲染线程是互斥的）；
-    6、页面头部&lt;script&lt;/script&gt; 会阻塞页面；（因为 Renderer进程中 JS线程和渲染线程是互斥的）；
-    7、页面中空的 href 和 src 会阻塞页面其他资源的加载 (阻塞下载进程)；
-
-    8、网页Gzip，CDN托管，data缓存 ，图片服务器；
-    9、前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
-    10、用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
-    11、当需要设置的样式很多时设置className而不是直接操作style。
-    12、少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
-    13、避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
-    14、图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
-
-    15、 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
-        对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。
-            向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，
-            能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，
-            本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。
-            减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），
-            减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。</code></pre>
         </div>
     
 
@@ -530,18 +430,18 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-b8-b2-e6-9f-93-e4-bc-98-e5-8c-96/">
-                渲染优化
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-1/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -549,41 +449,8 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     
         <div class="content">
-            <pre><code>1.禁止使用iframe（阻塞父文档onload事件）；
-        *iframe会阻塞主页面的Onload事件；
-        *搜索引擎的检索程序无法解读这种页面，不利于SEO;
-        *iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-        使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript
-        动态给iframe添加src属性值，这样可以绕开以上两个问题。
-
-    2.禁止使用gif图片实现loading效果（降低CPU消耗，提升渲染性能）；
-    3、使用CSS3代码代替JS动画（尽可能避免重绘重排以及回流）；
-    4、对于一些小图标，可以使用base64位编码，以减少网络请求。但不建议大图使用，比较耗费CPU；
-            小图标优势在于：
-                1.减少HTTP请求；
-                2.避免文件跨域；
-                3.修改及时生效；
-
-    5、页面头部的&lt;style&gt;&lt;/style&gt; 会阻塞页面；（因为 Renderer进程中 JS线程和渲染线程是互斥的）；
-    6、页面头部&lt;script&lt;/script&gt; 会阻塞页面；（因为 Renderer进程中 JS线程和渲染线程是互斥的）；
-    7、页面中空的 href 和 src 会阻塞页面其他资源的加载 (阻塞下载进程)；
-
-    8、网页Gzip，CDN托管，data缓存 ，图片服务器；
-    9、前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
-    10、用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
-    11、当需要设置的样式很多时设置className而不是直接操作style。
-    12、少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
-    13、避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
-    14、图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
-
-    15、 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
-        对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。
-            向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，
-            能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，
-            本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。
-            减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），
-            减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。</code></pre>
         </div>
     
 
@@ -594,13 +461,13 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e8-b7-a8-e5-9f-9f-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f-1/">
-                跨域的几种方式
+            <a href="/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95/">
+                NPM报错记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-23</span>
             
             
             
@@ -613,46 +480,11 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
 
     
         <div class="content">
-            <p>首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。 那么怎样解决跨域问题的呢？</p>
-<pre><code>1 通过jsonp跨域
-        1.）原生实现：
-         &lt;script&gt;
-            var script = document.createElement(&apos;script&apos;);
-            script.type = &apos;text/javascript&apos;;
+            <p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p>
+<pre><code>原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>
 
-            // 传参并指定回调执行函数为onBack
-            script.src = &apos;http://www.....:8080/login?user=admin&amp;callback=onBack&apos;;
-            document.head.appendChild(script);
-
-            // 回调执行函数
-            function onBack(res) {
-                alert(JSON.stringify(res));
-            }
-         &lt;/script&gt;
-    2、 document.domain + iframe跨域  
-        此方案仅限主域相同，子域不同的跨域应用场景。
-        1.）父窗口：(http://www.domain.com/a.html)
-
-            &lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
-            &lt;script&gt;
-                document.domain = &apos;domain.com&apos;;
-                var user = &apos;admin&apos;;
-            &lt;/script&gt;
-            2.）子窗口：(http://child.domain.com/b.html)
-
-            &lt;script&gt;
-                document.domain = &apos;domain.com&apos;;
-                // 获取父窗口中变量
-                alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
-            &lt;/script&gt;
-
-        弊端：请看下面渲染加载优化
-
-    3、 nginx代理跨域
-    4、 nodejs中间件代理跨域
-    5、 后端在头部信息里面设置安全域名
-
-    更多跨域的具体内容请看  https://segmentfault.com/a/1190000011145364</code></pre>
         </div>
     
 
@@ -704,15 +536,15 @@ false表示该元素在事件的“冒泡阶段”（由内向外传递时）响
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/">数组对象排序按照JSONarray排序</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-1/">前端算法</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-3/">数组对象排序按照JSONarray排序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-2/">数组对象排序按照JSONarray排序</a>
             </li>
             
         </ul>
