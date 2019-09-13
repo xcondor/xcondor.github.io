@@ -151,8 +151,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/android-4-x-bug-2/">
-                android 4.x bug
+            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f/">
+                改变placeholder的字体颜色大小
             </a>
         </h1>
         <div class="post-info">
@@ -170,11 +170,22 @@
 
     
         <div class="content">
-            <pre><code>1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
-   2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
-   3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色
-   4.android无法同时播放多音频audio
-   5.oppo 的border-radius 会失效</code></pre>
+            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
+<pre><code>input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:14px;
+    color: #333;
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:14px;
+    color: #333;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:14px;
+    color: #333;
+}</code></pre>
         </div>
     
 
@@ -185,8 +196,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/android-4-x-bug-1/">
-                android 4.x bug
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-4/">
+                盒子垂直水平居中
             </a>
         </h1>
         <div class="post-info">
@@ -204,11 +215,29 @@
 
     
         <div class="content">
-            <pre><code>1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
-   2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
-   3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色
-   4.android无法同时播放多音频audio
-   5.oppo 的border-radius 会失效</code></pre>
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
+
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
+
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
+
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
+
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -219,8 +248,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/android-4-x-bug-3/">
-                android 4.x bug
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/">
+                盒子垂直水平居中
             </a>
         </h1>
         <div class="post-info">
@@ -238,11 +267,29 @@
 
     
         <div class="content">
-            <pre><code>1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
-   2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
-   3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色
-   4.android无法同时播放多音频audio
-   5.oppo 的border-radius 会失效</code></pre>
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
+
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
+
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
+
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
+
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -253,8 +300,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f-2/">
-                消除transition闪屏
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-3/">
+                盒子垂直水平居中
             </a>
         </h1>
         <div class="post-info">
@@ -272,29 +319,29 @@
 
     
         <div class="content">
-            <pre><code>.css {
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
-    }
-    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
-    启动硬件加速的 另外一种方式： 
-        .css {
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-        }
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
 
-    启动硬件加速
-    最常用的方式：translate3d、translateZ、transform
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
 
-    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
 
-    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
-    其它属性并不会变成复合层），
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
 
-    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
+
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -305,8 +352,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f-1/">
-                消除transition闪屏
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-2/">
+                盒子垂直水平居中
             </a>
         </h1>
         <div class="post-info">
@@ -324,29 +371,29 @@
 
     
         <div class="content">
-            <pre><code>.css {
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
-    }
-    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
-    启动硬件加速的 另外一种方式： 
-        .css {
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-        }
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
 
-    启动硬件加速
-    最常用的方式：translate3d、translateZ、transform
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
 
-    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
 
-    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
-    其它属性并不会变成复合层），
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
 
-    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
+
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -357,8 +404,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f-3/">
-                消除transition闪屏
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-1/">
+                盒子垂直水平居中
             </a>
         </h1>
         <div class="post-info">
@@ -376,29 +423,29 @@
 
     
         <div class="content">
-            <pre><code>.css {
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
-    }
-    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
-    启动硬件加速的 另外一种方式： 
-        .css {
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-        }
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
 
-    启动硬件加速
-    最常用的方式：translate3d、translateZ、transform
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
 
-    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
 
-    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
-    其它属性并不会变成复合层），
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
 
-    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
+
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -409,8 +456,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f/">
-                消除transition闪屏
+            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-1/">
+                让图文不可复制
             </a>
         </h1>
         <div class="post-info">
@@ -428,29 +475,15 @@
 
     
         <div class="content">
-            <pre><code>.css {
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
-    }
-    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
-    启动硬件加速的 另外一种方式： 
-        .css {
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-        }
+            <pre><code>-webkit-user-select: none; 
+-ms-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 
-    启动硬件加速
-    最常用的方式：translate3d、translateZ、transform
 
-    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
-
-    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
-    其它属性并不会变成复合层），
-
-    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
+1、答案区域监听copy事件，并阻止这个事件的默认行为。
+2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
         </div>
     
 
@@ -461,8 +494,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-8f-af-e8-83-bd-e7-94-a8-e5-88-b0-e7-9a-84meta-e6-a0-87-e7-ad-be/">
-                可能用到的meta标签
+            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-2/">
+                让图文不可复制
             </a>
         </h1>
         <div class="post-info">
@@ -480,38 +513,15 @@
 
     
         <div class="content">
-            <pre><code>&lt;!-- 设置缩放 --&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no, minimal-ui&quot; /&gt;
-    &lt;!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7.0版本以后，safari上已看不到效果） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;
-    &lt;!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 --&gt;
-    &lt;meta name=&quot;format-detection&quot;content=&quot;telephone=no, email=no&quot; /&gt;
+            <pre><code>-webkit-user-select: none; 
+-ms-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 
-    其他meta标签
-    &lt;!-- 启用360浏览器的极速模式(webkit) --&gt;
-    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;
-    &lt;!-- 避免IE使用兼容模式 --&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;
-    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;
-    &lt;!-- 微软的老式浏览器 --&gt;
-    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
-    &lt;!-- windows phone 点击无高光 --&gt;
-    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</code></pre>
+
+1、答案区域监听copy事件，并阻止这个事件的默认行为。
+2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
         </div>
     
 
@@ -522,8 +532,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-8f-af-e8-83-bd-e7-94-a8-e5-88-b0-e7-9a-84meta-e6-a0-87-e7-ad-be-2/">
-                可能用到的meta标签
+            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-3/">
+                让图文不可复制
             </a>
         </h1>
         <div class="post-info">
@@ -541,38 +551,15 @@
 
     
         <div class="content">
-            <pre><code>&lt;!-- 设置缩放 --&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no, minimal-ui&quot; /&gt;
-    &lt;!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7.0版本以后，safari上已看不到效果） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;
-    &lt;!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 --&gt;
-    &lt;meta name=&quot;format-detection&quot;content=&quot;telephone=no, email=no&quot; /&gt;
+            <pre><code>-webkit-user-select: none; 
+-ms-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 
-    其他meta标签
-    &lt;!-- 启用360浏览器的极速模式(webkit) --&gt;
-    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;
-    &lt;!-- 避免IE使用兼容模式 --&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;
-    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;
-    &lt;!-- 微软的老式浏览器 --&gt;
-    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
-    &lt;!-- windows phone 点击无高光 --&gt;
-    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</code></pre>
+
+1、答案区域监听copy事件，并阻止这个事件的默认行为。
+2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
         </div>
     
 
@@ -583,8 +570,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-8f-af-e8-83-bd-e7-94-a8-e5-88-b0-e7-9a-84meta-e6-a0-87-e7-ad-be-1/">
-                可能用到的meta标签
+            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-4/">
+                让图文不可复制
             </a>
         </h1>
         <div class="post-info">
@@ -602,38 +589,15 @@
 
     
         <div class="content">
-            <pre><code>&lt;!-- 设置缩放 --&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no, minimal-ui&quot; /&gt;
-    &lt;!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7.0版本以后，safari上已看不到效果） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;
-    &lt;!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 --&gt;
-    &lt;meta name=&quot;format-detection&quot;content=&quot;telephone=no, email=no&quot; /&gt;
+            <pre><code>-webkit-user-select: none; 
+-ms-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 
-    其他meta标签
-    &lt;!-- 启用360浏览器的极速模式(webkit) --&gt;
-    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;
-    &lt;!-- 避免IE使用兼容模式 --&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;
-    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;
-    &lt;!-- 微软的老式浏览器 --&gt;
-    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
-    &lt;!-- windows phone 点击无高光 --&gt;
-    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</code></pre>
+
+1、答案区域监听copy事件，并阻止这个事件的默认行为。
+2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
         </div>
     
 
@@ -685,7 +649,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>

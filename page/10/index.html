@@ -151,13 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-2/">
-                盒子垂直水平居中
+            <a href="/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95-2/">
+                NPM报错记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-23</span>
             
             
             
@@ -170,29 +170,11 @@
 
     
         <div class="content">
-            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+            <p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p>
+<pre><code>原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>
 
-2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
-
-3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
-
-    position: relative / absolute;
-    /*top和left偏移各为50%*/
-       top: 50%;
-       left: 50%;
-    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
-    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
-
-4、flex 布局
-    父级： 
-        /*flex 布局*/
-        display: flex;
-        /*实现垂直居中*/
-        align-items: center;
-        /*实现水平居中*/
-        justify-content: center;
-
-再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -203,13 +185,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-1/">
-                盒子垂直水平居中
+            <a href="/2018/03/21/chrome-e8-b0-83-e8-af-95-e7-8a-b6-e6-80-81-e4-b8-8b-e7-a5-9e-e5-a5-87-e4-bb-a3-e7-a0-81-e6-ae-b5/">
+                Chrome 调试状态下神奇代码段
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-21</span>
             
             
             
@@ -222,29 +204,14 @@
 
     
         <div class="content">
-            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+            <pre><code>[].forEach.call($$(&quot;*&quot;),function(a){
 
-2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
+  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)
 
-3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
-
-    position: relative / absolute;
-    /*top和left偏移各为50%*/
-       top: 50%;
-       left: 50%;
-    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
-    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
-
-4、flex 布局
-    父级： 
-        /*flex 布局*/
-        display: flex;
-        /*实现垂直居中*/
-        align-items: center;
-        /*实现水平居中*/
-        justify-content: center;
-
-再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
+})</code></pre><p>我们首先要做的就是获取页面上的所有元素，在上面的代码中Addy使用了只能在浏览器控制台使用的函数$$。你可以自己试一试，打开你的浏览器控制台并且键入<code>$$(&#39;a&#39;)</code>，之后你就能得到一个当前页面中所有锚元素的列表。</p>
+<p>$$函数是许多现代浏览器的命令行API的一部分，它等价于<code>document.querySelectorAll</code>，你可以使用一个CSS选择器作为这个函数的参数，之后你会获得这个页面中匹配该CSS选择器的元素列表。所以如果你想在浏览器控制台以外的地方使用$$(‘<em>‘)的话，可以用document.querySelectorAll(‘</em>‘)替换它</p>
+<p>当然，除了$$函数之外，我们还可以使用document.all这个更简单的方法，这并不是一个标准的方法，但是几乎可以在所有的浏览器上运行。</p>
+<pre><code>[].forEach.call( $$(&apos;*&apos;), function( element ) { /* And the modification code here */ });</code></pre>
         </div>
     
 
@@ -255,13 +222,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-3/">
-                盒子垂直水平居中
+            <a href="/2018/03/21/chrome-e8-b0-83-e8-af-95-e7-8a-b6-e6-80-81-e4-b8-8b-e7-a5-9e-e5-a5-87-e4-bb-a3-e7-a0-81-e6-ae-b5-4/">
+                Chrome 调试状态下神奇代码段
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-21</span>
             
             
             
@@ -274,29 +241,14 @@
 
     
         <div class="content">
-            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+            <pre><code>[].forEach.call($$(&quot;*&quot;),function(a){
 
-2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
+  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)
 
-3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
-
-    position: relative / absolute;
-    /*top和left偏移各为50%*/
-       top: 50%;
-       left: 50%;
-    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
-    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
-
-4、flex 布局
-    父级： 
-        /*flex 布局*/
-        display: flex;
-        /*实现垂直居中*/
-        align-items: center;
-        /*实现水平居中*/
-        justify-content: center;
-
-再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
+})</code></pre><p>我们首先要做的就是获取页面上的所有元素，在上面的代码中Addy使用了只能在浏览器控制台使用的函数$$。你可以自己试一试，打开你的浏览器控制台并且键入<code>$$(&#39;a&#39;)</code>，之后你就能得到一个当前页面中所有锚元素的列表。</p>
+<p>$$函数是许多现代浏览器的命令行API的一部分，它等价于<code>document.querySelectorAll</code>，你可以使用一个CSS选择器作为这个函数的参数，之后你会获得这个页面中匹配该CSS选择器的元素列表。所以如果你想在浏览器控制台以外的地方使用$$(‘<em>‘)的话，可以用document.querySelectorAll(‘</em>‘)替换它</p>
+<p>当然，除了$$函数之外，我们还可以使用document.all这个更简单的方法，这并不是一个标准的方法，但是几乎可以在所有的浏览器上运行。</p>
+<pre><code>[].forEach.call( $$(&apos;*&apos;), function( element ) { /* And the modification code here */ });</code></pre>
         </div>
     
 
@@ -307,13 +259,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-3/">
-                让图文不可复制
+            <a href="/2018/03/21/chrome-e8-b0-83-e8-af-95-e7-8a-b6-e6-80-81-e4-b8-8b-e7-a5-9e-e5-a5-87-e4-bb-a3-e7-a0-81-e6-ae-b5-3/">
+                Chrome 调试状态下神奇代码段
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-21</span>
             
             
             
@@ -326,15 +278,14 @@
 
     
         <div class="content">
-            <pre><code>-webkit-user-select: none; 
--ms-user-select: none;
--moz-user-select: none;
--khtml-user-select: none;
-user-select: none;
+            <pre><code>[].forEach.call($$(&quot;*&quot;),function(a){
 
+  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)
 
-1、答案区域监听copy事件，并阻止这个事件的默认行为。
-2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
+})</code></pre><p>我们首先要做的就是获取页面上的所有元素，在上面的代码中Addy使用了只能在浏览器控制台使用的函数$$。你可以自己试一试，打开你的浏览器控制台并且键入<code>$$(&#39;a&#39;)</code>，之后你就能得到一个当前页面中所有锚元素的列表。</p>
+<p>$$函数是许多现代浏览器的命令行API的一部分，它等价于<code>document.querySelectorAll</code>，你可以使用一个CSS选择器作为这个函数的参数，之后你会获得这个页面中匹配该CSS选择器的元素列表。所以如果你想在浏览器控制台以外的地方使用$$(‘<em>‘)的话，可以用document.querySelectorAll(‘</em>‘)替换它</p>
+<p>当然，除了$$函数之外，我们还可以使用document.all这个更简单的方法，这并不是一个标准的方法，但是几乎可以在所有的浏览器上运行。</p>
+<pre><code>[].forEach.call( $$(&apos;*&apos;), function( element ) { /* And the modification code here */ });</code></pre>
         </div>
     
 
@@ -345,13 +296,13 @@ user-select: none;
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6/">
-                让图文不可复制
+            <a href="/2018/03/21/chrome-e8-b0-83-e8-af-95-e7-8a-b6-e6-80-81-e4-b8-8b-e7-a5-9e-e5-a5-87-e4-bb-a3-e7-a0-81-e6-ae-b5-2/">
+                Chrome 调试状态下神奇代码段
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-21</span>
             
             
             
@@ -364,15 +315,14 @@ user-select: none;
 
     
         <div class="content">
-            <pre><code>-webkit-user-select: none; 
--ms-user-select: none;
--moz-user-select: none;
--khtml-user-select: none;
-user-select: none;
+            <pre><code>[].forEach.call($$(&quot;*&quot;),function(a){
 
+  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)
 
-1、答案区域监听copy事件，并阻止这个事件的默认行为。
-2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
+})</code></pre><p>我们首先要做的就是获取页面上的所有元素，在上面的代码中Addy使用了只能在浏览器控制台使用的函数$$。你可以自己试一试，打开你的浏览器控制台并且键入<code>$$(&#39;a&#39;)</code>，之后你就能得到一个当前页面中所有锚元素的列表。</p>
+<p>$$函数是许多现代浏览器的命令行API的一部分，它等价于<code>document.querySelectorAll</code>，你可以使用一个CSS选择器作为这个函数的参数，之后你会获得这个页面中匹配该CSS选择器的元素列表。所以如果你想在浏览器控制台以外的地方使用$$(‘<em>‘)的话，可以用document.querySelectorAll(‘</em>‘)替换它</p>
+<p>当然，除了$$函数之外，我们还可以使用document.all这个更简单的方法，这并不是一个标准的方法，但是几乎可以在所有的浏览器上运行。</p>
+<pre><code>[].forEach.call( $$(&apos;*&apos;), function( element ) { /* And the modification code here */ });</code></pre>
         </div>
     
 
@@ -383,13 +333,13 @@ user-select: none;
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-1/">
-                让图文不可复制
+            <a href="/2018/03/21/chrome-e8-b0-83-e8-af-95-e7-8a-b6-e6-80-81-e4-b8-8b-e7-a5-9e-e5-a5-87-e4-bb-a3-e7-a0-81-e6-ae-b5-1/">
+                Chrome 调试状态下神奇代码段
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-21</span>
             
             
             
@@ -402,15 +352,14 @@ user-select: none;
 
     
         <div class="content">
-            <pre><code>-webkit-user-select: none; 
--ms-user-select: none;
--moz-user-select: none;
--khtml-user-select: none;
-user-select: none;
+            <pre><code>[].forEach.call($$(&quot;*&quot;),function(a){
 
+  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)
 
-1、答案区域监听copy事件，并阻止这个事件的默认行为。
-2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
+})</code></pre><p>我们首先要做的就是获取页面上的所有元素，在上面的代码中Addy使用了只能在浏览器控制台使用的函数$$。你可以自己试一试，打开你的浏览器控制台并且键入<code>$$(&#39;a&#39;)</code>，之后你就能得到一个当前页面中所有锚元素的列表。</p>
+<p>$$函数是许多现代浏览器的命令行API的一部分，它等价于<code>document.querySelectorAll</code>，你可以使用一个CSS选择器作为这个函数的参数，之后你会获得这个页面中匹配该CSS选择器的元素列表。所以如果你想在浏览器控制台以外的地方使用$$(‘<em>‘)的话，可以用document.querySelectorAll(‘</em>‘)替换它</p>
+<p>当然，除了$$函数之外，我们还可以使用document.all这个更简单的方法，这并不是一个标准的方法，但是几乎可以在所有的浏览器上运行。</p>
+<pre><code>[].forEach.call( $$(&apos;*&apos;), function( element ) { /* And the modification code here */ });</code></pre>
         </div>
     
 
@@ -421,13 +370,13 @@ user-select: none;
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6-2/">
-                让图文不可复制
+            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84-2/">
+                如何将数组分为多个数组
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-13</span>
             
             
             
@@ -440,71 +389,16 @@ user-select: none;
 
     
         <div class="content">
-            <pre><code>-webkit-user-select: none; 
--ms-user-select: none;
--moz-user-select: none;
--khtml-user-select: none;
-user-select: none;
-
-
-1、答案区域监听copy事件，并阻止这个事件的默认行为。
-2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/01/e5-ae-9e-e7-8e-b0-e5-a4-9a-e8-a1-8c-e6-96-87-e6-9c-ac-e6-ba-a2-e5-87-ba-e6-98-be-e7-a4-ba-2/">
-                实现多行文本溢出显示...
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;</code></pre><p><strong>适用范围：</strong>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
-<p><strong>注：</strong><code>1、-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性： 2、display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。 3、-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</code></p>
-<pre><code>div {
-    position: relative;
-    line-height: 20px;
-    max-height: 40px;
-    overflow: hidden;
+            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
+var result = [];
+for(var i=0,len=data.length;i&lt;len;i+=6){
+   result.push(data.slice(i,i+6));
 }
 
-div:after {
-    content: &quot;...&quot;; position: absolute; bottom: 0; right: 0; padding-left: 40px;
-    background: -webkit-linear-gradient(left, transparent, #fff 55%);
-    background: -o-linear-gradient(right, transparent, #fff 55%);
-    background: -moz-linear-gradient(right, transparent, #fff 55%);
-    background: linear-gradient(to right, transparent, #fff 55%);
-}
+console.log(result[0]);
+console.log(result[1]);
+console.log(result[2]);</code></pre><p>如题</p>
 
-不要只顾着吃，要注意胃口，此方法有个弊端 那就是 【未超出行的情况下也会出现省略号】 ，这样会不会很挫！！！ 没办法，只能结合JS 进行优化该方法了。
-
-
-
-1、将height设置为line-height的整数倍，防止超出的文字露出。
-2、给p::after添加渐变背景可避免文字只显示一半。
-3、由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：&lt;span&gt;…&lt;span/&gt;）；兼容ie8需要将::after替换成:after。</code></pre>
         </div>
     
 
@@ -515,13 +409,13 @@ div:after {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-ae-9e-e7-8e-b0-e5-a4-9a-e8-a1-8c-e6-96-87-e6-9c-ac-e6-ba-a2-e5-87-ba-e6-98-be-e7-a4-ba-3/">
-                实现多行文本溢出显示...
+            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84-1/">
+                如何将数组分为多个数组
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-13</span>
             
             
             
@@ -534,33 +428,16 @@ div:after {
 
     
         <div class="content">
-            <pre><code>display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;</code></pre><p><strong>适用范围：</strong>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
-<p><strong>注：</strong><code>1、-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性： 2、display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。 3、-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</code></p>
-<pre><code>div {
-    position: relative;
-    line-height: 20px;
-    max-height: 40px;
-    overflow: hidden;
+            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
+var result = [];
+for(var i=0,len=data.length;i&lt;len;i+=6){
+   result.push(data.slice(i,i+6));
 }
 
-div:after {
-    content: &quot;...&quot;; position: absolute; bottom: 0; right: 0; padding-left: 40px;
-    background: -webkit-linear-gradient(left, transparent, #fff 55%);
-    background: -o-linear-gradient(right, transparent, #fff 55%);
-    background: -moz-linear-gradient(right, transparent, #fff 55%);
-    background: linear-gradient(to right, transparent, #fff 55%);
-}
+console.log(result[0]);
+console.log(result[1]);
+console.log(result[2]);</code></pre><p>如题</p>
 
-不要只顾着吃，要注意胃口，此方法有个弊端 那就是 【未超出行的情况下也会出现省略号】 ，这样会不会很挫！！！ 没办法，只能结合JS 进行优化该方法了。
-
-
-
-1、将height设置为line-height的整数倍，防止超出的文字露出。
-2、给p::after添加渐变背景可避免文字只显示一半。
-3、由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：&lt;span&gt;…&lt;span/&gt;）；兼容ie8需要将::after替换成:after。</code></pre>
         </div>
     
 
@@ -571,13 +448,13 @@ div:after {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e5-ae-9e-e7-8e-b0-e5-a4-9a-e8-a1-8c-e6-96-87-e6-9c-ac-e6-ba-a2-e5-87-ba-e6-98-be-e7-a4-ba-1/">
-                实现多行文本溢出显示...
+            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84/">
+                如何将数组分为多个数组
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-13</span>
             
             
             
@@ -590,33 +467,55 @@ div:after {
 
     
         <div class="content">
-            <pre><code>display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;</code></pre><p><strong>适用范围：</strong>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
-<p><strong>注：</strong><code>1、-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性： 2、display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。 3、-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</code></p>
-<pre><code>div {
-    position: relative;
-    line-height: 20px;
-    max-height: 40px;
-    overflow: hidden;
+            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
+var result = [];
+for(var i=0,len=data.length;i&lt;len;i+=6){
+   result.push(data.slice(i,i+6));
 }
 
-div:after {
-    content: &quot;...&quot;; position: absolute; bottom: 0; right: 0; padding-left: 40px;
-    background: -webkit-linear-gradient(left, transparent, #fff 55%);
-    background: -o-linear-gradient(right, transparent, #fff 55%);
-    background: -moz-linear-gradient(right, transparent, #fff 55%);
-    background: linear-gradient(to right, transparent, #fff 55%);
+console.log(result[0]);
+console.log(result[1]);
+console.log(result[2]);</code></pre><p>如题</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84-4/">
+                如何将数组分为多个数组
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-13</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
+var result = [];
+for(var i=0,len=data.length;i&lt;len;i+=6){
+   result.push(data.slice(i,i+6));
 }
 
-不要只顾着吃，要注意胃口，此方法有个弊端 那就是 【未超出行的情况下也会出现省略号】 ，这样会不会很挫！！！ 没办法，只能结合JS 进行优化该方法了。
+console.log(result[0]);
+console.log(result[1]);
+console.log(result[2]);</code></pre><p>如题</p>
 
-
-
-1、将height设置为line-height的整数倍，防止超出的文字露出。
-2、给p::after添加渐变背景可避免文字只显示一半。
-3、由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：&lt;span&gt;…&lt;span/&gt;）；兼容ie8需要将::after替换成:after。</code></pre>
         </div>
     
 
@@ -668,7 +567,7 @@ div:after {
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>

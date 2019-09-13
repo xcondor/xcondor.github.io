@@ -151,13 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/object-defineproperty/">
-                Object.defineProperty()
+            <a href="/2018/03/01/e6-b8-b2-e6-9f-93-e4-bc-98-e5-8c-96-4/">
+                渲染优化
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -170,70 +170,41 @@
 
     
         <div class="content">
-            <pre><code>Object.defineProperty(obj, prop, descriptor)</code></pre><p>创建属性：</p>
-<pre><code>var o = {}; // 创建一个新对象
+            <pre><code>1.禁止使用iframe（阻塞父文档onload事件）；
+        *iframe会阻塞主页面的Onload事件；
+        *搜索引擎的检索程序无法解读这种页面，不利于SEO;
+        *iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
 
-// 在对象中添加一个属性与数据描述符的示例
-Object.defineProperty(o, &quot;a&quot;, {
-  value : 37,
-  writable : true,
-  enumerable : true,
-  configurable : true
-});
+        使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript
+        动态给iframe添加src属性值，这样可以绕开以上两个问题。
 
-// 对象o拥有了属性a，值为37
+    2.禁止使用gif图片实现loading效果（降低CPU消耗，提升渲染性能）；
+    3、使用CSS3代码代替JS动画（尽可能避免重绘重排以及回流）；
+    4、对于一些小图标，可以使用base64位编码，以减少网络请求。但不建议大图使用，比较耗费CPU；
+            小图标优势在于：
+                1.减少HTTP请求；
+                2.避免文件跨域；
+                3.修改及时生效；
 
-// 在对象中添加一个属性与存取描述符的示例
-var bValue;
-Object.defineProperty(o, &quot;b&quot;, {
-  get : function(){
-    return bValue;
-  },
-  set : function(newValue){
-    bValue = newValue;
-  },
-  enumerable : true,
-  configurable : true
-});
+    5、页面头部的&lt;style&gt;&lt;/style&gt; 会阻塞页面；（因为 Renderer进程中 JS线程和渲染线程是互斥的）；
+    6、页面头部&lt;script&lt;/script&gt; 会阻塞页面；（因为 Renderer进程中 JS线程和渲染线程是互斥的）；
+    7、页面中空的 href 和 src 会阻塞页面其他资源的加载 (阻塞下载进程)；
 
-o.b = 38;
-// 对象o拥有了属性b，值为38
+    8、网页Gzip，CDN托管，data缓存 ，图片服务器；
+    9、前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+    10、用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
+    11、当需要设置的样式很多时设置className而不是直接操作style。
+    12、少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
+    13、避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
+    14、图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
 
-// o.b的值现在总是与bValue相同，除非重新定义o.b
-
-// 数据描述符和存取描述符不能混合使用
-Object.defineProperty(o, &quot;conflict&quot;, {
-  value: 0x9f91102, 
-  get: function() { 
-    return 0xdeadbeef; 
-  } 
-});
-// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</code></pre><p>修改属性： 当<code>writable</code>属性设置为<code>false</code>时，该属性被称为“不可写”。它不能被重新分配。</p>
-<pre><code>var o = {}; // Creates a new object
-
-Object.defineProperty(o, &apos;a&apos;, {
-  value: 37,
-  writable: false
-});
-
-console.log(o.a); // logs 37
-o.a = 25; // No error thrown
-// (it would throw in strict mode,
-// even if the value had been the same)
-console.log(o.a); // logs 37. The assignment didn&apos;t work.
-
-// strict mode
-(function() {
-  &apos;use strict&apos;;
-  var o = {};
-  Object.defineProperty(o, &apos;b&apos;, {
-    value: 2,
-    writable: false
-  });
-  o.b = 3; // throws TypeError: &quot;b&quot; is read-only
-  return o.b; // returns 2 without the line above
-}());</code></pre><p>如示例所示，试图写入非可写属性不会改变它，也不会引发错误。</p>
-
+    15、 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
+        对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。
+            向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，
+            能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，
+            本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。
+            减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），
+            减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。</code></pre>
         </div>
     
 
@@ -244,13 +215,13 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/object-defineproperty-3/">
-                Object.defineProperty()
+            <a href="/2018/03/01/e8-b7-a8-e5-9f-9f-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f-4/">
+                跨域的几种方式
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -263,70 +234,46 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     
         <div class="content">
-            <pre><code>Object.defineProperty(obj, prop, descriptor)</code></pre><p>创建属性：</p>
-<pre><code>var o = {}; // 创建一个新对象
+            <p>首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。 那么怎样解决跨域问题的呢？</p>
+<pre><code>1 通过jsonp跨域
+        1.）原生实现：
+         &lt;script&gt;
+            var script = document.createElement(&apos;script&apos;);
+            script.type = &apos;text/javascript&apos;;
 
-// 在对象中添加一个属性与数据描述符的示例
-Object.defineProperty(o, &quot;a&quot;, {
-  value : 37,
-  writable : true,
-  enumerable : true,
-  configurable : true
-});
+            // 传参并指定回调执行函数为onBack
+            script.src = &apos;http://www.....:8080/login?user=admin&amp;callback=onBack&apos;;
+            document.head.appendChild(script);
 
-// 对象o拥有了属性a，值为37
+            // 回调执行函数
+            function onBack(res) {
+                alert(JSON.stringify(res));
+            }
+         &lt;/script&gt;
+    2、 document.domain + iframe跨域  
+        此方案仅限主域相同，子域不同的跨域应用场景。
+        1.）父窗口：(http://www.domain.com/a.html)
 
-// 在对象中添加一个属性与存取描述符的示例
-var bValue;
-Object.defineProperty(o, &quot;b&quot;, {
-  get : function(){
-    return bValue;
-  },
-  set : function(newValue){
-    bValue = newValue;
-  },
-  enumerable : true,
-  configurable : true
-});
+            &lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                var user = &apos;admin&apos;;
+            &lt;/script&gt;
+            2.）子窗口：(http://child.domain.com/b.html)
 
-o.b = 38;
-// 对象o拥有了属性b，值为38
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                // 获取父窗口中变量
+                alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
+            &lt;/script&gt;
 
-// o.b的值现在总是与bValue相同，除非重新定义o.b
+        弊端：请看下面渲染加载优化
 
-// 数据描述符和存取描述符不能混合使用
-Object.defineProperty(o, &quot;conflict&quot;, {
-  value: 0x9f91102, 
-  get: function() { 
-    return 0xdeadbeef; 
-  } 
-});
-// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</code></pre><p>修改属性： 当<code>writable</code>属性设置为<code>false</code>时，该属性被称为“不可写”。它不能被重新分配。</p>
-<pre><code>var o = {}; // Creates a new object
+    3、 nginx代理跨域
+    4、 nodejs中间件代理跨域
+    5、 后端在头部信息里面设置安全域名
 
-Object.defineProperty(o, &apos;a&apos;, {
-  value: 37,
-  writable: false
-});
-
-console.log(o.a); // logs 37
-o.a = 25; // No error thrown
-// (it would throw in strict mode,
-// even if the value had been the same)
-console.log(o.a); // logs 37. The assignment didn&apos;t work.
-
-// strict mode
-(function() {
-  &apos;use strict&apos;;
-  var o = {};
-  Object.defineProperty(o, &apos;b&apos;, {
-    value: 2,
-    writable: false
-  });
-  o.b = 3; // throws TypeError: &quot;b&quot; is read-only
-  return o.b; // returns 2 without the line above
-}());</code></pre><p>如示例所示，试图写入非可写属性不会改变它，也不会引发错误。</p>
-
+    更多跨域的具体内容请看  https://segmentfault.com/a/1190000011145364</code></pre>
         </div>
     
 
@@ -337,13 +284,13 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/object-defineproperty-2/">
-                Object.defineProperty()
+            <a href="/2018/03/01/e8-b7-a8-e5-9f-9f-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/">
+                跨域的几种方式
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -356,70 +303,46 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     
         <div class="content">
-            <pre><code>Object.defineProperty(obj, prop, descriptor)</code></pre><p>创建属性：</p>
-<pre><code>var o = {}; // 创建一个新对象
+            <p>首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。 那么怎样解决跨域问题的呢？</p>
+<pre><code>1 通过jsonp跨域
+        1.）原生实现：
+         &lt;script&gt;
+            var script = document.createElement(&apos;script&apos;);
+            script.type = &apos;text/javascript&apos;;
 
-// 在对象中添加一个属性与数据描述符的示例
-Object.defineProperty(o, &quot;a&quot;, {
-  value : 37,
-  writable : true,
-  enumerable : true,
-  configurable : true
-});
+            // 传参并指定回调执行函数为onBack
+            script.src = &apos;http://www.....:8080/login?user=admin&amp;callback=onBack&apos;;
+            document.head.appendChild(script);
 
-// 对象o拥有了属性a，值为37
+            // 回调执行函数
+            function onBack(res) {
+                alert(JSON.stringify(res));
+            }
+         &lt;/script&gt;
+    2、 document.domain + iframe跨域  
+        此方案仅限主域相同，子域不同的跨域应用场景。
+        1.）父窗口：(http://www.domain.com/a.html)
 
-// 在对象中添加一个属性与存取描述符的示例
-var bValue;
-Object.defineProperty(o, &quot;b&quot;, {
-  get : function(){
-    return bValue;
-  },
-  set : function(newValue){
-    bValue = newValue;
-  },
-  enumerable : true,
-  configurable : true
-});
+            &lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                var user = &apos;admin&apos;;
+            &lt;/script&gt;
+            2.）子窗口：(http://child.domain.com/b.html)
 
-o.b = 38;
-// 对象o拥有了属性b，值为38
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                // 获取父窗口中变量
+                alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
+            &lt;/script&gt;
 
-// o.b的值现在总是与bValue相同，除非重新定义o.b
+        弊端：请看下面渲染加载优化
 
-// 数据描述符和存取描述符不能混合使用
-Object.defineProperty(o, &quot;conflict&quot;, {
-  value: 0x9f91102, 
-  get: function() { 
-    return 0xdeadbeef; 
-  } 
-});
-// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</code></pre><p>修改属性： 当<code>writable</code>属性设置为<code>false</code>时，该属性被称为“不可写”。它不能被重新分配。</p>
-<pre><code>var o = {}; // Creates a new object
+    3、 nginx代理跨域
+    4、 nodejs中间件代理跨域
+    5、 后端在头部信息里面设置安全域名
 
-Object.defineProperty(o, &apos;a&apos;, {
-  value: 37,
-  writable: false
-});
-
-console.log(o.a); // logs 37
-o.a = 25; // No error thrown
-// (it would throw in strict mode,
-// even if the value had been the same)
-console.log(o.a); // logs 37. The assignment didn&apos;t work.
-
-// strict mode
-(function() {
-  &apos;use strict&apos;;
-  var o = {};
-  Object.defineProperty(o, &apos;b&apos;, {
-    value: 2,
-    writable: false
-  });
-  o.b = 3; // throws TypeError: &quot;b&quot; is read-only
-  return o.b; // returns 2 without the line above
-}());</code></pre><p>如示例所示，试图写入非可写属性不会改变它，也不会引发错误。</p>
-
+    更多跨域的具体内容请看  https://segmentfault.com/a/1190000011145364</code></pre>
         </div>
     
 
@@ -430,345 +353,13 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/javascript-e8-ae-be-e8-ae-a1-e6-a8-a1-e5-bc-8f-ef-bc-9a-e5-9c-a8-e7-ba-bf-e7-89-88-2/">
-                JAVASCRIPT设计模式：在线版
+            <a href="/2018/03/01/e8-b7-a8-e5-9f-9f-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f-2/">
+                跨域的几种方式
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#introduction" target="_blank" rel="noopener">简介</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#whatisapattern" target="_blank" rel="noopener">什么是设计模式？</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#patternity" target="_blank" rel="noopener">“Pattern”-ity Testing, Proto-Patterns &amp; The Rule Of Three</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternstructure" target="_blank" rel="noopener">设计模式的结构</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#writingdesignpatterns" target="_blank" rel="noopener">编写设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#antipatterns" target="_blank" rel="noopener">反模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#categoriesofdesignpatterns" target="_blank" rel="noopener">设计模式的分类</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#summarytabledesignpatterns" target="_blank" rel="noopener">设计模式分类概览表</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjavascript" target="_blank" rel="noopener">JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#constructorpatternjavascript" target="_blank" rel="noopener">构造器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modulepatternjavascript" target="_blank" rel="noopener">模块化模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#revealingmodulepatternjavascript" target="_blank" rel="noopener">暴露模块模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#singletonpatternjavascript" target="_blank" rel="noopener">单例模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjavascript" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mediatorpatternjavascript" target="_blank" rel="noopener">中介者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#prototypepatternjavascript" target="_blank" rel="noopener">原型模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#commandpatternjavascript" target="_blank" rel="noopener">命令模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjavascript" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#factorypatternjavascript" target="_blank" rel="noopener">工厂模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mixinpatternjavascript" target="_blank" rel="noopener">Mixin 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#decoratorpatternjavascript" target="_blank" rel="noopener">装饰模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailflyweight" target="_blank" rel="noopener">亨元（Flyweight）模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvcmvp" target="_blank" rel="noopener">JavaScript MV* 模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvc" target="_blank" rel="noopener">MVC 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvp" target="_blank" rel="noopener">MVP 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvvm" target="_blank" rel="noopener">MVVM 模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modularjavascript" target="_blank" rel="noopener">最新的模块化 JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailamd" target="_blank" rel="noopener">AMD</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailcommonjs" target="_blank" rel="noopener">CommonJS</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailharmony" target="_blank" rel="noopener">ES Harmony</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjquery" target="_blank" rel="noopener">JQuery 中的设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#compositepatternjquery" target="_blank" rel="noopener">Composite Pattern</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#wrapperpatternjquery" target="_blank" rel="noopener">适配器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjquery" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjquery" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#iteratorpatternjquery" target="_blank" rel="noopener">迭代器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#lazyinitialisationjquery" target="_blank" rel="noopener">惰性初始模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#proxypatternjquery" target="_blank" rel="noopener">代理模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#builderpatternjquery" target="_blank" rel="noopener">建造者模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#jquerypluginpatterns" target="_blank" rel="noopener">jQuery 插件的设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailnamespacing" target="_blank" rel="noopener">JavaScript 命名空间模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#conclusions" target="_blank" rel="noopener">总结</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#references" target="_blank" rel="noopener">参考</a></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/05/javascript-e8-ae-be-e8-ae-a1-e6-a8-a1-e5-bc-8f-ef-bc-9a-e5-9c-a8-e7-ba-bf-e7-89-88-3/">
-                JAVASCRIPT设计模式：在线版
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#introduction" target="_blank" rel="noopener">简介</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#whatisapattern" target="_blank" rel="noopener">什么是设计模式？</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#patternity" target="_blank" rel="noopener">“Pattern”-ity Testing, Proto-Patterns &amp; The Rule Of Three</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternstructure" target="_blank" rel="noopener">设计模式的结构</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#writingdesignpatterns" target="_blank" rel="noopener">编写设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#antipatterns" target="_blank" rel="noopener">反模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#categoriesofdesignpatterns" target="_blank" rel="noopener">设计模式的分类</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#summarytabledesignpatterns" target="_blank" rel="noopener">设计模式分类概览表</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjavascript" target="_blank" rel="noopener">JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#constructorpatternjavascript" target="_blank" rel="noopener">构造器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modulepatternjavascript" target="_blank" rel="noopener">模块化模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#revealingmodulepatternjavascript" target="_blank" rel="noopener">暴露模块模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#singletonpatternjavascript" target="_blank" rel="noopener">单例模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjavascript" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mediatorpatternjavascript" target="_blank" rel="noopener">中介者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#prototypepatternjavascript" target="_blank" rel="noopener">原型模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#commandpatternjavascript" target="_blank" rel="noopener">命令模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjavascript" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#factorypatternjavascript" target="_blank" rel="noopener">工厂模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mixinpatternjavascript" target="_blank" rel="noopener">Mixin 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#decoratorpatternjavascript" target="_blank" rel="noopener">装饰模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailflyweight" target="_blank" rel="noopener">亨元（Flyweight）模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvcmvp" target="_blank" rel="noopener">JavaScript MV* 模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvc" target="_blank" rel="noopener">MVC 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvp" target="_blank" rel="noopener">MVP 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvvm" target="_blank" rel="noopener">MVVM 模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modularjavascript" target="_blank" rel="noopener">最新的模块化 JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailamd" target="_blank" rel="noopener">AMD</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailcommonjs" target="_blank" rel="noopener">CommonJS</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailharmony" target="_blank" rel="noopener">ES Harmony</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjquery" target="_blank" rel="noopener">JQuery 中的设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#compositepatternjquery" target="_blank" rel="noopener">Composite Pattern</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#wrapperpatternjquery" target="_blank" rel="noopener">适配器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjquery" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjquery" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#iteratorpatternjquery" target="_blank" rel="noopener">迭代器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#lazyinitialisationjquery" target="_blank" rel="noopener">惰性初始模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#proxypatternjquery" target="_blank" rel="noopener">代理模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#builderpatternjquery" target="_blank" rel="noopener">建造者模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#jquerypluginpatterns" target="_blank" rel="noopener">jQuery 插件的设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailnamespacing" target="_blank" rel="noopener">JavaScript 命名空间模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#conclusions" target="_blank" rel="noopener">总结</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#references" target="_blank" rel="noopener">参考</a></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/05/javascript-e8-ae-be-e8-ae-a1-e6-a8-a1-e5-bc-8f-ef-bc-9a-e5-9c-a8-e7-ba-bf-e7-89-88-1/">
-                JAVASCRIPT设计模式：在线版
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#introduction" target="_blank" rel="noopener">简介</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#whatisapattern" target="_blank" rel="noopener">什么是设计模式？</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#patternity" target="_blank" rel="noopener">“Pattern”-ity Testing, Proto-Patterns &amp; The Rule Of Three</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternstructure" target="_blank" rel="noopener">设计模式的结构</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#writingdesignpatterns" target="_blank" rel="noopener">编写设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#antipatterns" target="_blank" rel="noopener">反模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#categoriesofdesignpatterns" target="_blank" rel="noopener">设计模式的分类</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#summarytabledesignpatterns" target="_blank" rel="noopener">设计模式分类概览表</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjavascript" target="_blank" rel="noopener">JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#constructorpatternjavascript" target="_blank" rel="noopener">构造器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modulepatternjavascript" target="_blank" rel="noopener">模块化模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#revealingmodulepatternjavascript" target="_blank" rel="noopener">暴露模块模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#singletonpatternjavascript" target="_blank" rel="noopener">单例模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjavascript" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mediatorpatternjavascript" target="_blank" rel="noopener">中介者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#prototypepatternjavascript" target="_blank" rel="noopener">原型模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#commandpatternjavascript" target="_blank" rel="noopener">命令模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjavascript" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#factorypatternjavascript" target="_blank" rel="noopener">工厂模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mixinpatternjavascript" target="_blank" rel="noopener">Mixin 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#decoratorpatternjavascript" target="_blank" rel="noopener">装饰模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailflyweight" target="_blank" rel="noopener">亨元（Flyweight）模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvcmvp" target="_blank" rel="noopener">JavaScript MV* 模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvc" target="_blank" rel="noopener">MVC 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvp" target="_blank" rel="noopener">MVP 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvvm" target="_blank" rel="noopener">MVVM 模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modularjavascript" target="_blank" rel="noopener">最新的模块化 JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailamd" target="_blank" rel="noopener">AMD</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailcommonjs" target="_blank" rel="noopener">CommonJS</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailharmony" target="_blank" rel="noopener">ES Harmony</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjquery" target="_blank" rel="noopener">JQuery 中的设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#compositepatternjquery" target="_blank" rel="noopener">Composite Pattern</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#wrapperpatternjquery" target="_blank" rel="noopener">适配器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjquery" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjquery" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#iteratorpatternjquery" target="_blank" rel="noopener">迭代器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#lazyinitialisationjquery" target="_blank" rel="noopener">惰性初始模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#proxypatternjquery" target="_blank" rel="noopener">代理模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#builderpatternjquery" target="_blank" rel="noopener">建造者模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#jquerypluginpatterns" target="_blank" rel="noopener">jQuery 插件的设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailnamespacing" target="_blank" rel="noopener">JavaScript 命名空间模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#conclusions" target="_blank" rel="noopener">总结</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#references" target="_blank" rel="noopener">参考</a></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/05/javascript-e8-ae-be-e8-ae-a1-e6-a8-a1-e5-bc-8f-ef-bc-9a-e5-9c-a8-e7-ba-bf-e7-89-88/">
-                JAVASCRIPT设计模式：在线版
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#introduction" target="_blank" rel="noopener">简介</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#whatisapattern" target="_blank" rel="noopener">什么是设计模式？</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#patternity" target="_blank" rel="noopener">“Pattern”-ity Testing, Proto-Patterns &amp; The Rule Of Three</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternstructure" target="_blank" rel="noopener">设计模式的结构</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#writingdesignpatterns" target="_blank" rel="noopener">编写设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#antipatterns" target="_blank" rel="noopener">反模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#categoriesofdesignpatterns" target="_blank" rel="noopener">设计模式的分类</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#summarytabledesignpatterns" target="_blank" rel="noopener">设计模式分类概览表</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjavascript" target="_blank" rel="noopener">JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#constructorpatternjavascript" target="_blank" rel="noopener">构造器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modulepatternjavascript" target="_blank" rel="noopener">模块化模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#revealingmodulepatternjavascript" target="_blank" rel="noopener">暴露模块模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#singletonpatternjavascript" target="_blank" rel="noopener">单例模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjavascript" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mediatorpatternjavascript" target="_blank" rel="noopener">中介者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#prototypepatternjavascript" target="_blank" rel="noopener">原型模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#commandpatternjavascript" target="_blank" rel="noopener">命令模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjavascript" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#factorypatternjavascript" target="_blank" rel="noopener">工厂模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#mixinpatternjavascript" target="_blank" rel="noopener">Mixin 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#decoratorpatternjavascript" target="_blank" rel="noopener">装饰模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailflyweight" target="_blank" rel="noopener">亨元（Flyweight）模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvcmvp" target="_blank" rel="noopener">JavaScript MV* 模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvc" target="_blank" rel="noopener">MVC 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvp" target="_blank" rel="noopener">MVP 模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailmvvm" target="_blank" rel="noopener">MVVM 模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#modularjavascript" target="_blank" rel="noopener">最新的模块化 JavaScript 设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailamd" target="_blank" rel="noopener">AMD</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailcommonjs" target="_blank" rel="noopener">CommonJS</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailharmony" target="_blank" rel="noopener">ES Harmony</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#designpatternsjquery" target="_blank" rel="noopener">JQuery 中的设计模式</a><ul>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#compositepatternjquery" target="_blank" rel="noopener">Composite Pattern</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#wrapperpatternjquery" target="_blank" rel="noopener">适配器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#facadepatternjquery" target="_blank" rel="noopener">外观模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#observerpatternjquery" target="_blank" rel="noopener">观察者模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#iteratorpatternjquery" target="_blank" rel="noopener">迭代器模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#lazyinitialisationjquery" target="_blank" rel="noopener">惰性初始模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#proxypatternjquery" target="_blank" rel="noopener">代理模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#builderpatternjquery" target="_blank" rel="noopener">建造者模式</a></li>
-</ul>
-</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#jquerypluginpatterns" target="_blank" rel="noopener">jQuery 插件的设计模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#detailnamespacing" target="_blank" rel="noopener">JavaScript 命名空间模式</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#conclusions" target="_blank" rel="noopener">总结</a></li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns#references" target="_blank" rel="noopener">参考</a></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/05/e7-bb-9f-e8-ae-a1github-e4-b8-8a-e4-b8-80-e4-ba-9b-e7-89-9b-e9-80-bc-e7-9a-84-e5-bc-80-e6-ba-90-e9-a1-b9-e7-9b-ae-3/">
-                统计github上一些牛逼的开源项目
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -781,60 +372,46 @@ console.log(o.a); // logs 37. The assignment didn&apos;t work.
 
     
         <div class="content">
-            <pre><code>anyupload: https://github.com/dianbaer/anyupload
-该项目是一款上传插件，使用方便、简单。支持多文件上传、上传速率动态控制、真实进度监控 kb/s、分块生成 MD5、分块上传、MD5 校验、暂停、取消等功能。</code></pre><p><a href="https://www.threecss.com/AnyUploadClient/" target="_blank" rel="noopener"> 在线体验 </a></p>
-<pre><code>webster: https://github.com/zhuyingda/webster
-一款可以抓取网页中 AJAX 异步内容的分布式爬虫框架 
+            <p>首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。 那么怎样解决跨域问题的呢？</p>
+<pre><code>1 通过jsonp跨域
+        1.）原生实现：
+         &lt;script&gt;
+            var script = document.createElement(&apos;script&apos;);
+            script.type = &apos;text/javascript&apos;;
 
+            // 传参并指定回调执行函数为onBack
+            script.src = &apos;http://www.....:8080/login?user=admin&amp;callback=onBack&apos;;
+            document.head.appendChild(script);
 
-https://github.com/wearehive/project-guidelines/blob/master/README-zh.md
+            // 回调执行函数
+            function onBack(res) {
+                alert(JSON.stringify(res));
+            }
+         &lt;/script&gt;
+    2、 document.domain + iframe跨域  
+        此方案仅限主域相同，子域不同的跨域应用场景。
+        1.）父窗口：(http://www.domain.com/a.html)
 
-JavaScript 项目规范
+            &lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                var user = &apos;admin&apos;;
+            &lt;/script&gt;
+            2.）子窗口：(http://child.domain.com/b.html)
 
-H5  https://github.com/answershuto/H5
-这是作者的个人项目，功能是可视化编辑、生成手机 H5 页面的单页应用 WebApp。该项目是一个全栈项目，具有前后端完整服务。并且项目结构清晰。后端服务具有控制器，模型，路由，前端服务具有组件，并且使用 Vuex 做状态管理，麻雀虽小五脏俱全
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                // 获取父窗口中变量
+                alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
+            &lt;/script&gt;
 
-React 全家桶学习
-React-Cnode
-https://github.com/Juliiii/React-Cnode
+        弊端：请看下面渲染加载优化
 
-学习angluar4
-https://github.com/linguowei/micro-note
+    3、 nginx代理跨域
+    4、 nodejs中间件代理跨域
+    5、 后端在头部信息里面设置安全域名
 
-手机数字键盘：
-
-numeric-keyboard ： https://github.com/viclm/numeric-keyboard
-
-parrot-mocker-web： https://github.com/chinesedfan/parrot-mocker-web
-小巧的 mock 服务器，配合 Chrome 插件可以轻松地拦截或 mock 页面上的 xhr/jsonp/fetch 请求。不需要侵入页面本身代码，让前端同学在后端接口没有 ready 或者难以模拟数据的时候，继续开心地开发玩耍 
-
-小程序营销组件：
-https://github.com/o2team/wxapp-market
-小程序营销组件，使用简单、方式齐全。包含示例代码，玩法多样
-大转盘
-刮刮乐
-老虎机
-水果机
-...
-
-xdomain: https://github.com/jpillora/xdomain
-纯js实现的xcross的库
-
-
-手动实现MVVM ： https://github.com/DMQ/mvvm
-
-基于docker控制台的工具：https://github.com/pipiliang/docker-dashboard
-docker-dashboard：
-
-中文网页重设和排版：
-https://typo.sofi.sh/
-
-
-VUE2.0 lol练手项目：https://github.com/arronf2e/Vue2.0LOL
-
-http://js8.in/nodeppt/#50 网页ppt
-
-https://github.com/ksky521/nodeppt</code></pre>
+    更多跨域的具体内容请看  https://segmentfault.com/a/1190000011145364</code></pre>
         </div>
     
 
@@ -845,13 +422,13 @@ https://github.com/ksky521/nodeppt</code></pre>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/e7-bb-9f-e8-ae-a1github-e4-b8-8a-e4-b8-80-e4-ba-9b-e7-89-9b-e9-80-bc-e7-9a-84-e5-bc-80-e6-ba-90-e9-a1-b9-e7-9b-ae-2/">
-                统计github上一些牛逼的开源项目
+            <a href="/2018/03/01/e8-b7-a8-e5-9f-9f-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f-3/">
+                跨域的几种方式
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -864,60 +441,46 @@ https://github.com/ksky521/nodeppt</code></pre>
 
     
         <div class="content">
-            <pre><code>anyupload: https://github.com/dianbaer/anyupload
-该项目是一款上传插件，使用方便、简单。支持多文件上传、上传速率动态控制、真实进度监控 kb/s、分块生成 MD5、分块上传、MD5 校验、暂停、取消等功能。</code></pre><p><a href="https://www.threecss.com/AnyUploadClient/" target="_blank" rel="noopener"> 在线体验 </a></p>
-<pre><code>webster: https://github.com/zhuyingda/webster
-一款可以抓取网页中 AJAX 异步内容的分布式爬虫框架 
+            <p>首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。 那么怎样解决跨域问题的呢？</p>
+<pre><code>1 通过jsonp跨域
+        1.）原生实现：
+         &lt;script&gt;
+            var script = document.createElement(&apos;script&apos;);
+            script.type = &apos;text/javascript&apos;;
 
+            // 传参并指定回调执行函数为onBack
+            script.src = &apos;http://www.....:8080/login?user=admin&amp;callback=onBack&apos;;
+            document.head.appendChild(script);
 
-https://github.com/wearehive/project-guidelines/blob/master/README-zh.md
+            // 回调执行函数
+            function onBack(res) {
+                alert(JSON.stringify(res));
+            }
+         &lt;/script&gt;
+    2、 document.domain + iframe跨域  
+        此方案仅限主域相同，子域不同的跨域应用场景。
+        1.）父窗口：(http://www.domain.com/a.html)
 
-JavaScript 项目规范
+            &lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                var user = &apos;admin&apos;;
+            &lt;/script&gt;
+            2.）子窗口：(http://child.domain.com/b.html)
 
-H5  https://github.com/answershuto/H5
-这是作者的个人项目，功能是可视化编辑、生成手机 H5 页面的单页应用 WebApp。该项目是一个全栈项目，具有前后端完整服务。并且项目结构清晰。后端服务具有控制器，模型，路由，前端服务具有组件，并且使用 Vuex 做状态管理，麻雀虽小五脏俱全
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                // 获取父窗口中变量
+                alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
+            &lt;/script&gt;
 
-React 全家桶学习
-React-Cnode
-https://github.com/Juliiii/React-Cnode
+        弊端：请看下面渲染加载优化
 
-学习angluar4
-https://github.com/linguowei/micro-note
+    3、 nginx代理跨域
+    4、 nodejs中间件代理跨域
+    5、 后端在头部信息里面设置安全域名
 
-手机数字键盘：
-
-numeric-keyboard ： https://github.com/viclm/numeric-keyboard
-
-parrot-mocker-web： https://github.com/chinesedfan/parrot-mocker-web
-小巧的 mock 服务器，配合 Chrome 插件可以轻松地拦截或 mock 页面上的 xhr/jsonp/fetch 请求。不需要侵入页面本身代码，让前端同学在后端接口没有 ready 或者难以模拟数据的时候，继续开心地开发玩耍 
-
-小程序营销组件：
-https://github.com/o2team/wxapp-market
-小程序营销组件，使用简单、方式齐全。包含示例代码，玩法多样
-大转盘
-刮刮乐
-老虎机
-水果机
-...
-
-xdomain: https://github.com/jpillora/xdomain
-纯js实现的xcross的库
-
-
-手动实现MVVM ： https://github.com/DMQ/mvvm
-
-基于docker控制台的工具：https://github.com/pipiliang/docker-dashboard
-docker-dashboard：
-
-中文网页重设和排版：
-https://typo.sofi.sh/
-
-
-VUE2.0 lol练手项目：https://github.com/arronf2e/Vue2.0LOL
-
-http://js8.in/nodeppt/#50 网页ppt
-
-https://github.com/ksky521/nodeppt</code></pre>
+    更多跨域的具体内容请看  https://segmentfault.com/a/1190000011145364</code></pre>
         </div>
     
 
@@ -928,13 +491,13 @@ https://github.com/ksky521/nodeppt</code></pre>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/01/05/e7-bb-9f-e8-ae-a1github-e4-b8-8a-e4-b8-80-e4-ba-9b-e7-89-9b-e9-80-bc-e7-9a-84-e5-bc-80-e6-ba-90-e9-a1-b9-e7-9b-ae/">
-                统计github上一些牛逼的开源项目
+            <a href="/2018/03/01/e8-b7-a8-e5-9f-9f-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f-1/">
+                跨域的几种方式
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-01-05</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -947,60 +510,342 @@ https://github.com/ksky521/nodeppt</code></pre>
 
     
         <div class="content">
-            <pre><code>anyupload: https://github.com/dianbaer/anyupload
-该项目是一款上传插件，使用方便、简单。支持多文件上传、上传速率动态控制、真实进度监控 kb/s、分块生成 MD5、分块上传、MD5 校验、暂停、取消等功能。</code></pre><p><a href="https://www.threecss.com/AnyUploadClient/" target="_blank" rel="noopener"> 在线体验 </a></p>
-<pre><code>webster: https://github.com/zhuyingda/webster
-一款可以抓取网页中 AJAX 异步内容的分布式爬虫框架 
+            <p>首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。 那么怎样解决跨域问题的呢？</p>
+<pre><code>1 通过jsonp跨域
+        1.）原生实现：
+         &lt;script&gt;
+            var script = document.createElement(&apos;script&apos;);
+            script.type = &apos;text/javascript&apos;;
 
+            // 传参并指定回调执行函数为onBack
+            script.src = &apos;http://www.....:8080/login?user=admin&amp;callback=onBack&apos;;
+            document.head.appendChild(script);
 
-https://github.com/wearehive/project-guidelines/blob/master/README-zh.md
+            // 回调执行函数
+            function onBack(res) {
+                alert(JSON.stringify(res));
+            }
+         &lt;/script&gt;
+    2、 document.domain + iframe跨域  
+        此方案仅限主域相同，子域不同的跨域应用场景。
+        1.）父窗口：(http://www.domain.com/a.html)
 
-JavaScript 项目规范
+            &lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                var user = &apos;admin&apos;;
+            &lt;/script&gt;
+            2.）子窗口：(http://child.domain.com/b.html)
 
-H5  https://github.com/answershuto/H5
-这是作者的个人项目，功能是可视化编辑、生成手机 H5 页面的单页应用 WebApp。该项目是一个全栈项目，具有前后端完整服务。并且项目结构清晰。后端服务具有控制器，模型，路由，前端服务具有组件，并且使用 Vuex 做状态管理，麻雀虽小五脏俱全
+            &lt;script&gt;
+                document.domain = &apos;domain.com&apos;;
+                // 获取父窗口中变量
+                alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
+            &lt;/script&gt;
 
-React 全家桶学习
-React-Cnode
-https://github.com/Juliiii/React-Cnode
+        弊端：请看下面渲染加载优化
 
-学习angluar4
-https://github.com/linguowei/micro-note
+    3、 nginx代理跨域
+    4、 nodejs中间件代理跨域
+    5、 后端在头部信息里面设置安全域名
 
-手机数字键盘：
+    更多跨域的具体内容请看  https://segmentfault.com/a/1190000011145364</code></pre>
+        </div>
+    
 
-numeric-keyboard ： https://github.com/viclm/numeric-keyboard
+</div>
+            
+                
+<div class="post">
 
-parrot-mocker-web： https://github.com/chinesedfan/parrot-mocker-web
-小巧的 mock 服务器，配合 Chrome 插件可以轻松地拦截或 mock 页面上的 xhr/jsonp/fetch 请求。不需要侵入页面本身代码，让前端同学在后端接口没有 ready 或者难以模拟数据的时候，继续开心地开发玩耍 
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e8-87-aa-e5-ae-9a-e4-b9-89-e6-bb-9a-e5-8a-a8-e6-9d-a1-e6-a0-b7-e5-bc-8f-4/">
+                自定义滚动条样式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
 
-小程序营销组件：
-https://github.com/o2team/wxapp-market
-小程序营销组件，使用简单、方式齐全。包含示例代码，玩法多样
-大转盘
-刮刮乐
-老虎机
-水果机
-...
+    
+        <div class="content">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+    .box{width:300px;height:300px;overflow-y:auto;background:gray;color:#fff;padding:10px;}
+    /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+    ::-webkit-scrollbar{
+        width: 12px;
+        height: 20px;
+        background:rgba(150,150,150,0.2)
+    }
+    /*定义滚动条的轨道，内阴影及圆角*/
+    ::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background-color: #f5f5f5;
+    }
+    /*定义滑块，内阴影及圆角*/
+    ::-webkit-scrollbar-thumb{
+        /*width: 10px;*/
+        height: 12px;
+        border-radius: 50px;
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background:rgba(10,10,10,.2)
+    }
 
-xdomain: https://github.com/jpillora/xdomain
-纯js实现的xcross的库
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div class=&quot;box&quot;&gt;
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    
 
+</div>
+            
+                
+<div class="post">
 
-手动实现MVVM ： https://github.com/DMQ/mvvm
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e8-87-aa-e5-ae-9a-e4-b9-89-e6-bb-9a-e5-8a-a8-e6-9d-a1-e6-a0-b7-e5-bc-8f/">
+                自定义滚动条样式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
 
-基于docker控制台的工具：https://github.com/pipiliang/docker-dashboard
-docker-dashboard：
+    
+        <div class="content">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+    .box{width:300px;height:300px;overflow-y:auto;background:gray;color:#fff;padding:10px;}
+    /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+    ::-webkit-scrollbar{
+        width: 12px;
+        height: 20px;
+        background:rgba(150,150,150,0.2)
+    }
+    /*定义滚动条的轨道，内阴影及圆角*/
+    ::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background-color: #f5f5f5;
+    }
+    /*定义滑块，内阴影及圆角*/
+    ::-webkit-scrollbar-thumb{
+        /*width: 10px;*/
+        height: 12px;
+        border-radius: 50px;
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background:rgba(10,10,10,.2)
+    }
 
-中文网页重设和排版：
-https://typo.sofi.sh/
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div class=&quot;box&quot;&gt;
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    
 
+</div>
+            
+                
+<div class="post">
 
-VUE2.0 lol练手项目：https://github.com/arronf2e/Vue2.0LOL
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e8-87-aa-e5-ae-9a-e4-b9-89-e6-bb-9a-e5-8a-a8-e6-9d-a1-e6-a0-b7-e5-bc-8f-2/">
+                自定义滚动条样式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
 
-http://js8.in/nodeppt/#50 网页ppt
+    
+        <div class="content">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+    .box{width:300px;height:300px;overflow-y:auto;background:gray;color:#fff;padding:10px;}
+    /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+    ::-webkit-scrollbar{
+        width: 12px;
+        height: 20px;
+        background:rgba(150,150,150,0.2)
+    }
+    /*定义滚动条的轨道，内阴影及圆角*/
+    ::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background-color: #f5f5f5;
+    }
+    /*定义滑块，内阴影及圆角*/
+    ::-webkit-scrollbar-thumb{
+        /*width: 10px;*/
+        height: 12px;
+        border-radius: 50px;
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background:rgba(10,10,10,.2)
+    }
 
-https://github.com/ksky521/nodeppt</code></pre>
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div class=&quot;box&quot;&gt;
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e8-87-aa-e5-ae-9a-e4-b9-89-e6-bb-9a-e5-8a-a8-e6-9d-a1-e6-a0-b7-e5-bc-8f-1/">
+                自定义滚动条样式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+    .box{width:300px;height:300px;overflow-y:auto;background:gray;color:#fff;padding:10px;}
+    /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+    ::-webkit-scrollbar{
+        width: 12px;
+        height: 20px;
+        background:rgba(150,150,150,0.2)
+    }
+    /*定义滚动条的轨道，内阴影及圆角*/
+    ::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background-color: #f5f5f5;
+    }
+    /*定义滑块，内阴影及圆角*/
+    ::-webkit-scrollbar-thumb{
+        /*width: 10px;*/
+        height: 12px;
+        border-radius: 50px;
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+        background:rgba(10,10,10,.2)
+    }
+
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div class=&quot;box&quot;&gt;
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+    定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         </div>
     
 
@@ -1052,7 +897,7 @@ https://github.com/ksky521/nodeppt</code></pre>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>

@@ -151,13 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84-2/">
-                如何将数组分为多个数组
+            <a href="/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba-1/">
+                VUE开发指导提示
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-13</span>
+                <span class="date">2018-04-12</span>
             
             
             
@@ -170,15 +170,7 @@
 
     
         <div class="content">
-            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
-var result = [];
-for(var i=0,len=data.length;i&lt;len;i+=6){
-   result.push(data.slice(i,i+6));
-}
-
-console.log(result[0]);
-console.log(result[1]);
-console.log(result[2]);</code></pre><p>如题</p>
+            <p>1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下) 也可以用包管理工具yarn 用法基本一样。速度快。 4. 如果需要起小型服务器 npm install http-server -g 在对应的目录下 http-server -cors （支持跨域参数）就可以启动服务进行静态服务开发 对vue总结： 简单来说vue是把前端资源 （ dom 结构 + js 交互操作、数据请求 + css 样式 ）打成一个包module（js） 相对应的需要一些loader器去解释它，所以在装vue后，使用less、sass、或者各种模板引擎语法，就必须安装相关的loader才能解释。安装方法一样是npm install style-loader 类似的命令 5. vuejs //vuejs.org/zh-cn/ 使用可以直接引入来练习，但是完全vue开发还是要用相关生态 以上几个是基本的平台—包安装—前端资源构建打包工具。 因打包工具种类过多，选择还是最多的webpack 附一些经常用到的官网地址： <a href="http://xcondor.cn/nav.html">http://xcondor.cn/nav.html</a> 首先构建一个项目目录如下: project -src //开发目录 -mock // 模拟数据 <a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> 动态模拟后台数据，使前端模拟真实数据。相关文章推荐： <a href="https://www.cnblogs.com/zhenfei-jiang/p/7235339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhenfei-jiang/p/7235339.html</a> -assets //静态资源 -libs //公共库 -locale //国际化文件夹 -router // 路由 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a> -store //vuex状态机 参阅 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a> -common //公共文件-库 -views –home //首页 –error-page //错误页面 … …按照类目名称、项目结构定义显示层模块 login.vue app.vue // 主模板 <strong>* main.js // 入口文件 所有的依赖使用vue注入公共路由注入公共文件注入都在此文件 *</strong> ——————————————————— package.json 目录建好后利用npm init 创建初始化文件 <strong>* 安装了一些常用依赖的东西，会在这个文件中生成相应安装的版本和组件列表 拿到现成项目启动npm install的时候，就是根据这个配置文件去安装相应的依赖。 ——————————————————— .babelrc // babel解释器 把ES6解析成ES2015或者兼容版本的JAVASCRIPT .editorconfig //IDE设置规范，包括tab缩进字节等 .eslintignore //放弃eslint代码检查校验文件 .gitignore // git 忽略文件 把不需要的文件忽略掉 —————————————————— .jsjint // js语法检测配置 安装它为了检测js语法 前期可忽略 .eslint // 代码检查配置 安装它是为了规范代码风格 前期可忽略 /////////////////////////////////////////////////////////////////// 储备知识顺序 ES6 (JAVASCRIPT新规范、很多浏览器不支持，但是是趋势。不过babel可以将es2015解析，最好是学习) ** VUE *</strong> 必须 WEBPACK <strong>* 所有应用必须 VUEROUTER ** 大型应用必须 VUEX ** 大型应用必须 IVIEW * UI框架 次要 /</strong>备注<strong>/ *</strong> 很重要 ** 一般重要 * 重要 /** 项目参考 **/ <a href="https://github.com/xcondor/vue-admin" target="_blank" rel="noopener">https://github.com/xcondor/vue-admin</a> <a href="https://github.com/xcondor/vue2-elm" target="_blank" rel="noopener">https://github.com/xcondor/vue2-elm</a> 大型应用 <a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a> iview 后台应用 <a href="https://github.com/devjin0617/vue2-admin-lte" target="_blank" rel="noopener">https://github.com/devjin0617/vue2-admin-lte</a> <a href="https://github.com/lanux/Vue-Admin" target="_blank" rel="noopener">https://github.com/lanux/Vue-Admin</a> <a href="https://github.com/lss5270/vue-admin-spa" target="_blank" rel="noopener">https://github.com/lss5270/vue-admin-spa</a> 单页面应用   按照这个思路走，少走很多弯路。</p>
 
         </div>
     
@@ -190,18 +182,18 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95/">
-                更短的数组去重写法
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -209,9 +201,8 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     
         <div class="content">
-            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -222,18 +213,18 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95-3/">
-                更短的数组去重写法
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-4/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -241,9 +232,8 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     
         <div class="content">
-            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -254,18 +244,18 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95-1/">
-                更短的数组去重写法
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-3/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -273,9 +263,8 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     
         <div class="content">
-            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -286,18 +275,18 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95-2/">
-                更短的数组去重写法
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-2/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -305,9 +294,8 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     
         <div class="content">
-            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
 
-   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
         </div>
     
 
@@ -318,18 +306,18 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f/">
-                改变placeholder的字体颜色大小
+            <a href="/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3-1/">
+                Charles 在线破解
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-27</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/记录/">记录</a>
+                    <a href="/categories/转载/">转载</a>
                 </span>
             
         </div>
@@ -337,22 +325,8 @@ console.log(result[2]);</code></pre><p>如题</p>
 
     
         <div class="content">
-            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
-<pre><code>input::-webkit-input-placeholder { 
-    /* WebKit browsers */ 
-    font-size:14px;
-    color: #333;
-} 
-input::-moz-placeholder { 
-    /* Mozilla Firefox 19+ */ 
-    font-size:14px;
-    color: #333;
-} 
-input:-ms-input-placeholder { 
-    /* Internet Explorer 10+ */ 
-    font-size:14px;
-    color: #333;
-}</code></pre>
+            <p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>
+
         </div>
     
 
@@ -363,13 +337,13 @@ input:-ms-input-placeholder {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f-3/">
-                改变placeholder的字体颜色大小
+            <a href="/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95-4/">
+                NPM报错记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-23</span>
             
             
             
@@ -382,22 +356,11 @@ input:-ms-input-placeholder {
 
     
         <div class="content">
-            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
-<pre><code>input::-webkit-input-placeholder { 
-    /* WebKit browsers */ 
-    font-size:14px;
-    color: #333;
-} 
-input::-moz-placeholder { 
-    /* Mozilla Firefox 19+ */ 
-    font-size:14px;
-    color: #333;
-} 
-input:-ms-input-placeholder { 
-    /* Internet Explorer 10+ */ 
-    font-size:14px;
-    color: #333;
-}</code></pre>
+            <p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p>
+<pre><code>原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>
+
         </div>
     
 
@@ -408,13 +371,13 @@ input:-ms-input-placeholder {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f-2/">
-                改变placeholder的字体颜色大小
+            <a href="/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95-1/">
+                NPM报错记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-23</span>
             
             
             
@@ -427,22 +390,11 @@ input:-ms-input-placeholder {
 
     
         <div class="content">
-            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
-<pre><code>input::-webkit-input-placeholder { 
-    /* WebKit browsers */ 
-    font-size:14px;
-    color: #333;
-} 
-input::-moz-placeholder { 
-    /* Mozilla Firefox 19+ */ 
-    font-size:14px;
-    color: #333;
-} 
-input:-ms-input-placeholder { 
-    /* Internet Explorer 10+ */ 
-    font-size:14px;
-    color: #333;
-}</code></pre>
+            <p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p>
+<pre><code>原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>
+
         </div>
     
 
@@ -453,13 +405,13 @@ input:-ms-input-placeholder {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f-1/">
-                改变placeholder的字体颜色大小
+            <a href="/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95/">
+                NPM报错记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-23</span>
             
             
             
@@ -472,22 +424,11 @@ input:-ms-input-placeholder {
 
     
         <div class="content">
-            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
-<pre><code>input::-webkit-input-placeholder { 
-    /* WebKit browsers */ 
-    font-size:14px;
-    color: #333;
-} 
-input::-moz-placeholder { 
-    /* Mozilla Firefox 19+ */ 
-    font-size:14px;
-    color: #333;
-} 
-input:-ms-input-placeholder { 
-    /* Internet Explorer 10+ */ 
-    font-size:14px;
-    color: #333;
-}</code></pre>
+            <p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p>
+<pre><code>原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>
+
         </div>
     
 
@@ -498,13 +439,13 @@ input:-ms-input-placeholder {
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/">
-                盒子垂直水平居中
+            <a href="/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95-3/">
+                NPM报错记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-01</span>
+                <span class="date">2018-03-23</span>
             
             
             
@@ -517,29 +458,11 @@ input:-ms-input-placeholder {
 
     
         <div class="content">
-            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+            <p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p>
+<pre><code>原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>
 
-2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
-
-3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
-
-    position: relative / absolute;
-    /*top和left偏移各为50%*/
-       top: 50%;
-       left: 50%;
-    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
-    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
-
-4、flex 布局
-    父级： 
-        /*flex 布局*/
-        display: flex;
-        /*实现垂直居中*/
-        align-items: center;
-        /*实现水平居中*/
-        justify-content: center;
-
-再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
         </div>
     
 
@@ -591,7 +514,7 @@ input:-ms-input-placeholder {
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>

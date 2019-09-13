@@ -190,7 +190,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">
+            <a href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">
                 数组对象排序按照JSONarray排序
             </a>
         </h1>
@@ -325,6 +325,51 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">
+                数组对象排序按照JSONarray排序
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-26</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>&lt;script&gt;
+        var arr = [{id:1,username:&apos;a1&apos;},{id:2,username:&apos;a2&apos;},{id:3,username:&apos;a3&apos;},{id:4,username:&apos;a4&apos;},{id:5,username:&apos;a5&apos;}];
+        var newArr = [3,1,2,5,4];
+        let curArr = [];
+        for(let i = 0;i&lt;arr.length;i++){
+            for(let j = 0;j&lt;newArr.length;j++){
+                if(arr[i].id === newArr[j]){
+                    curArr.unshift(newArr[j])
+                    console.log(&apos;s&apos;+curArr)
+                }
+            }
+        }
+
+        console.log(curArr);
+
+    &lt;/script&gt;</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/">
                 数组对象排序按照JSONarray排序
             </a>
@@ -360,6 +405,198 @@
         console.log(curArr);
 
     &lt;/script&gt;</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-2/">
+                前端算法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/广告/">广告</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>/*冒泡排序*/
+function bubbleSort(arr){
+     for(var i=1;i&lt;arr.length;i++){
+         for(var j=0;j&lt;arr.length-i;j++){
+             var temp;
+             if(arr[j]&gt;arr[j+1]){
+                 temp=arr[j];
+                 arr[j]=arr[j+1];
+                 arr[j+1]=temp;
+             }
+         }
+     }
+     return arr;
+}
+
+
+/*快速排序*/
+var quickSort = function(arr) { 
+　　if (arr.length &lt;= 1) { return arr; } 
+　　var pivotIndex = Math.floor(arr.length / 2); 
+　　var pivot = arr.splice(pivotIndex, 1)[0]; 
+　　var left = []; 
+　　var right = []; 
+　　for (var i = 0; i &lt; arr.length; i++){ 
+　　　　if (arr[i] &lt; pivot) { 
+　　　　　　left.push(arr[i]); 
+　　　　} else { 
+　　　　　　right.push(arr[i]); 
+　　　　} 
+　　} 
+　　return quickSort(left).concat([pivot], quickSort(right)); 
+}; 
+
+
+/*插入排序*/
+function insertSort(arr){  
+    for(var i=1;i&lt;arr.length;i++){  
+        var j=i;  
+        while(j&gt;0&amp;&amp;arr[j]&lt;arr[j-1]){  
+            var t=arr[j];  
+            arr[j]=arr[j-1];  
+           arr[j-1]=t;  
+           j--;  
+        }  
+    }  
+    return arr;  
+}  
+
+
+/*二分法排序*/
+function binarySearch(data, dest, start, end){  
+    var end = end || data.length - 1,  
+        start = start || 0,  
+        m = Math.floor((start + end) / 2);  
+    if(data[m] == dest){  
+        return m;  
+    }  
+    if(dest &lt; data[m]){  
+        return binarySearch(data, dest, 0, m-1);  
+     }else{  
+            return binarySearch(data, dest, m+1, end);  
+        }  
+
+        return false;  
+    }  
+var arr = [-34, 1, 3, 4, 5, 8, 34, 45, 65, 87];  
+binarySearch(arr,4);</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-1/">
+                前端算法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/广告/">广告</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>/*冒泡排序*/
+function bubbleSort(arr){
+     for(var i=1;i&lt;arr.length;i++){
+         for(var j=0;j&lt;arr.length-i;j++){
+             var temp;
+             if(arr[j]&gt;arr[j+1]){
+                 temp=arr[j];
+                 arr[j]=arr[j+1];
+                 arr[j+1]=temp;
+             }
+         }
+     }
+     return arr;
+}
+
+
+/*快速排序*/
+var quickSort = function(arr) { 
+　　if (arr.length &lt;= 1) { return arr; } 
+　　var pivotIndex = Math.floor(arr.length / 2); 
+　　var pivot = arr.splice(pivotIndex, 1)[0]; 
+　　var left = []; 
+　　var right = []; 
+　　for (var i = 0; i &lt; arr.length; i++){ 
+　　　　if (arr[i] &lt; pivot) { 
+　　　　　　left.push(arr[i]); 
+　　　　} else { 
+　　　　　　right.push(arr[i]); 
+　　　　} 
+　　} 
+　　return quickSort(left).concat([pivot], quickSort(right)); 
+}; 
+
+
+/*插入排序*/
+function insertSort(arr){  
+    for(var i=1;i&lt;arr.length;i++){  
+        var j=i;  
+        while(j&gt;0&amp;&amp;arr[j]&lt;arr[j-1]){  
+            var t=arr[j];  
+            arr[j]=arr[j-1];  
+           arr[j-1]=t;  
+           j--;  
+        }  
+    }  
+    return arr;  
+}  
+
+
+/*二分法排序*/
+function binarySearch(data, dest, start, end){  
+    var end = end || data.length - 1,  
+        start = start || 0,  
+        m = Math.floor((start + end) / 2);  
+    if(data[m] == dest){  
+        return m;  
+    }  
+    if(dest &lt; data[m]){  
+        return binarySearch(data, dest, 0, m-1);  
+     }else{  
+            return binarySearch(data, dest, m+1, end);  
+        }  
+
+        return false;  
+    }  
+var arr = [-34, 1, 3, 4, 5, 8, 34, 45, 65, 87];  
+binarySearch(arr,4);</code></pre>
         </div>
     
 
@@ -557,272 +794,6 @@ binarySearch(arr,4);</code></pre>
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-1/">
-                前端算法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-04-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/广告/">广告</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>/*冒泡排序*/
-function bubbleSort(arr){
-     for(var i=1;i&lt;arr.length;i++){
-         for(var j=0;j&lt;arr.length-i;j++){
-             var temp;
-             if(arr[j]&gt;arr[j+1]){
-                 temp=arr[j];
-                 arr[j]=arr[j+1];
-                 arr[j+1]=temp;
-             }
-         }
-     }
-     return arr;
-}
-
-
-/*快速排序*/
-var quickSort = function(arr) { 
-　　if (arr.length &lt;= 1) { return arr; } 
-　　var pivotIndex = Math.floor(arr.length / 2); 
-　　var pivot = arr.splice(pivotIndex, 1)[0]; 
-　　var left = []; 
-　　var right = []; 
-　　for (var i = 0; i &lt; arr.length; i++){ 
-　　　　if (arr[i] &lt; pivot) { 
-　　　　　　left.push(arr[i]); 
-　　　　} else { 
-　　　　　　right.push(arr[i]); 
-　　　　} 
-　　} 
-　　return quickSort(left).concat([pivot], quickSort(right)); 
-}; 
-
-
-/*插入排序*/
-function insertSort(arr){  
-    for(var i=1;i&lt;arr.length;i++){  
-        var j=i;  
-        while(j&gt;0&amp;&amp;arr[j]&lt;arr[j-1]){  
-            var t=arr[j];  
-            arr[j]=arr[j-1];  
-           arr[j-1]=t;  
-           j--;  
-        }  
-    }  
-    return arr;  
-}  
-
-
-/*二分法排序*/
-function binarySearch(data, dest, start, end){  
-    var end = end || data.length - 1,  
-        start = start || 0,  
-        m = Math.floor((start + end) / 2);  
-    if(data[m] == dest){  
-        return m;  
-    }  
-    if(dest &lt; data[m]){  
-        return binarySearch(data, dest, 0, m-1);  
-     }else{  
-            return binarySearch(data, dest, m+1, end);  
-        }  
-
-        return false;  
-    }  
-var arr = [-34, 1, 3, 4, 5, 8, 34, 45, 65, 87];  
-binarySearch(arr,4);</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95-2/">
-                前端算法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-04-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/广告/">广告</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>/*冒泡排序*/
-function bubbleSort(arr){
-     for(var i=1;i&lt;arr.length;i++){
-         for(var j=0;j&lt;arr.length-i;j++){
-             var temp;
-             if(arr[j]&gt;arr[j+1]){
-                 temp=arr[j];
-                 arr[j]=arr[j+1];
-                 arr[j+1]=temp;
-             }
-         }
-     }
-     return arr;
-}
-
-
-/*快速排序*/
-var quickSort = function(arr) { 
-　　if (arr.length &lt;= 1) { return arr; } 
-　　var pivotIndex = Math.floor(arr.length / 2); 
-　　var pivot = arr.splice(pivotIndex, 1)[0]; 
-　　var left = []; 
-　　var right = []; 
-　　for (var i = 0; i &lt; arr.length; i++){ 
-　　　　if (arr[i] &lt; pivot) { 
-　　　　　　left.push(arr[i]); 
-　　　　} else { 
-　　　　　　right.push(arr[i]); 
-　　　　} 
-　　} 
-　　return quickSort(left).concat([pivot], quickSort(right)); 
-}; 
-
-
-/*插入排序*/
-function insertSort(arr){  
-    for(var i=1;i&lt;arr.length;i++){  
-        var j=i;  
-        while(j&gt;0&amp;&amp;arr[j]&lt;arr[j-1]){  
-            var t=arr[j];  
-            arr[j]=arr[j-1];  
-           arr[j-1]=t;  
-           j--;  
-        }  
-    }  
-    return arr;  
-}  
-
-
-/*二分法排序*/
-function binarySearch(data, dest, start, end){  
-    var end = end || data.length - 1,  
-        start = start || 0,  
-        m = Math.floor((start + end) / 2);  
-    if(data[m] == dest){  
-        return m;  
-    }  
-    if(dest &lt; data[m]){  
-        return binarySearch(data, dest, 0, m-1);  
-     }else{  
-            return binarySearch(data, dest, m+1, end);  
-        }  
-
-        return false;  
-    }  
-var arr = [-34, 1, 3, 4, 5, 8, 34, 45, 65, 87];  
-binarySearch(arr,4);</code></pre>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/04/09/react-div-e5-a4-9a-e9-80-89/">
-                react div 多选
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-04-09</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/转载/">转载</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <pre><code>export default class SelectDiv extends Component {
-  state = {
-    selects: [],
-    renList: [{ name: &apos;n1&apos; }, { name: &apos;n2&apos; }, { name: &apos;n3&apos; }],
-  }
-  handleCheck = ({ name }) =&gt; {
-    this.setState(({ selects }) =&gt; ({
-      selects: selects.includes(name)
-        ? selects.filter(item =&gt; item !== name)
-        : [...selects, name],
-    }))
-  }
-  selectAll = () =&gt; {
-    this.setState(({ renList }) =&gt; ({
-      selects: renList.map(item =&gt; item.name),
-    }))
-  }
-  cancelSelectAll = () =&gt; {
-    this.setState(() =&gt; ({
-      selects: [],
-    }))
-  }
-  render() {
-    const { selects: selects, renList } = this.state
-    return (
-      &lt;div&gt;
-        &lt;button onClick={this.selectAll}&gt;选中全部&lt;/button&gt;
-        &lt;button onClick={this.cancelSelectAll}&gt;取消全部&lt;/button&gt;
-        {renList.map(subItem =&gt; (
-          &lt;div&gt;
-            &lt;div
-              key={subItem.name}
-              className={`${css.sunKind} ${
-                selects.includes(subItem.name) ? css.active : &apos;&apos;
-              }`}
-              onClick={() =&gt; this.handleCheck(subItem)}
-            &gt;
-              {subItem.name}
-            &lt;/div&gt;
-          &lt;/div&gt;
-        ))}
-      &lt;/div&gt;
-    )
-  }
-}</code></pre>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -869,7 +840,7 @@ binarySearch(arr,4);</code></pre>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-1/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>
