@@ -151,13 +151,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/04/e5-88-b0-e5-ba-95-e4-bd-95-e6-97-b6-e4-bd-bf-e7-94-a8purecomponent-e6-89-8d-e5-90-88-e9-80-82/">
-                到底何时使用PureComponent 才合适
+            <a href="/2018/03/13/e5-a6-82-e4-bd-95-e5-b0-86-e6-95-b0-e7-bb-84-e5-88-86-e4-b8-ba-e5-a4-9a-e4-b8-aa-e6-95-b0-e7-bb-84/">
+                如何将数组分为多个数组
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-04-04</span>
+                <span class="date">2018-03-13</span>
             
             
             
@@ -170,79 +170,347 @@
 
     
         <div class="content">
-            <p>首先，废话不多说，搜了一堆资料总结下：</p>
-<ol>
-<li>组件中的state或者props发生变化才会渲染render</li>
-<li>PureComponent 是React官方对其进行了<code>shallowEqual（**浅比较**）</code>，也就是如果state或者props是Array或者Object的引用发生改变，就会重新渲染。否则，不会重新render。<code>shallowEqual</code>从字面意思讲是”浅比较”，那么什么事浅比较呢？ 就是比较一个旧的<code>props</code>和新<code>props</code>的或者旧的<code>state</code>和新的<code>state</code>的长度是否一致，key是是否相同，以及它们对应的引用是否发生改变。仅仅做了一层的比较。所以这才叫做浅比较。</li>
-</ol>
-<p>栗子： parent组件</p>
-<pre><code>import React from &apos;react&apos;
-
-import List from &apos;./child&apos;
-class Parent extends React.PureComponent{
-    state = {
-        array:[1,2,3]
-    }
-    click(){
-        const {array} = this.state;
-        array.push(4);
-        this.setState({array:array})
-    }
-    render(){
-        const {array} = this.state;
-        return (
-            &lt;div&gt;
-                &lt;List list={array} /&gt;
-                &lt;button onClick={this.click.bind(this)}&gt;测试&lt;/button&gt;
-            &lt;/div&gt;
-        )
-    }
+            <pre><code>var data = [&apos;法国&apos;,&apos;澳大利亚&apos;,&apos;智利&apos;,&apos;新西兰&apos;,&apos;西班牙&apos;,&apos;加拿大&apos;,&apos;阿根廷&apos;,&apos;美国&apos;,&apos;0&apos;,&apos;国产&apos;,&apos;波多黎各&apos;,&apos;英国&apos;,&apos;比利时&apos;,&apos;德国&apos;,&apos;意大利&apos;,&apos;意大利&apos;,];
+var result = [];
+for(var i=0,len=data.length;i&lt;len;i+=6){
+   result.push(data.slice(i,i+6));
 }
 
-export default Parent;</code></pre><p>List子组件</p>
-<pre><code>import React from &apos;react&apos;
+console.log(result[0]);
+console.log(result[1]);
+console.log(result[2]);</code></pre><p>如题</p>
 
-class List extends React.PureComponent{
-    render(){
-        const {list} = this.props;
-        return (
-            &lt;ul&gt;
-                {
-                    list.map((item,idx)=&gt;{
-                        return (
-                            &lt;li key={idx}&gt;
-                                {item}
-                            &lt;/li&gt;
-                        )
-                    })
-                }
-            &lt;/ul&gt;
-        )
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e6-9b-b4-e7-9f-ad-e7-9a-84-e6-95-b0-e7-bb-84-e5-8e-bb-e9-87-8d-e5-86-99-e6-b3-95/">
+                更短的数组去重写法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>[...new Set([2,&quot;12&quot;,2,12,1,2,1,6,12,13,6])]
+
+   // [2, &quot;12&quot;, 12, 1, 6, 13]</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e6-94-b9-e5-8f-98placeholder-e7-9a-84-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2-e5-a4-a7-e5-b0-8f/">
+                改变placeholder的字体颜色大小
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>其实这个方法也就在PC端可以，真机上屁用都没有，当时我就哭了。 但 还是贴出来吧</p>
+<pre><code>input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:14px;
+    color: #333;
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:14px;
+    color: #333;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:14px;
+    color: #333;
+}</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e7-9b-92-e5-ad-90-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/">
+                盒子垂直水平居中
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>1、定位 盒子宽高已知， position: absolute; left: 50%; top: 50%; margin-left:-自身一半宽度; margin-top: -自身一半高度;
+
+2、table-cell布局 父级 display: table-cell; vertical-align: middle;  子级 margin: 0 auto;
+
+3、定位 + transform ; 适用于 子盒子 宽高不定时； （这里是本人常用方法）
+
+    position: relative / absolute;
+    /*top和left偏移各为50%*/
+       top: 50%;
+       left: 50%;
+    /*translate(-50%,-50%) 偏移自身的宽和高的-50%*/
+    transform: translate(-50%, -50%); 注意这里启动了3D硬件加速哦 会增加耗电量的 （至于何是3D加速 请看浏览器进程与线程篇）
+
+4、flex 布局
+    父级： 
+        /*flex 布局*/
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        /*实现水平居中*/
+        justify-content: center;
+
+再加一种水平方向上居中 ：margin-left : 50% ; transform: translateX(-50%);</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e8-ae-a9-e5-9b-be-e6-96-87-e4-b8-8d-e5-8f-af-e5-a4-8d-e5-88-b6/">
+                让图文不可复制
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>-webkit-user-select: none; 
+-ms-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+
+
+1、答案区域监听copy事件，并阻止这个事件的默认行为。
+2、获取选中的内容（window.getSelection()）加上版权信息，然后设置到剪切板（clipboarddata.setData()）。</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/e5-ae-9e-e7-8e-b0-e5-a4-9a-e8-a1-8c-e6-96-87-e6-9c-ac-e6-ba-a2-e5-87-ba-e6-98-be-e7-a4-ba/">
+                实现多行文本溢出显示...
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;</code></pre><p><strong>适用范围：</strong>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
+<p><strong>注：</strong><code>1、-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性： 2、display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。 3、-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</code></p>
+<pre><code>div {
+    position: relative;
+    line-height: 20px;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+div:after {
+    content: &quot;...&quot;; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+    background: -webkit-linear-gradient(left, transparent, #fff 55%);
+    background: -o-linear-gradient(right, transparent, #fff 55%);
+    background: -moz-linear-gradient(right, transparent, #fff 55%);
+    background: linear-gradient(to right, transparent, #fff 55%);
+}
+
+不要只顾着吃，要注意胃口，此方法有个弊端 那就是 【未超出行的情况下也会出现省略号】 ，这样会不会很挫！！！ 没办法，只能结合JS 进行优化该方法了。
+
+
+
+1、将height设置为line-height的整数倍，防止超出的文字露出。
+2、给p::after添加渐变背景可避免文字只显示一半。
+3、由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：&lt;span&gt;…&lt;span/&gt;）；兼容ie8需要将::after替换成:after。</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/audio-e5-85-83-e7-b4-a0-e5-92-8cvideo-e5-85-83-e7-b4-a0-e5-9c-a8ios-e5-92-8candriod-e4-b8-ad-e6-97-a0-e6-b3-95-e8-87-aa-e5-8a-a8-e6-92-ad-e6-94-be-1/">
+                audio元素和video元素在ios和andriod中无法自动播放
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>原因： 因为各大浏览器都为了节省流量，做出了优化，在用户没有行为动作时（交互）不予许自动播放；
+
+/音频，写法一
+&lt;audio src=&quot;music/bg.mp3&quot; autoplay loop controls&gt;你的浏览器还不支持哦&lt;/audio&gt;
+
+//音频，写法二
+&lt;audio controls=&quot;controls&quot;&gt; 
+    &lt;source src=&quot;music/bg.ogg&quot; type=&quot;audio/ogg&quot;&gt;&lt;/source&gt;
+    &lt;source src=&quot;music/bg.mp3&quot; type=&quot;audio/mpeg&quot;&gt;&lt;/source&gt;
+    优先播放音乐bg.ogg，不支持在播放bg.mp3
+&lt;/audio&gt;
+
+//JS绑定自动播放（操作window时，播放音乐）
+$(window).one(&apos;touchstart&apos;, function(){
+    music.play();
+})
+
+//微信下兼容处理
+document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () {
+    music.play();
+}, false);
+
+//小结
+//1.audio元素的autoplay属性在IOS及Android上无法使用，在PC端正常；
+//2.audio元素没有设置controls时，在IOS及Android会占据空间大小，而在PC端Chrome是不会占据任何空间；
+//3.注意不要遗漏微信的兼容处理需要引用微信JS；</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/js-e5-88-a4-e6-96-ad-e8-ae-be-e5-a4-87-e6-9d-a5-e6-ba-90/">
+                JS 判断设备来源
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/记录/">记录</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <pre><code>function deviceType(){
+        var ua = navigator.userAgent;
+        var agent = [&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];    
+        for(var i=0; i&lt;len,len = agent.length; i++){
+            if(ua.indexOf(agent[i])&gt;0){         
+                break;
+            }
+        }
     }
-}
-export default List;</code></pre><p>主组件</p>
-<pre><code>import React, { Component } from &apos;react&apos;;
-import logo from &apos;./logo.svg&apos;;
-import &apos;./App.css&apos;;
-import Parent from &apos;./components/parent&apos;
-class App extends Component {
-  render() {
-    return (
-      &lt;div className=&quot;App&quot;&gt;
-        &lt;header className=&quot;App-header&quot;&gt;
-          &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
-          &lt;Parent/&gt;
-        &lt;/header&gt;
-      &lt;/div&gt;
-    );
-  }
-}
+    deviceType();
+    window.addEventListener(&apos;resize&apos;, function(){
+        deviceType();
+    })
 
-export default App;</code></pre><p><strong>总结</strong></p>
-<p>从上面我们发现<code>PureComponent</code>并不是不发生重新渲染，而是在满足不了的条件下才会去帮我们重新渲染。 所以<code>PureComponent</code>真正起到优化的地方是在纯组件上，也就是仅仅用来展示的组件。这样会避免展示的组件不必要的多次重复渲染。在一些复杂组件上用了也没有什么关系，只是在浅比较这一层就过不了，但是一定要记得props和state不可以是同一个引用。</p>
-<p>暂时总结这么多，如果发现更容易理解的方式，我再来追加。</p>
-<p>总之一点、先使用在纯组件上，后面深刻理解后再逐步优化。</p>
 
+    微信的 有些不太一样
+    function isWeixin(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)==&apos;micromessenger&apos;){
+            return true;
+        }else{
+            return false;
+        }
+    }</code></pre>
         </div>
     
 
@@ -253,13 +521,13 @@ export default App;</code></pre><p><strong>总结</strong></p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88-4/">
-                vue-cli3 一直运行 /sockjs-node/info?t= 解决方案
+            <a href="/2018/03/01/android-4-x-bug/">
+                android 4.x bug
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-02-27</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -272,14 +540,11 @@ export default App;</code></pre><p><strong>总结</strong></p>
 
     
         <div class="content">
-            <p>首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 <em>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-node）</a> 客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-client）</a></em> <em>如果你的项目没有用到 sockjs，vuecli3 运行 npm run serve 之后 network 里面一直调研一个接口：<a href="http://localhost:8080/sockjs-node/info?t=1462183700002" target="_blank" rel="noopener">http://localhost:8080/sockjs-node/info?t=1462183700002</a></em> <em>作为一个有节操的程序猿，实在不能忍受，特意自己研究了下源码，从根源上关闭这个调用</em> _1. 找到/node_modules/sockjs-client/dist/sockjs.js _ _2.找到代码的 1605行  _</p>
-<pre><code>try {
-  //  self.xhr.send(payload); 把这里注掉
-  } catch (e) {
-    self.emit(&apos;finish&apos;, 0, &apos;&apos;);
-    self._cleanup(false);
-  }</code></pre><p>OK!</p>
-
+            <pre><code>1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
+   2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
+   3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色
+   4.android无法同时播放多音频audio
+   5.oppo 的border-radius 会失效</code></pre>
         </div>
     
 
@@ -290,13 +555,13 @@ export default App;</code></pre><p><strong>总结</strong></p>
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88-3/">
-                vue-cli3 一直运行 /sockjs-node/info?t= 解决方案
+            <a href="/2018/03/01/e6-b6-88-e9-99-a4transition-e9-97-aa-e5-b1-8f/">
+                消除transition闪屏
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-02-27</span>
+                <span class="date">2018-03-01</span>
             
             
             
@@ -309,285 +574,29 @@ export default App;</code></pre><p><strong>总结</strong></p>
 
     
         <div class="content">
-            <p>首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 <em>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-node）</a> 客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-client）</a></em> <em>如果你的项目没有用到 sockjs，vuecli3 运行 npm run serve 之后 network 里面一直调研一个接口：<a href="http://localhost:8080/sockjs-node/info?t=1462183700002" target="_blank" rel="noopener">http://localhost:8080/sockjs-node/info?t=1462183700002</a></em> <em>作为一个有节操的程序猿，实在不能忍受，特意自己研究了下源码，从根源上关闭这个调用</em> _1. 找到/node_modules/sockjs-client/dist/sockjs.js _ _2.找到代码的 1605行  _</p>
-<pre><code>try {
-  //  self.xhr.send(payload); 把这里注掉
-  } catch (e) {
-    self.emit(&apos;finish&apos;, 0, &apos;&apos;);
-    self._cleanup(false);
-  }</code></pre><p>OK!</p>
+            <pre><code>.css {
+        -webkit-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+    }
+    过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的 解决方案只是改变 视角 来启动硬件加速的一种方式；
+    启动硬件加速的 另外一种方式： 
+        .css {
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
 
-        </div>
-    
+    启动硬件加速
+    最常用的方式：translate3d、translateZ、transform
 
-</div>
-            
-                
-<div class="post">
+    opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88/">
-                vue-cli3 一直运行 /sockjs-node/info?t= 解决方案
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-27</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
+    will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，
+    其它属性并不会变成复合层），
 
-    
-        <div class="content">
-            <p>首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 <em>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-node）</a> 客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-client）</a></em> <em>如果你的项目没有用到 sockjs，vuecli3 运行 npm run serve 之后 network 里面一直调研一个接口：<a href="http://localhost:8080/sockjs-node/info?t=1462183700002" target="_blank" rel="noopener">http://localhost:8080/sockjs-node/info?t=1462183700002</a></em> <em>作为一个有节操的程序猿，实在不能忍受，特意自己研究了下源码，从根源上关闭这个调用</em> _1. 找到/node_modules/sockjs-client/dist/sockjs.js _ _2.找到代码的 1605行  _</p>
-<pre><code>try {
-  //  self.xhr.send(payload); 把这里注掉
-  } catch (e) {
-    self.emit(&apos;finish&apos;, 0, &apos;&apos;);
-    self._cleanup(false);
-  }</code></pre><p>OK!</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88-1/">
-                vue-cli3 一直运行 /sockjs-node/info?t= 解决方案
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-27</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 <em>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-node）</a> 客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-client）</a></em> <em>如果你的项目没有用到 sockjs，vuecli3 运行 npm run serve 之后 network 里面一直调研一个接口：<a href="http://localhost:8080/sockjs-node/info?t=1462183700002" target="_blank" rel="noopener">http://localhost:8080/sockjs-node/info?t=1462183700002</a></em> <em>作为一个有节操的程序猿，实在不能忍受，特意自己研究了下源码，从根源上关闭这个调用</em> _1. 找到/node_modules/sockjs-client/dist/sockjs.js _ _2.找到代码的 1605行  _</p>
-<pre><code>try {
-  //  self.xhr.send(payload); 把这里注掉
-  } catch (e) {
-    self.emit(&apos;finish&apos;, 0, &apos;&apos;);
-    self._cleanup(false);
-  }</code></pre><p>OK!</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88-2/">
-                vue-cli3 一直运行 /sockjs-node/info?t= 解决方案
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-27</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 <em>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-node）</a> 客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-client）</a></em> <em>如果你的项目没有用到 sockjs，vuecli3 运行 npm run serve 之后 network 里面一直调研一个接口：<a href="http://localhost:8080/sockjs-node/info?t=1462183700002" target="_blank" rel="noopener">http://localhost:8080/sockjs-node/info?t=1462183700002</a></em> <em>作为一个有节操的程序猿，实在不能忍受，特意自己研究了下源码，从根源上关闭这个调用</em> _1. 找到/node_modules/sockjs-client/dist/sockjs.js _ _2.找到代码的 1605行  _</p>
-<pre><code>try {
-  //  self.xhr.send(payload); 把这里注掉
-  } catch (e) {
-    self.emit(&apos;finish&apos;, 0, &apos;&apos;);
-    self._cleanup(false);
-  }</code></pre><p>OK!</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/12/12/css3-e4-b8-ad-ef-bc-8csvg-e5-bd-93-e5-81-9a-e8-83-8c-e6-99-af-ef-bc-8c-e5-a6-82-e4-bd-95-e4-bf-ae-e6-94-b9-e5-85-b6-e4-bb-96-e7-8a-b6-e6-80-81-e7-9a-84-e9-a2-9c-e8-89-b2-e5-80-bc-2/">
-                CSS3中，SVG 当做背景，如何修改其他状态的颜色值
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-12-12</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Like This:</p>
-<pre><code>.icon {
-    background-color: red;
-    -webkit-mask:  url(icon.svg) no-repeat 50% 50%;
-    mask: url(icon.svg) no-repeat 50% 50%;
-}</code></pre><p>and</p>
-<pre><code>.icon-blue {
-    -webkit-filter: hue-rotate(220deg) saturate(5);
-    filter: hue-rotate(220deg) saturate(5);
-}</code></pre><p>More View: <a href="https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images" target="_blank" rel="noopener">https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images</a></p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/12/12/css3-e4-b8-ad-ef-bc-8csvg-e5-bd-93-e5-81-9a-e8-83-8c-e6-99-af-ef-bc-8c-e5-a6-82-e4-bd-95-e4-bf-ae-e6-94-b9-e5-85-b6-e4-bb-96-e7-8a-b6-e6-80-81-e7-9a-84-e9-a2-9c-e8-89-b2-e5-80-bc-3/">
-                CSS3中，SVG 当做背景，如何修改其他状态的颜色值
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-12-12</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Like This:</p>
-<pre><code>.icon {
-    background-color: red;
-    -webkit-mask:  url(icon.svg) no-repeat 50% 50%;
-    mask: url(icon.svg) no-repeat 50% 50%;
-}</code></pre><p>and</p>
-<pre><code>.icon-blue {
-    -webkit-filter: hue-rotate(220deg) saturate(5);
-    filter: hue-rotate(220deg) saturate(5);
-}</code></pre><p>More View: <a href="https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images" target="_blank" rel="noopener">https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images</a></p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/12/12/css3-e4-b8-ad-ef-bc-8csvg-e5-bd-93-e5-81-9a-e8-83-8c-e6-99-af-ef-bc-8c-e5-a6-82-e4-bd-95-e4-bf-ae-e6-94-b9-e5-85-b6-e4-bb-96-e7-8a-b6-e6-80-81-e7-9a-84-e9-a2-9c-e8-89-b2-e5-80-bc-4/">
-                CSS3中，SVG 当做背景，如何修改其他状态的颜色值
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-12-12</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Like This:</p>
-<pre><code>.icon {
-    background-color: red;
-    -webkit-mask:  url(icon.svg) no-repeat 50% 50%;
-    mask: url(icon.svg) no-repeat 50% 50%;
-}</code></pre><p>and</p>
-<pre><code>.icon-blue {
-    -webkit-filter: hue-rotate(220deg) saturate(5);
-    filter: hue-rotate(220deg) saturate(5);
-}</code></pre><p>More View: <a href="https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images" target="_blank" rel="noopener">https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images</a></p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/12/12/css3-e4-b8-ad-ef-bc-8csvg-e5-bd-93-e5-81-9a-e8-83-8c-e6-99-af-ef-bc-8c-e5-a6-82-e4-bd-95-e4-bf-ae-e6-94-b9-e5-85-b6-e4-bb-96-e7-8a-b6-e6-80-81-e7-9a-84-e9-a2-9c-e8-89-b2-e5-80-bc/">
-                CSS3中，SVG 当做背景，如何修改其他状态的颜色值
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-12-12</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/记录/">记录</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Like This:</p>
-<pre><code>.icon {
-    background-color: red;
-    -webkit-mask:  url(icon.svg) no-repeat 50% 50%;
-    mask: url(icon.svg) no-repeat 50% 50%;
-}</code></pre><p>and</p>
-<pre><code>.icon-blue {
-    -webkit-filter: hue-rotate(220deg) saturate(5);
-    filter: hue-rotate(220deg) saturate(5);
-}</code></pre><p>More View: <a href="https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images" target="_blank" rel="noopener">https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images</a></p>
-
+    弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。</code></pre>
         </div>
     
 
@@ -639,15 +648,15 @@ export default App;</code></pre><p><strong>总结</strong></p>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-4/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/">数组对象排序按照JSONarray排序</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-3/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95/">前端算法</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f-2/">数组对象排序按照JSONarray排序</a>
+                <a class="footer-post" href="/2019/04/09/react-div-e5-a4-9a-e9-80-89/">react div 多选</a>
             </li>
             
         </ul>
