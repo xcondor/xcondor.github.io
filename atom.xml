@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Western honeybee</title>
+  
+  <subtitle>人畜无害的码农、80后大龄程序员</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://xcondor.cn/"/>
+  <updated>2019-09-15T07:39:08.109Z</updated>
+  <id>http://xcondor.cn/</id>
+  
+  <author>
+    <name>xcondor</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://xcondor.cn/2019/09/13/frontend%20count/"/>
+    <id>http://xcondor.cn/2019/09/13/frontend count/</id>
+    <published>2019-09-13T11:07:47.695Z</published>
+    <updated>2019-09-15T07:39:08.109Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*冒泡排序*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;arr.length-i;j++)&#123;</span><br><span class="line">             <span class="keyword">var</span> temp;</span><br><span class="line">             <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                 temp=arr[j];</span><br><span class="line">                 arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">                 arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*快速排序*/</span></span><br><span class="line"><span class="keyword">var</span> quickSort = <span class="function"><span class="keyword">function</span>(<span class="params">arr</span>) </span>&#123; </span><br><span class="line">　　<span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123; <span class="keyword">return</span> arr; &#125; </span><br><span class="line">　　<span class="keyword">var</span> pivotIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>); </span><br><span class="line">　　<span class="keyword">var</span> pivot = arr.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>]; </span><br><span class="line">　　<span class="keyword">var</span> left = []; </span><br><span class="line">　　<span class="keyword">var</span> right = []; </span><br><span class="line">　　<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123; </span><br><span class="line">　　　　<span class="keyword">if</span> (arr[i] &lt; pivot) &#123; </span><br><span class="line">　　　　　　left.push(arr[i]); </span><br><span class="line">　　　　&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">　　　　　　right.push(arr[i]); </span><br><span class="line">　　　　&#125; </span><br><span class="line">　　&#125; </span><br><span class="line">　　<span class="keyword">return</span> quickSort(left).concat([pivot], quickSort(right)); </span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*插入排序*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;  </span><br><span class="line">        <span class="keyword">var</span> j=i;  </span><br><span class="line">        <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;arr[j]&lt;arr[j<span class="number">-1</span>])&#123;  </span><br><span class="line">            <span class="keyword">var</span> t=arr[j];  </span><br><span class="line">            arr[j]=arr[j<span class="number">-1</span>];  </span><br><span class="line">           arr[j<span class="number">-1</span>]=t;  </span><br><span class="line">           j--;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> arr;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*二分法排序*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">data, dest, start, end</span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> end = end || data.length - <span class="number">1</span>,  </span><br><span class="line">        start = start || <span class="number">0</span>,  </span><br><span class="line">        m = <span class="built_in">Math</span>.floor((start + end) / <span class="number">2</span>);  </span><br><span class="line">    <span class="keyword">if</span>(data[m] == dest)&#123;  </span><br><span class="line">        <span class="keyword">return</span> m;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span>(dest &lt; data[m])&#123;  </span><br><span class="line">        <span class="keyword">return</span> binarySearch(data, dest, <span class="number">0</span>, m<span class="number">-1</span>);  </span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">            <span class="keyword">return</span> binarySearch(data, dest, m+<span class="number">1</span>, end);  </span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">-34</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">34</span>, <span class="number">45</span>, <span class="number">65</span>, <span class="number">87</span>];  </span><br><span class="line">binarySearch(arr,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span 
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://xcondor.cn/2019/09/02/js-e5-88-a4-e6-96-ad-e8-ae-be-e5-a4-87-e6-9d-a5-e6-ba-90/"/>
+    <id>http://xcondor.cn/2019/09/02/js-e5-88-a4-e6-96-ad-e8-ae-be-e5-a4-87-e6-9d-a5-e6-ba-90/</id>
+    <published>2019-09-02T06:39:50.952Z</published>
+    <updated>2019-09-15T07:35:39.699Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title: JS 判断设备来源<br>url: 114.html<br>id: 114<br>comments: false<br>categories:</p><ul><li>记录<br>date: 2018-03-01 21:58:29<br>tags:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function deviceType()&#123;</span><br><span class="line">        var ua = navigator.userAgent;</span><br><span class="line">        var agent = [&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];    </span><br><span class="line">        for(var i=0; i&lt;len,len = agent.length; i++)&#123;</span><br><span class="line">            if(ua.indexOf(agent[i])&gt;0)&#123;         </span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    deviceType();</span><br><span class="line">    window.addEventListener(&apos;resize&apos;, function()&#123;</span><br><span class="line">        deviceType();</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ##微信的 有些不太一样</span><br><span class="line">    function isWeixin()&#123;</span><br><span class="line">        var ua = navigator.userAgent.toLowerCase();</span><br><span class="line">        if(ua.match(/MicroMessenger/i)==&apos;micromessenger&apos;)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;title: JS 判断设备来源&lt;br&gt;url: 114.html&lt;br&gt;id: 114&lt;br&gt;comments: false&lt;br&gt;categories:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;记录&lt;br&gt;date: 2018-03-01 21:58:29&lt;br&gt;tags:
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数组对象排序按照JSONarray排序</title>
+    <link href="http://xcondor.cn/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/"/>
+    <id>http://xcondor.cn/2019/04/26/e6-95-b0-e7-bb-84-e5-af-b9-e8-b1-a1-e6-8e-92-e5-ba-8f-e6-8c-89-e7-85-a7jsonarray-e6-8e-92-e5-ba-8f/</id>
+    <published>2019-04-26T07:39:44.000Z</published>
+    <updated>2019-09-02T06:39:50.941Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>&lt;script&gt;        var arr = [{id:1,username:&apos;a1&apos;},{id:2,username:&apos;a2&apos;},{id:3,username:&apos;a3&apos;},{id:4,username:&apos;a4&apos;},{id:5,username:&apos;a5&apos;}];        var newArr = [3,1,2,5,4];        let curArr = [];        for(let i = 0;i&lt;arr.length;i++){            for(let j = 0;j&lt;newArr.length;j++){                if(arr[i].id === newArr[j]){                    curArr.unshift(newArr[j])                    console.log(&apos;s&apos;+curArr)                }            }        }        console.log(curArr);    &lt;/script&gt;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+        var arr = [{id:1,username:&amp;apos;a1&amp;apos;},{id:2,username:&amp;apos;a2&amp;apos;},{id:3,username:&amp;apos;a3&amp;apos;},{i
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端算法</title>
+    <link href="http://xcondor.cn/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95/"/>
+    <id>http://xcondor.cn/2019/04/15/e5-89-8d-e7-ab-af-e7-ae-97-e6-b3-95/</id>
+    <published>2019-04-15T06:34:02.000Z</published>
+    <updated>2019-09-02T06:39:50.935Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>/*冒泡排序*/function bubbleSort(arr){     for(var i=1;i&lt;arr.length;i++){         for(var j=0;j&lt;arr.length-i;j++){             var temp;             if(arr[j]&gt;arr[j+1]){                 temp=arr[j];                 arr[j]=arr[j+1];                 arr[j+1]=temp;             }         }     }     return arr;}/*快速排序*/var quickSort = function(arr) { 　　if (arr.length &lt;= 1) { return arr; } 　　var pivotIndex = Math.floor(arr.length / 2); 　　var pivot = arr.splice(pivotIndex, 1)[0]; 　　var left = []; 　　var right = []; 　　for (var i = 0; i &lt; arr.length; i++){ 　　　　if (arr[i] &lt; pivot) { 　　　　　　left.push(arr[i]); 　　　　} else { 　　　　　　right.push(arr[i]); 　　　　} 　　} 　　return quickSort(left).concat([pivot], quickSort(right)); }; /*插入排序*/function insertSort(arr){      for(var i=1;i&lt;arr.length;i++){          var j=i;          while(j&gt;0&amp;&amp;arr[j]&lt;arr[j-1]){              var t=arr[j];              arr[j]=arr[j-1];             arr[j-1]=t;             j--;          }      }      return arr;  }  /*二分法排序*/function binarySearch(data, dest, start, end){      var end = end || data.length - 1,          start = start || 0,          m = Math.floor((start + end) / 2);      if(data[m] == dest){          return m;      }      if(dest &lt; data[m]){          return binarySearch(data, dest, 0, m-1);       }else{              return binarySearch(data, dest, m+1, end);          }          return false;      }  var arr = [-34, 1, 3, 4, 5, 8, 34, 45, 65, 87];  binarySearch(arr,4);</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;/*冒泡排序*/
+function bubbleSort(arr){
+     for(var i=1;i&amp;lt;arr.length;i++){
+         for(var j=0;j&amp;lt;arr.length-i;j++){
+          
+      
+    
+    </summary>
+    
+    
+      <category term="广告" scheme="http://xcondor.cn/categories/%E5%B9%BF%E5%91%8A/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>react div 多选</title>
+    <link href="http://xcondor.cn/2019/04/09/react-div-e5-a4-9a-e9-80-89/"/>
+    <id>http://xcondor.cn/2019/04/09/react-div-e5-a4-9a-e9-80-89/</id>
+    <published>2019-04-09T01:30:05.000Z</published>
+    <updated>2019-09-02T06:39:50.958Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>export default class SelectDiv extends Component {  state = {    selects: [],    renList: [{ name: &apos;n1&apos; }, { name: &apos;n2&apos; }, { name: &apos;n3&apos; }],  }  handleCheck = ({ name }) =&gt; {    this.setState(({ selects }) =&gt; ({      selects: selects.includes(name)        ? selects.filter(item =&gt; item !== name)        : [...selects, name],    }))  }  selectAll = () =&gt; {    this.setState(({ renList }) =&gt; ({      selects: renList.map(item =&gt; item.name),    }))  }  cancelSelectAll = () =&gt; {    this.setState(() =&gt; ({      selects: [],    }))  }  render() {    const { selects: selects, renList } = this.state    return (      &lt;div&gt;        &lt;button onClick={this.selectAll}&gt;选中全部&lt;/button&gt;        &lt;button onClick={this.cancelSelectAll}&gt;取消全部&lt;/button&gt;        {renList.map(subItem =&gt; (          &lt;div&gt;            &lt;div              key={subItem.name}              className={`${css.sunKind} ${                selects.includes(subItem.name) ? css.active : &apos;&apos;              }`}              onClick={() =&gt; this.handleCheck(subItem)}            &gt;              {subItem.name}            &lt;/div&gt;          &lt;/div&gt;        ))}      &lt;/div&gt;    )  }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;export default class SelectDiv extends Component {
+  state = {
+    selects: [],
+    renList: [{ name: &amp;apos;n1&amp;apos; }, { name: &amp;
+      
+    
+    </summary>
+    
+    
+      <category term="转载" scheme="http://xcondor.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>到底何时使用PureComponent 才合适</title>
+    <link href="http://xcondor.cn/2019/04/04/e5-88-b0-e5-ba-95-e4-bd-95-e6-97-b6-e4-bd-bf-e7-94-a8purecomponent-e6-89-8d-e5-90-88-e9-80-82/"/>
+    <id>http://xcondor.cn/2019/04/04/e5-88-b0-e5-ba-95-e4-bd-95-e6-97-b6-e4-bd-bf-e7-94-a8purecomponent-e6-89-8d-e5-90-88-e9-80-82/</id>
+    <published>2019-04-04T05:59:22.000Z</published>
+    <updated>2019-09-02T06:39:50.934Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，废话不多说，搜了一堆资料总结下：</p><ol><li>组件中的state或者props发生变化才会渲染render</li><li>PureComponent 是React官方对其进行了<code>shallowEqual（**浅比较**）</code>，也就是如果state或者props是Array或者Object的引用发生改变，就会重新渲染。否则，不会重新render。<code>shallowEqual</code>从字面意思讲是”浅比较”，那么什么事浅比较呢？ 就是比较一个旧的<code>props</code>和新<code>props</code>的或者旧的<code>state</code>和新的<code>state</code>的长度是否一致，key是是否相同，以及它们对应的引用是否发生改变。仅仅做了一层的比较。所以这才叫做浅比较。</li></ol><p>栗子： parent组件</p><pre><code>import React from &apos;react&apos;import List from &apos;./child&apos;class Parent extends React.PureComponent{    state = {        array:[1,2,3]    }    click(){        const {array} = this.state;        array.push(4);        this.setState({array:array})    }    render(){        const {array} = this.state;        return (            &lt;div&gt;                &lt;List list={array} /&gt;                &lt;button onClick={this.click.bind(this)}&gt;测试&lt;/button&gt;            &lt;/div&gt;        )    }}export default Parent;</code></pre><p>List子组件</p><pre><code>import React from &apos;react&apos;class List extends React.PureComponent{    render(){        const {list} = this.props;        return (            &lt;ul&gt;                {                    list.map((item,idx)=&gt;{                        return (                            &lt;li key={idx}&gt;                                {item}                            &lt;/li&gt;                        )                    })                }            &lt;/ul&gt;        )    }}export default List;</code></pre><p>主组件</p><pre><code>import React, { Component } from &apos;react&apos;;import logo from &apos;./logo.svg&apos;;import &apos;./App.css&apos;;import Parent from &apos;./components/parent&apos;class App extends Component {  render() {    return (      &lt;div className=&quot;App&quot;&gt;        &lt;header className=&quot;App-header&quot;&gt;          &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;          &lt;Parent/&gt;        &lt;/header&gt;      &lt;/div&gt;    );  }}export default App;</code></pre><p><strong>总结</strong></p><p>从上面我们发现<code>PureComponent</code>并不是不发生重新渲染，而是在满足不了的条件下才会去帮我们重新渲染。 所以<code>PureComponent</code>真正起到优化的地方是在纯组件上，也就是仅仅用来展示的组件。这样会避免展示的组件不必要的多次重复渲染。在一些复杂组件上用了也没有什么关系，只是在浅比较这一层就过不了，但是一定要记得props和state不可以是同一个引用。</p><p>暂时总结这么多，如果发现更容易理解的方式，我再来追加。</p><p>总之一点、先使用在纯组件上，后面深刻理解后再逐步优化。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先，废话不多说，搜了一堆资料总结下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;组件中的state或者props发生变化才会渲染render&lt;/li&gt;
+&lt;li&gt;PureComponent 是React官方对其进行了&lt;code&gt;shallowEqual（**浅比较**）&lt;/code&gt;，也就
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue-cli3 一直运行 /sockjs-node/info?t= 解决方案</title>
+    <link href="http://xcondor.cn/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88/"/>
+    <id>http://xcondor.cn/2019/02/27/vue-cli3-e4-b8-80-e7-9b-b4-e8-bf-90-e8-a1-8c-sockjs-node-infot-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88/</id>
+    <published>2019-02-27T03:41:35.000Z</published>
+    <updated>2019-09-02T06:39:50.960Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 <em>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-node）</a> 客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client）" target="_blank" rel="noopener">https://github.com/sockjs/sockjs-client）</a></em> <em>如果你的项目没有用到 sockjs，vuecli3 运行 npm run serve 之后 network 里面一直调研一个接口：<a href="http://localhost:8080/sockjs-node/info?t=1462183700002" target="_blank" rel="noopener">http://localhost:8080/sockjs-node/info?t=1462183700002</a></em> <em>作为一个有节操的程序猿，实在不能忍受，特意自己研究了下源码，从根源上关闭这个调用</em> _1. 找到/node_modules/sockjs-client/dist/sockjs.js _ _2.找到代码的 1605行  _</p><pre><code>try {  //  self.xhr.send(payload); 把这里注掉  } catch (e) {    self.emit(&apos;finish&apos;, 0, &apos;&apos;);    self._cleanup(false);  }</code></pre><p>OK!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先 sockjs-node 是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。 &lt;em&gt;服务端：sockjs-node（&lt;a href=&quot;https://github.com/sockjs/
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS3中，SVG 当做背景，如何修改其他状态的颜色值</title>
+    <link href="http://xcondor.cn/2018/12/12/css3-e4-b8-ad-ef-bc-8csvg-e5-bd-93-e5-81-9a-e8-83-8c-e6-99-af-ef-bc-8c-e5-a6-82-e4-bd-95-e4-bf-ae-e6-94-b9-e5-85-b6-e4-bb-96-e7-8a-b6-e6-80-81-e7-9a-84-e9-a2-9c-e8-89-b2-e5-80-bc/"/>
+    <id>http://xcondor.cn/2018/12/12/css3-e4-b8-ad-ef-bc-8csvg-e5-bd-93-e5-81-9a-e8-83-8c-e6-99-af-ef-bc-8c-e5-a6-82-e4-bd-95-e4-bf-ae-e6-94-b9-e5-85-b6-e4-bb-96-e7-8a-b6-e6-80-81-e7-9a-84-e9-a2-9c-e8-89-b2-e5-80-bc/</id>
+    <published>2018-12-12T10:43:36.000Z</published>
+    <updated>2019-09-02T06:39:50.932Z</updated>
+    
+    <content type="html"><![CDATA[<p>Like This:</p><pre><code>.icon {    background-color: red;    -webkit-mask:  url(icon.svg) no-repeat 50% 50%;    mask: url(icon.svg) no-repeat 50% 50%;}</code></pre><p>and</p><pre><code>.icon-blue {    -webkit-filter: hue-rotate(220deg) saturate(5);    filter: hue-rotate(220deg) saturate(5);}</code></pre><p>More View: <a href="https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images" target="_blank" rel="noopener">https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Like This:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.icon {
+    background-color: red;
+    -webkit-mask:  url(icon.svg) no-repeat 50% 50%;
+    mask: url(icon.svg) 
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="转载" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React性能优化之</title>
+    <link href="http://xcondor.cn/2018/12/04/react-e6-80-a7-e8-83-bd-e4-bc-98-e5-8c-96-e4-b9-8b/"/>
+    <id>http://xcondor.cn/2018/12/04/react-e6-80-a7-e8-83-bd-e4-bc-98-e5-8c-96-e4-b9-8b/</id>
+    <published>2018-12-04T01:54:55.000Z</published>
+    <updated>2019-09-02T06:39:50.959Z</updated>
+    
+    <content type="html"><![CDATA[<p>React的优化是基于<code>shouldComponentUpdate</code>的，该生命周期默认返回true，所以一旦prop或state有任何变化，都会引起重新render。  </p><h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><ol><li><code>{...this.props}</code> (不要滥用，请只传递component需要的props，传得太多，或者层次传得太深，都会加重shouldComponentUpdate里面的数据比较负担，因此，请慎用spread attributes（&lt;Component {…props} /&gt;）)。</li><li><code>this.handleChange()</code>。(请将方法的bind一律置于constructor)</li><li><code>this.handleChange.bind(this,id)</code></li><li>复杂的页面不要在一个组件里面写完。</li><li>请尽量使用<code>const element</code>。</li><li>map里面添加key，并且key不要使用index（可变的）。具体可参考<a href="http://levy.work/2016-08-31-debug-react-key-with-performance-tool/" target="_blank" rel="noopener">使用Perf工具研究React Key对渲染的影响</a></li><li>尽量少用<code>setTimeOut</code>或不可控的refs、DOM操作。</li><li><code>props</code>和<code>state</code>的数据尽可能简单明了，扁平化。</li><li>使用<code>return null</code>而不是CSS的<code>display:none</code>来控制节点的显示隐藏。保证同一时间页面的DOM节点尽可能的少。</li></ol><h2 id="immutable-js"><a href="#immutable-js" class="headerlink" title="immutable.js"></a>immutable.js</h2><p>PureComponent</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;React的优化是基于&lt;code&gt;shouldComponentUpdate&lt;/code&gt;的，该生命周期默认返回true，所以一旦prop或state有任何变化，都会引起重新render。  &lt;/p&gt;
+&lt;h3 id=&quot;shouldComponentUpdate&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="react 性能优化" scheme="http://xcondor.cn/tags/react-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack 构建性能优化</title>
+    <link href="http://xcondor.cn/2018/09/20/webpack-e6-9e-84-e5-bb-ba-e6-80-a7-e8-83-bd-e4-bc-98-e5-8c-96-1/"/>
+    <id>http://xcondor.cn/2018/09/20/webpack-e6-9e-84-e5-bb-ba-e6-80-a7-e8-83-bd-e4-bc-98-e5-8c-96-1/</id>
+    <published>2018-09-20T11:14:35.000Z</published>
+    <updated>2019-09-02T06:39:50.962Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.关闭source-map选项 【压缩构建文件大小，避免生成调试文件，只针对线上环境】 2. HappyPack 配置附配置 ：</p><pre><code>const HappyPack = require(&apos;happypack&apos;);const ParallelUglifyPlugin = require(&apos;webpack-parallel-uglify-plugin&apos;);module: {        noParse: [/react\.min\.js$/, /moment\.min\.js$/],        rules: [            {                test: /\.(js)$/,                use: {                    loader: &quot;babel-loader?cacheDirectory&quot;,                    options: {                        presets: [                            &quot;es2015&quot;, &quot;react&quot;, &quot;stage-0&quot;                        ]                    }                },                exclude: /node_modules/,            },            {                test: /\.(less|css)$/,                loader: ExtractTextPlugin.extract({                    fallback: &quot;style-loader&quot;,                    use: [&apos;happypack/loader?id=2&apos;]                })            },            {                test: /\.(jpe?g|png|gif)$/,                loader: &apos;url-loader?limit=8192&amp;name=images/[name].[ext]&amp;publicPath=../&apos;            }        ]    },plugins: [        new webpack.optimize.CommonsChunkPlugin({            name: &apos;common&apos;,            filename: &apos;js/[name].js&apos;        }),        new HappyPack({            id: &quot;1&quot;,            threads: 8,            loaders: [&apos;babel-loader?cacheDirectory=true&amp;presets[]=react,presets[]=es2015,presets[]=stage-0&apos;],            verbose: true        }),        new HappyPack({            id: &quot;2&quot;,            threads: 8,            loaders: [&quot;css-loader?modules=false&amp;sourceMap=false&amp;minimize=true&quot;, &quot;autoprefixer-loader?browsers=last 10 versions&quot;, &quot;less-loader&quot;],            verbose: true        }),]</code></pre><p>3. 通过 module.noParse 忽略文件 上面有配置</p><pre><code>module.exports = {  module: {    // 独完整的 `react.min.js` 文件就没有采用模块化，忽略对 `react.min.js` 文件的递归解析处理    noParse: [/react\.min\.js$/],  },};</code></pre><p>4.通过 resolve.alias 映射文件</p><pre><code>module.exports = {  resolve: {    // 使用 alias 把导入 react 的语句换成直接使用单独完整的 react.min.js 文件，    // 减少耗时的递归解析操作    alias: {      &apos;react&apos;: path.resolve(__dirname, &apos;./node_modules/react/dist/react.min.js&apos;),    }  },};</code></pre><p>5. 缩小 resolve.modules 的范围</p><pre><code>module.exports = {            resolve: {                // 使用绝对路径指明第三方模块存放的位置，以减少搜索步骤                // 其中 __dirname 表示当前工作目录，也就是项目根目录                modules: [path.resolve(__dirname, &apos;node_modules&apos;)]         },};</code></pre><p>6.缩小 Loader 的命中范围</p><pre><code>module.exports = {  module: {    rules: [      {        // 如果项目源码中只有 js 文件就不要写成 /\.jsx?$/，提升正则表达式性能        test: /\.js$/,        // babel-loader 支持缓存转换出的结果，通过 cacheDirectory 选项开启        use: [&apos;babel-loader?cacheDirectory&apos;],        // 只对项目根目录下的 src 目录中的文件采用 babel-loader        include: path.resolve(__dirname, &apos;src&apos;),      },    ]  },};</code></pre><p>7.缩小 resolve.extensions 的数量</p><pre><code>module.exports = {  resolve: {    // 尽可能的减少后缀尝试的可能性    extensions: [&apos;js&apos;],  },};</code></pre><ol start="8"><li>使用 DllPlugin 配置过于繁杂，未使用。其他亲测有效</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.关闭source-map选项 【压缩构建文件大小，避免生成调试文件，只针对线上环境】 2. HappyPack 配置附配置 ：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const HappyPack = require(&amp;apos;happypack&amp;apos;);
+const 
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="webpack" scheme="http://xcondor.cn/tags/webpack/"/>
+    
+      <category term="happypack" scheme="http://xcondor.cn/tags/happypack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HappyPack配置</title>
+    <link href="http://xcondor.cn/2018/09/20/happypack-e9-85-8d-e7-bd-ae/"/>
+    <id>http://xcondor.cn/2018/09/20/happypack-e9-85-8d-e7-bd-ae/</id>
+    <published>2018-09-20T07:56:04.000Z</published>
+    <updated>2019-09-02T06:39:50.949Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>npm install happypack --save-dev{                test: /\.(js)$/,                exclude: /node_modules/,                use:{                    loader: &apos;happypack/loader?id=1&apos;                } },new HappyPack({            id: &quot;1&quot;,            threads:4,            loaders: [&apos;babel-loader?cacheDirectory=true&amp;presets[]=react,presets[]=es2015,presets[]=stage-0&apos;],            verbose: true        }),</code></pre><p>确保babel-loader参数带上支持ES6 参</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;npm install happypack --save-dev
+
+
+{
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                us
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS开发小技巧</title>
+    <link href="http://xcondor.cn/2018/07/31/js-e5-bc-80-e5-8f-91-e5-b0-8f-e6-8a-80-e5-b7-a7/"/>
+    <id>http://xcondor.cn/2018/07/31/js-e5-bc-80-e5-8f-91-e5-b0-8f-e6-8a-80-e5-b7-a7/</id>
+    <published>2018-07-31T01:48:28.000Z</published>
+    <updated>2019-09-02T06:39:50.953Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-类型强制转换"><a href="#1-类型强制转换" class="headerlink" title="1. 类型强制转换"></a>1. 类型强制转换</h2><h3 id="1-1-string强制转换为数字"><a href="#1-1-string强制转换为数字" class="headerlink" title="1.1 string强制转换为数字"></a>1.1 string强制转换为数字</h3><p>可以用<code>*1</code>来转化为数字(实际上是调用<code>.valueOf</code>方法) 然后使用<code>Number.isNaN</code>来判断是否为<code>NaN</code>，或者使用 <code>a !== a</code> 来判断是否为<code>NaN</code>，因为 <code>NaN !== NaN</code></p><pre><code>&apos;32&apos; * 1            // 32&apos;ds&apos; * 1            // NaNnull * 1            // 0undefined * 1    // NaN1  * { valueOf: ()=&gt;&apos;3&apos; }        // 3复制代码</code></pre><p><strong>常用：</strong> 也可以使用<code>+</code>来转化字符串为数字</p><pre><code>+ &apos;123&apos;            // 123+ &apos;ds&apos;               // NaN+ &apos;&apos;                    // 0+ null              // 0+ undefined    // NaN+ { valueOf: ()=&gt;&apos;3&apos; }    // 3复制代码</code></pre><h3 id="1-2-object强制转化为string"><a href="#1-2-object强制转化为string" class="headerlink" title="1.2 object强制转化为string"></a>1.2 object强制转化为string</h3><p>可以使用 <code>字符串+Object</code> 的方式来转化对象为字符串(实际上是调用 <code>.toString()</code> 方法)</p><pre><code>&apos;the Math object:&apos; + Math                // &quot;the Math object:[object Math]&quot;&apos;the JSON object:&apos; + JSON              // &quot;the JSON object:[object JSON]&quot;复制代码</code></pre><p>当然也可以覆盖对象的<code>toString</code>和<code>valueOf</code>方法来自定义对象的类型转换：</p><pre><code>2  * { valueOf: ()=&gt;&apos;3&apos; }                // 6&apos;J&apos; + { toString: ()=&gt;&apos;S&apos; }                // &quot;JS&quot;复制代码</code></pre><blockquote><p>《Effective JavaScript》P11：当<code>+</code>用在连接字符串时，当一个对象既有<code>toString</code>方法又有<code>valueOf</code>方法时候，JS通过盲目使用<code>valueOf</code>方法来解决这种含糊。 对象通过<code>valueOf</code>方法强制转换为数字，通过<code>toString</code>方法强制转换为字符串</p></blockquote><pre><code>&apos;&apos; + {toString:()=&gt;&apos;S&apos;,valueOf:()=&gt;&apos;J&apos;}                // J复制代码</code></pre><h3 id="1-3-使用Boolean过滤数组中的所有假值"><a href="#1-3-使用Boolean过滤数组中的所有假值" class="headerlink" title="1.3 使用Boolean过滤数组中的所有假值"></a>1.3 使用Boolean过滤数组中的所有假值</h3><p>我们知道JS中有一些假值：<code>false</code>，<code>null</code>，<code>0</code>，<code>&quot;&quot;</code>，<code>undefined</code>，<code>NaN</code>，怎样把数组中的假值快速过滤呢，可以使用Boolean构造函数来进行一次转换</p><pre><code>const compact = arr =&gt; arr.filter(Boolean)compact([0, 1, false, 2, &apos;&apos;, 3, &apos;a&apos;, &apos;e&apos; * 23, NaN, &apos;s&apos;, 34])             // [ 1, 2, 3, &apos;a&apos;, &apos;s&apos;, 34 ]复制代码</code></pre><h3 id="1-4-双位运算符"><a href="#1-4-双位运算符" class="headerlink" title="1.4 双位运算符 ~~"></a>1.4 双位运算符 ~~</h3><p>可以使用双位操作符来替代 <code>Math.floor( )</code>。双否定位操作符的优势在于它执行相同的操作运行速度更快。</p><pre><code>Math.floor(4.9) === 4      //true// 简写为：~~4.9 === 4      //true复制代码</code></pre><p>不过要注意，对整数来说 <code>~~</code> 运算结果与 <code>Math.floor( )</code> 运算结果相同，而对于负数来说不相同：</p><pre><code>~~4.5            // 4Math.floor(4.5)        // 4~~-4.5        // -4Math.floor(-4.5)        // -5复制代码</code></pre><h3 id="1-5-短路运算符"><a href="#1-5-短路运算符" class="headerlink" title="1.5 短路运算符"></a>1.5 短路运算符</h3><p>我们知道逻辑与<code>&amp;&amp;</code>与逻辑或<code>||</code>是短路运算符，短路运算符就是从左到右的运算中前者满足要求，就不再执行后者了； 可以理解为：</p><ul><li><p><code>&amp;&amp;</code>为取假运算，从左到右依次判断，如果遇到一个假值，就返回假值，以后不再执行，否则返回最后一个真值</p></li><li><p><code>||</code>为取真运算，从左到右依次判断，如果遇到一个真值，就返回真值，以后不再执行，否则返回最后一个假值</p><p>let param1 = expr1 &amp;&amp; expr2<br>let param2 = expr1 || expr2<br>复制代码</p></li></ul><p>运算符</p><p>示例</p><p>说明</p><p><code>&amp;&amp;</code></p><p><code>expr1&amp;&amp;expr2</code></p><p>如果expr1 能转换成false则返回expr1,否则返回expr2. 因此, 在Boolean环境中使用时, 两个操作结果都为true时返回true,否则返回false.</p><p><code>||</code></p><p><code>expr1||expr2</code></p><p>如果expr1能转换成true则返回expr1,否则返回expr2. 因此,在boolean环境(在if的条件判断中)中使用时, 二者操作结果中只要有一个为true,返回true;二者操作结果都为false时返回false.</p><p><code>!</code></p><p><code>!expr</code></p><p>如果单个表达式能转换为true的话返回false,否则返回true.</p><p>因此可以用来做很多有意思的事，比如给变量赋初值：</p><pre><code>let variable1let variable2 = variable1  || &apos;foo&apos;    复制代码</code></pre><p>如果variable1是真值就直接返回了，后面短路就不会被返回了，如果为假值，则会返回后面的<code>foo</code>。 也可以用来进行简单的判断，取代冗长的<code>if</code>语句：</p><pre><code>let variable = param &amp;&amp; param.prop复制代码</code></pre><p>如果<code>param</code>如果为真值则返回<code>param.prop</code>属性，否则返回<code>param</code>这个假值，这样在某些地方防止<code>param</code>为<code>undefined</code>的时候还取其属性造成报错。</p><h3 id="1-6-取整-0"><a href="#1-6-取整-0" class="headerlink" title="1.6 取整 | 0"></a>1.6 取整 <code>| 0</code></h3><p>对一个数字<code>| 0</code>可以取整，负数也同样适用，<code>num | 0</code></p><pre><code>1.3 | 0         // 1-1.9 | 0        // -1复制代码</code></pre><h3 id="1-7-判断奇偶数-amp-1"><a href="#1-7-判断奇偶数-amp-1" class="headerlink" title="1.7 判断奇偶数 &amp; 1"></a>1.7 判断奇偶数 <code>&amp; 1</code></h3><p>对一个数字<code>&amp; 1</code>可以判断奇偶数，负数也同样适用，<code>num &amp; 1</code></p><pre><code>const num=3;!!(num &amp; 1)                    // true!!(num % 2)                    // true复制代码</code></pre><h2 id="2-函数"><a href="#2-函数" class="headerlink" title="2. 函数"></a>2. 函数</h2><h3 id="2-1-函数默认值"><a href="#2-1-函数默认值" class="headerlink" title="2.1 函数默认值"></a>2.1 函数默认值</h3><pre><code>func = (l, m = 3, n = 4 ) =&gt; (l * m * n);func(2)             //output: 24复制代码</code></pre><p>注意，传入参数为<code>undefined</code>或者不传入的时候会使用默认参数，但是传入<code>null</code>还是会覆盖默认参数。</p><h3 id="2-2-强制参数"><a href="#2-2-强制参数" class="headerlink" title="2.2 强制参数"></a>2.2 强制参数</h3><p>默认情况下，如果不向函数参数传值，那么JS 会将函数参数设置为<code>undefined</code>。其它一些语言则会发出警告或错误。要执行参数分配，可以使用<code>if</code>语句抛出未定义的错误，或者可以利用<code>强制参数</code>。</p><pre><code>mandatory = ( ) =&gt; {  throw new Error(&apos;Missing parameter!&apos;);}foo = (bar = mandatory( )) =&gt; {            // 这里如果不传入参数，就会执行manadatory函数报出错误  return bar;}复制代码</code></pre><h3 id="2-3-隐式返回值"><a href="#2-3-隐式返回值" class="headerlink" title="2.3 隐式返回值"></a>2.3 隐式返回值</h3><p>返回值是我们通常用来返回函数最终结果的关键字。只有一个语句的箭头函数，可以隐式返回结果（函数必须省略大括号<code>{ }</code>，以便省略返回关键字）。 要返回多行语句（例如对象文本），需要使用<code>( )</code>而不是<code>{ }</code>来包裹函数体。这样可以确保代码以单个语句的形式进行求值。</p><pre><code>function calcCircumference(diameter) {  return Math.PI * diameter}// 简写为：calcCircumference = diameter =&gt; (  Math.PI * diameter;)复制代码</code></pre><h3 id="2-4-惰性载入函数"><a href="#2-4-惰性载入函数" class="headerlink" title="2.4 惰性载入函数"></a>2.4 惰性载入函数</h3><p>在某个场景下我们的函数中有判断语句，这个判断依据在整个项目运行期间一般不会变化，所以判断分支在整个项目运行期间只会运行某个特定分支，那么就可以考虑惰性载入函数</p><pre><code>function foo(){    if(a !== b){        console.log(&apos;aaa&apos;)    }else{        console.log(&apos;bbb&apos;)    }}// 优化后function foo(){    if(a != b){        foo = function(){            console.log(&apos;aaa&apos;)        }    }else{        foo = function(){            console.log(&apos;bbb&apos;)        }    }    return foo();}复制代码</code></pre><p>那么第一次运行之后就会覆写这个方法，下一次再运行的时候就不会执行判断了。当然现在只有一个判断，如果判断很多，分支比较复杂，那么节约的资源还是可观的。</p><h3 id="2-5-一次性函数"><a href="#2-5-一次性函数" class="headerlink" title="2.5 一次性函数"></a>2.5 一次性函数</h3><p>跟上面的惰性载入函数同理，可以在函数体里覆写当前函数，那么可以创建一个一次性的函数，重新赋值之前的代码相当于只运行了一次，适用于运行一些只需要执行一次的初始化代码</p><pre><code>var sca = function() {    console.log(&apos;msg&apos;)    sca = function() {        console.log(&apos;foo&apos;)    }}sca()        // msgsca()        // foosca()        // foo复制代码</code></pre><h2 id="3-代码复用"><a href="#3-代码复用" class="headerlink" title="3. 代码复用"></a>3. 代码复用</h2><h3 id="3-1-Object-key"><a href="#3-1-Object-key" class="headerlink" title="3.1 Object [key]"></a>3.1 Object [key]</h3><p>虽然将 <code>foo.bar</code> 写成 <code>foo [&#39;bar&#39;]</code> 是一种常见的做法，但是这种做法构成了编写可重用代码的基础。许多框架使用了这种方法，比如element的<a href="https://link.juejin.im?target=http%3A%2F%2Felement-cn.eleme.io%2F%23%2Fzh-CN%2Fcomponent%2Fform%23biao-dan-yan-zheng" target="_blank" rel="noopener">表单验证</a>。 请考虑下面这个验证函数的简化示例：</p><pre><code>function validate(values) {  if(!values.first)    return false;  if(!values.last)    return false;  return true;}console.log(validate({first:&apos;Bruce&apos;,last:&apos;Wayne&apos;})); // true复制代码</code></pre><p>上面的函数完美的完成验证工作。但是当有很多表单，则需要应用验证，此时会有不同的字段和规则。如果可以构建一个在运行时配置的通用验证函数，会是一个好选择。</p><pre><code>// object validation rulesconst schema = {  first: {    required:true  },  last: {    required:true  }}// universal validation functionconst validate = (schema, values) =&gt; {  for(field in schema) {    if(schema[field].required) {      if(!values[field]) {        return false;      }    }  }  return true;}console.log(validate(schema, {first:&apos;Bruce&apos;})); // falseconsole.log(validate(schema, {first:&apos;Bruce&apos;,last:&apos;Wayne&apos;})); // true复制代码</code></pre><p>现在有了这个验证函数，我们就可以在所有窗体中重用，而无需为每个窗体编写自定义验证函数。</p><h2 id="4-数字"><a href="#4-数字" class="headerlink" title="4. 数字"></a>4. 数字</h2><h3 id="4-1-不同进制表示法"><a href="#4-1-不同进制表示法" class="headerlink" title="4.1 不同进制表示法"></a>4.1 不同进制表示法</h3><p>ES6中新增了不同进制的书写格式，在后台传参的时候要注意这一点。</p><pre><code>29            // 10进制035            // 8进制29      原来的方式0o35            // 8进制29      ES6的方式0x1d            // 16进制290b11101            // 2进制29复制代码</code></pre><h3 id="4-2-精确到指定位数的小数"><a href="#4-2-精确到指定位数的小数" class="headerlink" title="4.2 精确到指定位数的小数"></a>4.2 精确到指定位数的小数</h3><p>将数字四舍五入到指定的小数位数。使用 <code>Math.round()</code> 和模板字面量将数字四舍五入为指定的小数位数。 省略第二个参数 <code>decimals</code> ，数字将被四舍五入到一个整数。</p><pre><code>const round = (n, decimals = 0) =&gt; Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`)round(1.345, 2)                 // 1.35round(1.345, 1)                 // 1.3复制代码</code></pre><h3 id="4-3-数字补0操作"><a href="#4-3-数字补0操作" class="headerlink" title="4.3 数字补0操作"></a>4.3 数字补0操作</h3><p>感谢网友 @JserWang @vczhan 提供这个小技巧 有时候比如显示时间的时候有时候会需要把一位数字显示成两位，这时候就需要补0操作，可以使用<code>slice</code>和string的<code>padStart</code>方法</p><pre><code>const addZero1 = (num, len = 2) =&gt; (`0${num}`).slice(-len)const addZero2 = (num, len = 2) =&gt; (`${num}`).padStart(len , &apos;0&apos;)addZero1(3) // 03addZero2(32,4)  // 0032复制代码</code></pre><h2 id="5-数组"><a href="#5-数组" class="headerlink" title="5. 数组"></a>5. 数组</h2><h3 id="5-1-reduce方法同时实现map和filter"><a href="#5-1-reduce方法同时实现map和filter" class="headerlink" title="5.1 reduce方法同时实现map和filter"></a>5.1 reduce方法同时实现map和filter</h3><p>假设现在有一个数列，你希望更新它的每一项（map的功能）然后筛选出一部分（filter的功能）。如果是先使用map然后filter的话，你需要遍历这个数组两次。 在下面的代码中，我们将数列中的值翻倍，然后挑选出那些大于50的数。</p><pre><code>const numbers = [10, 20, 30, 40];const doubledOver50 = numbers.reduce((finalList, num) =&gt; {  num = num * 2;  if (num &gt; 50) {    finalList.push(num);  }  return finalList;}, []);doubledOver50;            // [60, 80]复制代码</code></pre><h3 id="5-2-统计数组中相同项的个数"><a href="#5-2-统计数组中相同项的个数" class="headerlink" title="5.2 统计数组中相同项的个数"></a>5.2 统计数组中相同项的个数</h3><p>很多时候，你希望统计数组中重复出现项的个数然后用一个对象表示。那么你可以使用reduce方法处理这个数组。 下面的代码将统计每一种车的数目然后把总数用一个对象表示。</p><pre><code>var cars = [&apos;BMW&apos;,&apos;Benz&apos;, &apos;Benz&apos;, &apos;Tesla&apos;, &apos;BMW&apos;, &apos;Toyota&apos;];var carsObj = cars.reduce(function (obj, name) {  obj[name] = obj[name] ? ++obj[name] : 1;  return obj;}, {});carsObj; // =&gt; { BMW: 2, Benz: 2, Tesla: 1, Toyota: 1 }复制代码</code></pre><h3 id="5-3-使用解构来交换参数数值"><a href="#5-3-使用解构来交换参数数值" class="headerlink" title="5.3 使用解构来交换参数数值"></a>5.3 使用解构来交换参数数值</h3><p>有时候你会将函数返回的多个值放在一个数组里。我们可以使用数组解构来获取其中每一个值。</p><pre><code>let param1 = 1;let param2 = 2;[param1, param2] = [param2, param1];console.log(param1) // 2console.log(param2) // 1复制代码</code></pre><p>当然我们关于交换数值有不少其他办法：</p><pre><code>var temp = a; a = b; b = temp                b = [a, a = b][0]                         a = a + b; b = a - b; a = a - b            复制代码</code></pre><h3 id="5-4-接收函数返回的多个结果"><a href="#5-4-接收函数返回的多个结果" class="headerlink" title="5.4 接收函数返回的多个结果"></a>5.4 接收函数返回的多个结果</h3><p>在下面的代码中，我们从/post中获取一个帖子，然后在/comments中获取相关评论。由于我们使用的是async/await，函数把返回值放在一个数组中。而我们使用数组解构后就可以把返回值直接赋给相应的变量。</p><pre><code>async function getFullPost(){  return await Promise.all([     fetch(&apos;/post&apos;),     fetch(&apos;/comments&apos;)  ]);}const [post, comments] = getFullPost();复制代码</code></pre><h3 id="5-5-将数组平铺到指定深度"><a href="#5-5-将数组平铺到指定深度" class="headerlink" title="5.5 将数组平铺到指定深度"></a>5.5 将数组平铺到指定深度</h3><p>使用递归，为每个深度级别 <code>depth</code> 递减 1 。 使用 <code>Array.reduce()</code> 和 <code>Array.concat()</code> 来合并元素或数组。 基本情况下，<code>depth</code> 等于 1 停止递归。 省略第二个参数，<code>depth</code> 只能平铺到 1 (单层平铺) 的深度。</p><pre><code>const flatten = (arr, depth = 1) =&gt;  depth != 1    ? arr.reduce((a, v) =&gt; a.concat(Array.isArray(v) ? flatten(v, depth - 1) : v), [])    : arr.reduce((a, v) =&gt; a.concat(v), []);flatten([1, [2], 3, 4]);                             // [1, 2, 3, 4]flatten([1, [2, [3, [4, 5], 6], 7], 8], 2);           // [1, 2, 3, [4, 5], 6, 7, 8]复制代码</code></pre><h3 id="5-6-数组的对象解构"><a href="#5-6-数组的对象解构" class="headerlink" title="5.6 数组的对象解构"></a>5.6 数组的对象解构</h3><p>数组也可以对象解构，可以方便的获取数组的第n个值</p><pre><code>const csvFileLine = &apos;1997,John Doe,US,john@doe.com,New York&apos;;const { 2: country, 4: state } = csvFileLine.split(&apos;,&apos;);country            // USstate            // New Yourk复制代码</code></pre><h2 id="6-对象"><a href="#6-对象" class="headerlink" title="6. 对象"></a>6. 对象</h2><h3 id="6-1-使用解构删除不必要属性"><a href="#6-1-使用解构删除不必要属性" class="headerlink" title="6.1 使用解构删除不必要属性"></a>6.1 使用解构删除不必要属性</h3><p>有时候你不希望保留某些对象属性，也许是因为它们包含敏感信息或仅仅是太大了（just too big）。你可能会枚举整个对象然后删除它们，但实际上只需要简单的将这些无用属性赋值给变量，然后把想要保留的有用部分作为剩余参数就可以了。 下面的代码里，我们希望删除_internal和tooBig参数。我们可以把它们赋值给internal和tooBig变量，然后在cleanObject中存储剩下的属性以备后用。</p><pre><code>let {_internal, tooBig, ...cleanObject} = {el1: &apos;1&apos;, _internal:&quot;secret&quot;, tooBig:{}, el2: &apos;2&apos;, el3: &apos;3&apos;};console.log(cleanObject);                         // {el1: &apos;1&apos;, el2: &apos;2&apos;, el3: &apos;3&apos;}复制代码</code></pre><h3 id="6-2-在函数参数中解构嵌套对象"><a href="#6-2-在函数参数中解构嵌套对象" class="headerlink" title="6.2 在函数参数中解构嵌套对象"></a>6.2 在函数参数中解构嵌套对象</h3><p>在下面的代码中，engine是对象car中嵌套的一个对象。如果我们对engine的vin属性感兴趣，使用解构赋值可以很轻松地得到它。</p><pre><code>var car = {  model: &apos;bmw 2018&apos;,  engine: {    v6: true,    turbo: true,    vin: 12345  }}const modelAndVIN = ({model, engine: {vin}}) =&gt; {  console.log(`model: ${model} vin: ${vin}`);}modelAndVIN(car); // =&gt; model: bmw 2018  vin: 12345</code></pre><p>作者：SHERlocked93 链接：<a href="https://juejin.im/post/5b51e5d3f265da0f4861143c" target="_blank" rel="noopener">https://juejin.im/post/5b51e5d3f265da0f4861143c</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-类型强制转换&quot;&gt;&lt;a href=&quot;#1-类型强制转换&quot; class=&quot;headerlink&quot; title=&quot;1. 类型强制转换&quot;&gt;&lt;/a&gt;1. 类型强制转换&lt;/h2&gt;&lt;h3 id=&quot;1-1-string强制转换为数字&quot;&gt;&lt;a href=&quot;#1-1-string
+      
+    
+    </summary>
+    
+    
+      <category term="转载" scheme="http://xcondor.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React 组件生命周期</title>
+    <link href="http://xcondor.cn/2018/07/26/react-e7-bb-84-e4-bb-b6-e7-94-9f-e5-91-bd-e5-91-a8-e6-9c-9f/"/>
+    <id>http://xcondor.cn/2018/07/26/react-e7-bb-84-e4-bb-b6-e7-94-9f-e5-91-bd-e5-91-a8-e6-9c-9f/</id>
+    <published>2018-07-26T07:30:27.000Z</published>
+    <updated>2019-09-02T06:39:50.959Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://www.xcondor.cn/wp-content/uploads/2018/07/1106982-20170811224737742-1564011484.jpg" alt></p><h2 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a>getDefaultProps</h2><p><code>object getDefaultProps()</code> 执行过一次后，被创建的类会有缓存，映射的值会存在<code>this.props</code>,前提是这个prop不是父组件指定的 这个方法在对象被创建之前执行，因此不能在方法内调用<code>this.props</code> ，另外，注意任何<code>getDefaultProps()</code>返回的对象在实例中共享，不是复制</p><h2 id="getInitialState"><a href="#getInitialState" class="headerlink" title="getInitialState"></a>getInitialState</h2><p><code>object getInitialState()</code> 控件加载之前执行，返回值会被用于state的初始化值</p><h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h2><p><code>void componentWillMount()</code> 执行一次，在初始化<code>render</code>之前执行，如果在这个方法内调用<code>setState</code>，<code>render()</code>知道state发生变化，并且只执行一次</p><h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><p><code>ReactElement render()</code> render的时候会调用<code>render()</code>会被调用 调用<code>render()</code>方法时，首先检查<code>this.props</code>和<code>this.state</code>返回一个子元素，子元素可以是DOM组件或者其他自定义复合控件的虚拟实现 如果不想渲染可以返回null或者false，这种场景下，<a href="http://lib.csdn.net/base/react" title="React知识库" target="_blank" rel="noopener">react</a>渲染一个<code>&lt;noscript&gt;</code>标签，当返回null或者false时，<code>ReactDOM.findDOMNode(this)</code>返回null <code>render()</code>方法是很纯净的，这就意味着不要在这个方法里初始化组件的state，每次执行时返回相同的值，不会读写DOM或者与服务器交互，如果必须如服务器交互，在<code>componentDidMount()</code>方法中实现或者其他生命周期的方法中实现，保持<code>render()</code>方法纯净使得服务器更准确，组件更简单</p><h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h2><p><code>void componentDidMount()</code> 在初始化render之后只执行一次，在这个方法内，可以访问任何组件，<code>componentDidMount()</code>方法中的子组件在父组件之前执行 从这个函数开始，就可以和js 其他框架交互了，例如设置计时 setTimeout 或者 setInterval，或者发起网络请求</p><h2 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h2><pre><code>boolean shouldComponentUpdate(  object nextProps, object nextState}</code></pre><p>这个方法在初始化<code>render</code>时不会执行，当props或者state发生变化时执行，并且是在<code>render</code>之前，当新的<code>props</code>或者<code>state</code>不需要更新组件时，返回false</p><pre><code>shouldComponentUpdate: function(nextProps, nextState) {  return nextProps.id !== this.props.id;}</code></pre><p>当<code>shouldComponentUpdate</code>方法返回false时，就不会执行<code>render()</code>方法，<code>componentWillUpdate</code>和<code>componentDidUpdate</code>方法也不会被调用 默认情况下，<code>shouldComponentUpdate</code>方法返回true防止<code>state</code>快速变化时的问题，但是如果·<code>state</code>不变，<code>props</code>只读，可以直接覆盖<code>shouldComponentUpdate</code>用于比较<code>props</code>和<code>state</code>的变化，决定UI是否更新，当组件比较多时，使用这个方法能有效提高应用性能</p><h2 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a>componentWillUpdate</h2><pre><code>void componentWillUpdate(  object nextProps, object nextState)</code></pre><p>当<code>props</code>和<code>state</code>发生变化时执行，并且在<code>render</code>方法之前执行，当然初始化render时不执行该方法，需要特别注意的是，在这个函数里面，你就不能使用<code>this.setState</code>来修改状态。这个函数调用之后，就会把<code>nextProps</code>和<code>nextState</code>分别设置到<code>this.props</code>和<code>this.state</code>中。紧接着这个函数，就会调用<code>render()</code>来更新界面了</p><h2 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h2><pre><code>void componentDidUpdate(  object prevProps, object prevState)</code></pre><p>组件更新结束之后执行，在初始化<code>render</code>时不执行</p><h2 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps"></a>componentWillReceiveProps</h2><pre><code>void componentWillReceiveProps(  object nextProps)</code></pre><p>当<code>props</code>发生变化时执行，初始化<code>render</code>时不执行，在这个回调函数里面，你可以根据属性的变化，通过调用<code>this.setState()</code>来更新你的组件状态，旧的属性还是可以通过<code>this.props</code>来获取,这里调用更新状态是安全的，并不会触发额外的<code>render</code>调用</p><pre><code>componentWillReceiveProps: function(nextProps) {  this.setState({    likesIncreasing: nextProps.likeCount &gt; this.props.likeCount  });}</code></pre><h2 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h2><p><code>void componentWillUnmount()</code> 当组件要被从界面上移除的时候，就会调用<code>componentWillUnmount()</code>,在这个函数中，可以做一些组件相关的清理工作，例如取消计时器、网络请求等</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;http://www.xcondor.cn/wp-content/uploads/2018/07/1106982-20170811224737742-1564011484.jpg&quot; alt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;getDefaultProps&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+    
+      <category term="转载" scheme="http://xcondor.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+      <category term="componentDidMount" scheme="http://xcondor.cn/tags/componentDidMount/"/>
+    
+      <category term="componentDidUpdate" scheme="http://xcondor.cn/tags/componentDidUpdate/"/>
+    
+      <category term="componentWillMount" scheme="http://xcondor.cn/tags/componentWillMount/"/>
+    
+      <category term="componentWillReceiveProps" scheme="http://xcondor.cn/tags/componentWillReceiveProps/"/>
+    
+      <category term="componentWillUnmount" scheme="http://xcondor.cn/tags/componentWillUnmount/"/>
+    
+      <category term="componentWillUpdate" scheme="http://xcondor.cn/tags/componentWillUpdate/"/>
+    
+      <category term="getDefaultProps" scheme="http://xcondor.cn/tags/getDefaultProps/"/>
+    
+      <category term="getInitialState" scheme="http://xcondor.cn/tags/getInitialState/"/>
+    
+      <category term="React" scheme="http://xcondor.cn/tags/React/"/>
+    
+      <category term="React生命周期" scheme="http://xcondor.cn/tags/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    
+      <category term="render" scheme="http://xcondor.cn/tags/render/"/>
+    
+      <category term="shouldComponentUpdate" scheme="http://xcondor.cn/tags/shouldComponentUpdate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图片在div中等比缩放</title>
+    <link href="http://xcondor.cn/2018/07/26/e5-9b-be-e7-89-87-e5-9c-a8div-e4-b8-ad-e7-ad-89-e6-af-94-e7-bc-a9-e6-94-be/"/>
+    <id>http://xcondor.cn/2018/07/26/e5-9b-be-e7-89-87-e5-9c-a8div-e4-b8-ad-e7-ad-89-e6-af-94-e7-bc-a9-e6-94-be/</id>
+    <published>2018-07-26T03:26:50.000Z</published>
+    <updated>2019-09-02T06:39:50.937Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>width: auto;height: auto;max-width: 100%;max-height: 100%;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;width: auto;
+height: auto;
+max-width: 100%;
+max-height: 100%;&lt;/code&gt;&lt;/pre&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>gitignore 文件无法忽略的问题</title>
+    <link href="http://xcondor.cn/2018/07/26/gitignore-e6-96-87-e4-bb-b6-e6-97-a0-e6-b3-95-e5-bf-bd-e7-95-a5-e7-9a-84-e9-97-ae-e9-a2-98/"/>
+    <id>http://xcondor.cn/2018/07/26/gitignore-e6-96-87-e4-bb-b6-e6-97-a0-e6-b3-95-e5-bf-bd-e7-95-a5-e7-9a-84-e9-97-ae-e9-a2-98/</id>
+    <published>2018-07-26T01:48:20.000Z</published>
+    <updated>2019-09-02T06:39:50.948Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>git rm -r --cached .git add .git commit -m &apos;update .gitignore&apos;</code></pre><p>提示： 第一句命令会将所有的追踪缓存全部清除，重新add，不要因为一片的绿色害怕，go on</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;git rm -r --cached .
+git add .
+git commit -m &amp;apos;update .gitignore&amp;apos;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;提示： 第一句命令会将所有的追踪缓存全部清除，重新add，不要因为一片的绿色害
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Object.assign() 方法</title>
+    <link href="http://xcondor.cn/2018/07/24/object-assign-e6-96-b9-e6-b3-95/"/>
+    <id>http://xcondor.cn/2018/07/24/object-assign-e6-96-b9-e6-b3-95/</id>
+    <published>2018-07-24T07:03:47.000Z</published>
+    <updated>2019-09-02T06:39:50.957Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>**Object.assign()**</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p><pre><code>const object1 = {  a: 1,  b: 2,  c: 3};const object2 = Object.assign({c: 4, d: 5}, object1);console.log(object2.c, object2.d);// expected output: 3 5Object.assign(target, ...sources)</code></pre><p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。 <code>Object.assign</code> 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的<code>[[Get]]</code>和目标对象的<code>[[Set]]</code>，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）" target="_blank" rel="noopener"><code>Object.getOwnPropertyDescriptor()</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" title="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。" target="_blank" rel="noopener"><code>Object.defineProperty()</code></a> 。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String" title="此页面仍未被本地化, 期待您的翻译!" target="_blank" rel="noopener"><code>String</code></a>类型和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="undefined是全局对象的一个属性。也就是说，它是全局作用域的一个变量。undefined的最初值就是原始数据类型undefined。" target="_blank" rel="noopener"><code>Symbol</code>](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol “Symbol()函数会返回symbol类型的值，该类型具有静态属性和静态方法。它的静态属性会暴露几个内建的成员对象；它的静态方法会暴露全局的symbol注册，且类似于内建对象类，但作为构造函数来说它并不完整，因为它不支持语法：”new Symbol()”。”) 类型的属性都会被拷贝。 在出现错误的情况下，例如，如果属性不可写，会引发<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError" title="TypeError（类型错误） 对象用来表示值的类型非预期类型时发生的错误。" target="_blank" rel="noopener"><code>TypeError</code></a>，如果在引发错误之前添加了任何属性，则可以更改<code>target</code>对象。 注意，<code>Object.assign</code> 不会跳过那些值为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" title="值 null 特指对象的值未设置。它是 JavaScript 基本类型 之一。" target="_blank" rel="noopener"><code>null</code></a> 或 [<code>undefined</code></a> 的源对象。</p><pre><code>var obj = { a: 1 };var copy = Object.assign({}, obj);console.log(copy); // { a: 1 }</code></pre><p><strong>针对深拷贝，需要使用其他方法，因为 <code>Object.assign()</code>拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</strong></p><pre><code>function test() {  &apos;use strict&apos;;  let obj1 = { a: 0 , b: { c: 0}};  let obj2 = Object.assign({}, obj1);  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}  obj1.a = 1;  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}  obj2.a = 2;  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 0}}  obj2.b.c = 3;  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}  console.log(JSON.stringify(obj2)); // { a: 2, b: { c: 3}}  // Deep Clone  obj1 = { a: 0 , b: { c: 0}};  let obj3 = JSON.parse(JSON.stringify(obj1));  obj1.a = 4;  obj1.b.c = 4;  console.log(JSON.stringify(obj3)); // { a: 0, b: { c: 0}}}test();</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;**Object.assign()**&lt;/code&gt; 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const object1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+con
+      
+    
+    </summary>
+    
+    
+      <category term="转载" scheme="http://xcondor.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>nodejs request模块</title>
+    <link href="http://xcondor.cn/2018/06/23/nodejs-request-e6-a8-a1-e5-9d-97/"/>
+    <id>http://xcondor.cn/2018/06/23/nodejs-request-e6-a8-a1-e5-9d-97/</id>
+    <published>2018-06-23T13:41:31.000Z</published>
+    <updated>2019-09-02T06:39:50.956Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>npm install --save requestget方法：var request = require(&apos;request&apos;);request(&apos;您的请求url&apos;, function (error, response, body) {  if (!error &amp;&amp; response.statusCode == 200) {    console.log(body) // 请求成功的处理逻辑  }});post方法：var request = require(&apos;request&apos;);var url=&quot;请求url&quot;;var requestData=&quot;上送的数据&quot;;request({    url: url,    method: &quot;POST&quot;,    json: true,    headers: {        &quot;content-type&quot;: &quot;application/json&quot;,    },    body: JSON.stringify(requestData)}, function(error, response, body) {    if (!error &amp;&amp; response.statusCode == 200) {        console.log(body) // 请求成功的处理逻辑    }}); post form：request.post({url:&apos;&apos;, form:{key:&apos;value&apos;}}, function(error, response, body) {    if (!error &amp;&amp; response.statusCode == 200) {       console.log(body) // 请求成功的处理逻辑      }})</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;npm install --save request
+get方法：
+var request = require(&amp;apos;request&amp;apos;);
+request(&amp;apos;您的请求url&amp;apos;, function (error, respo
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VUE开发指导提示</title>
+    <link href="http://xcondor.cn/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba-1/"/>
+    <id>http://xcondor.cn/2018/04/12/vue-e5-bc-80-e5-8f-91-e6-8c-87-e5-af-bc-e6-8f-90-e7-a4-ba-1/</id>
+    <published>2018-04-12T07:57:03.000Z</published>
+    <updated>2019-09-02T06:39:50.961Z</updated>
+    
+    <content type="html"><![CDATA[<p>1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下) 也可以用包管理工具yarn 用法基本一样。速度快。 4. 如果需要起小型服务器 npm install http-server -g 在对应的目录下 http-server -cors （支持跨域参数）就可以启动服务进行静态服务开发 对vue总结： 简单来说vue是把前端资源 （ dom 结构 + js 交互操作、数据请求 + css 样式 ）打成一个包module（js） 相对应的需要一些loader器去解释它，所以在装vue后，使用less、sass、或者各种模板引擎语法，就必须安装相关的loader才能解释。安装方法一样是npm install style-loader 类似的命令 5. vuejs //vuejs.org/zh-cn/ 使用可以直接引入来练习，但是完全vue开发还是要用相关生态 以上几个是基本的平台—包安装—前端资源构建打包工具。 因打包工具种类过多，选择还是最多的webpack 附一些经常用到的官网地址： <a href="http://xcondor.cn/nav.html">http://xcondor.cn/nav.html</a> 首先构建一个项目目录如下: project -src //开发目录 -mock // 模拟数据 <a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> 动态模拟后台数据，使前端模拟真实数据。相关文章推荐： <a href="https://www.cnblogs.com/zhenfei-jiang/p/7235339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhenfei-jiang/p/7235339.html</a> -assets //静态资源 -libs //公共库 -locale //国际化文件夹 -router // 路由 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a> -store //vuex状态机 参阅 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a> -common //公共文件-库 -views –home //首页 –error-page //错误页面 … …按照类目名称、项目结构定义显示层模块 login.vue app.vue // 主模板 <strong>* main.js // 入口文件 所有的依赖使用vue注入公共路由注入公共文件注入都在此文件 *</strong> ——————————————————— package.json 目录建好后利用npm init 创建初始化文件 <strong>* 安装了一些常用依赖的东西，会在这个文件中生成相应安装的版本和组件列表 拿到现成项目启动npm install的时候，就是根据这个配置文件去安装相应的依赖。 ——————————————————— .babelrc // babel解释器 把ES6解析成ES2015或者兼容版本的JAVASCRIPT .editorconfig //IDE设置规范，包括tab缩进字节等 .eslintignore //放弃eslint代码检查校验文件 .gitignore // git 忽略文件 把不需要的文件忽略掉 —————————————————— .jsjint // js语法检测配置 安装它为了检测js语法 前期可忽略 .eslint // 代码检查配置 安装它是为了规范代码风格 前期可忽略 /////////////////////////////////////////////////////////////////// 储备知识顺序 ES6 (JAVASCRIPT新规范、很多浏览器不支持，但是是趋势。不过babel可以将es2015解析，最好是学习) ** VUE *</strong> 必须 WEBPACK <strong>* 所有应用必须 VUEROUTER ** 大型应用必须 VUEX ** 大型应用必须 IVIEW * UI框架 次要 /</strong>备注<strong>/ *</strong> 很重要 ** 一般重要 * 重要 /** 项目参考 **/ <a href="https://github.com/xcondor/vue-admin" target="_blank" rel="noopener">https://github.com/xcondor/vue-admin</a> <a href="https://github.com/xcondor/vue2-elm" target="_blank" rel="noopener">https://github.com/xcondor/vue2-elm</a> 大型应用 <a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a> iview 后台应用 <a href="https://github.com/devjin0617/vue2-admin-lte" target="_blank" rel="noopener">https://github.com/devjin0617/vue2-admin-lte</a> <a href="https://github.com/lanux/Vue-Admin" target="_blank" rel="noopener">https://github.com/lanux/Vue-Admin</a> <a href="https://github.com/lss5270/vue-admin-spa" target="_blank" rel="noopener">https://github.com/lss5270/vue-admin-spa</a> 单页面应用   按照这个思路走，少走很多弯路。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1. 安装nodejs javascript 前端平台 2. 安装 npm 包管理工具 3. 安装 webpack 命令： npm install -g webpack （全局安装）| npm install webpack –save-dev (安装在本地目录的开发环境下
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="npm" scheme="http://xcondor.cn/tags/npm/"/>
+    
+      <category term="vuejs" scheme="http://xcondor.cn/tags/vuejs/"/>
+    
+      <category term="vuejs 开发" scheme="http://xcondor.cn/tags/vuejs-%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="webpack" scheme="http://xcondor.cn/tags/webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Charles 在线破解</title>
+    <link href="http://xcondor.cn/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3/"/>
+    <id>http://xcondor.cn/2018/03/27/charles-e5-9c-a8-e7-ba-bf-e7-a0-b4-e8-a7-a3/</id>
+    <published>2018-03-27T12:23:31.000Z</published>
+    <updated>2019-09-02T06:39:50.931Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.zzzmode.com/mytools/charles/" target="_blank" rel="noopener">https://www.zzzmode.com/mytools/charles/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.zzzmode.com/mytools/charles/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.zzzmode.com/mytools/charles/&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="转载" scheme="http://xcondor.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+      <category term="charles" scheme="http://xcondor.cn/tags/charles/"/>
+    
+      <category term="劫持工具" scheme="http://xcondor.cn/tags/%E5%8A%AB%E6%8C%81%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NPM报错记录</title>
+    <link href="http://xcondor.cn/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95/"/>
+    <id>http://xcondor.cn/2018/03/23/npm-e6-8a-a5-e9-94-99-e8-ae-b0-e5-bd-95/</id>
+    <published>2018-03-23T15:27:24.000Z</published>
+    <updated>2019-09-02T06:39:50.956Z</updated>
+    
+    <content type="html"><![CDATA[<p>持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：</p><pre><code>原因 没有指定 localhost 在host 文件中添加 127.0.0.1 localhost</code></pre><p>2. sublime 保存弹出路径报错 <img src="http://img.mukewang.com/5805c6130001a37c05000211.jpg" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;持续更新中…… 1.webpack getaddrinfo ENOTFOUND localhost 错误 解决方案：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;原因 没有指定 localhost 
+在host 文件中添加 
+127.0.0.1 localhost&lt;/code&gt;&lt;/pre
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+</feed>
