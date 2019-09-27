@@ -298,9 +298,9 @@ const
       <category term="记录" scheme="http://www.xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="happypack" scheme="http://www.xcondor.cn/tags/happypack/"/>
-    
       <category term="webpack" scheme="http://www.xcondor.cn/tags/webpack/"/>
+    
+      <category term="happypack" scheme="http://www.xcondor.cn/tags/happypack/"/>
     
   </entry>
   
@@ -540,13 +540,13 @@ request(&amp;apos;您的请求url&amp;apos;, function (error, respo
       <category term="记录" scheme="http://www.xcondor.cn/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="webpack" scheme="http://www.xcondor.cn/tags/webpack/"/>
-    
       <category term="npm" scheme="http://www.xcondor.cn/tags/npm/"/>
     
       <category term="vuejs" scheme="http://www.xcondor.cn/tags/vuejs/"/>
     
       <category term="vuejs 开发" scheme="http://www.xcondor.cn/tags/vuejs-%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="webpack" scheme="http://www.xcondor.cn/tags/webpack/"/>
     
   </entry>
   
